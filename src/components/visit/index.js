@@ -27,7 +27,7 @@ const Visit = () => {
 
         return (
             <div className= 'root' >
-                <h1 className= 'title-main' > Información de la Visita</h1>
+                <h1 className= 'title-main' > Información de la Visita Técnica</h1>
                     <div className= 'form-wrapper'>
                         <Box
                             component="form"
@@ -35,8 +35,9 @@ const Visit = () => {
                                     '& .MuiTextField-root': {marginTop: '10px', marginLeft: '20px' , },
                                     '& .MuiOutlinedInput-input': {width: '200px', height: '10px'},
                                     '& .react-datepicker__input-container': {marginTop: '50px', marginBottom: '5px',marginLeft: '20px' },
-                                    '& .MuiInputLabel-formControl': {width: '200px', height: '25px'},
-
+                                    '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root': {width: '230px', height: '50px'},
+                                    '& .css-1hbyad5-MuiTypography-root': {width: '200px', height: '50px'},
+                                    '& .css-d59b2q-MuiGrid-root-MuiPickersToolbar-content': {width: '200px', height: '50px'},
                                 }}
                                 noValidate
                                 autoComplete="off"
@@ -110,8 +111,7 @@ const Visit = () => {
                                             renderInput={(params) => <TextField {...params} />}
                                         />
                                     </Stack>
-                                </LocalizationProvider>
-                                
+                                </LocalizationProvider>                               
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <Stack spacing={3}>
                                         <DesktopDateTimePicker
@@ -124,19 +124,7 @@ const Visit = () => {
                                         />
                                     </Stack>
                                 </LocalizationProvider>
-
-
-
                             </div>
-                            {/* <div>
-                                <TextField
-                                    id="filled-multiline-static"
-                                    label="Helper text"
-                                    multiline
-                                    rows={6}
-                                    placeholder="Add some aditional information"
-                                />
-                            </div> */}
                             <div className='sendButton'>
                                 <Button variant="contained" endIcon={<SendIcon />}>
                                     Send
