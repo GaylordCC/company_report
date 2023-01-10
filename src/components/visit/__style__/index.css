@@ -18,3 +18,11 @@
     display: flex;
     justify-content: center;   
 }
+
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+    background-color: blueviolet;
+    font-size: 5rem;
+    font-family: inherit;
+    width: 40%;
+    height: 100%;
+}
