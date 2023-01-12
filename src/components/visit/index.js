@@ -11,6 +11,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker';
 import Stack from '@mui/material/Stack';
 import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
+import './__style__/index.css';
 
 
 const isWeekend = (date) => {
@@ -68,7 +69,7 @@ const Visit = () => {
                                 />
                                 <TextField
                                     id="outlined-number"
-                                    label="id_empresa"
+                                    label="id_empresa a visitar"
                                     type="number"
                                     InputLabelProps={{
                                         shrink: true,
@@ -89,7 +90,7 @@ const Visit = () => {
                                 />
                                 <TextField
                                     id="standard-disabled"
-                                    label="Conexión"
+                                    label="Contacto"
                                     placeholder="write email contact"
                                 />
                                 <TextField
