@@ -5,8 +5,8 @@ import Visit from './components/visit'
 
 function App() {
   return (
-    <Company/>
-    // <Visit/>
+    // <Company/>
+    <Visit/>
   );
 }
 

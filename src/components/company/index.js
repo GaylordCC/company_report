@@ -18,6 +18,7 @@ const Company = () => {
     const [helper, setHelper] = React.useState(null);
 
     const handleCreateCompany = async() => {
+        console.log(name)
         const { succes, data, errors } = await createCompany({ name: name, city: city, 
             identification: identification, address: address, email: email, phone: phone });
         
@@ -52,7 +53,7 @@ const Company = () => {
                             placeholder="write company name"
                             id={'name'}
                             name={'name'}
-                            onChanege={(event) => setName(event.target.value)}
+                            onChange={(event) => setName(event.target.value)}
                         />
                         <TextField
                             label="city"
