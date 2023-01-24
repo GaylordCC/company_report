@@ -12,6 +12,8 @@ import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker
 import Stack from '@mui/material/Stack';
 import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
 import './__style__/index.css';
+import Autocomplete from '@mui/material/Autocomplete';
+import axios from 'axios';
 
 
 const isWeekend = (date) => {
@@ -22,9 +24,20 @@ const isWeekend = (date) => {
 
 
 const Visit = () => {
-    // const [profession, setProfession] = useState(null);
+    // const top100Films = [ 
+    //     { label: 'Prime' },
+    //     { label: 'Ecopetrol' },
+    //     { label: 'Procaps' }
+    // ];
+    const [empresas, setEmpresas] = React.useState(null);
     const [value, setValue] = React.useState(dayjs('2022-04-15'));
-    const [value1, setValue1] = React.useState(dayjs('2018-01-01T00:00:00.000Z'));
+    const [profesion, setProfesion] = React.useState(null);
+    const [coordinador, setCoordinador] = React.useState(null);
+    const [id_empresa, setId_empresa] = React.useState(null);
+    const [numero_dias, setNumero_dias] = React.useState(null);
+    const [descripcion, setDescripcion] = React.useState(null);
+    const [contacto, setContacto] = React.useState(null);
+    const [fase, setFase] = React.useState(null);
 
         return (
             <div className= 'root' >
@@ -44,62 +57,85 @@ const Visit = () => {
                                 autoComplete="off"
                         >
                             <div className='register-button'>
-                                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <StaticDatePicker
-                                    label="Seleccione: fecha visita"
-                                    orientation="landscape"
-                                    openTo="day"
-                                    value={value}
-                                    onChange={(newValue) => {
-                                        setValue(newValue);
-                                    }}
-                                    renderInput={(params) => <TextField {...params}/>}
-                                    />
-                                 </LocalizationProvider>
+                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <Stack spacing={3}>
+                                        <DesktopDateTimePicker
+                                            label="Seleccione: Fecha Visita"
+                                            value={value}
+                                            id={'fecha_visita'}
+                                            name={'fecha_visita'}
+                                            onChange={(newValue) => {setValue(newValue);
+                                            }}
+                                            renderInput={(params) => <TextField {...params} />}
+                                        />
+                                    </Stack>
+                                </LocalizationProvider>
+                                <Autocomplete
+                                    disablePortal
+                                    id={'empresas'}
+                                    name={'empresas'}
+                                    options={empresas}
+                                    sx={{ width: 300 }}
+                                    renderInput={(params) => <TextField {...params} label="Lista de Empresas" />}
+                                    onChange={(event) => setEmpresas(event.target.value)}
+                                />
                                 <TextField
-                                    id="outlined-disabled"
                                     label="profesión"
+                                    id={'profesion'}
+                                    name={'profesion'}
                                     placeholder="profesion del responsable"
-                                    // onChange={(event) => {setProfession(event.target.value)}}
+                                    onChange={(event) => setProfesion(event.target.value)}
                                 />
                                 <TextField
-                                    id="outlined-disabled"
                                     label="coordinador"
+                                    id={'coordinador'}
+                                    name={'coordinador'}
                                     placeholder="encargado de la visita"
+                                    onChange={(event) => setCoordinador(event.target.value)}
                                 />
                                 <TextField
-                                    id="outlined-number"
                                     label="id_empresa a visitar"
+                                    id={'id_empresa'}
+                                    name={'id_empresa'}
                                     type="number"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    onChange={(event) => setId_empresa(event.target.value)}
                                 />
                                 <TextField
-                                    id="outlined-number"
                                     label="numero de días visita"
+                                    id={'numero_dias'}
+                                    name={'numero_dias'}
                                     type="number"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    onChange={(event) => setNumero_dias(event.target.value)}
                                 />
                                 <TextField
-                                    id="standard-required"
-                                    label="Descripción del equipo"
+                                    label="descripción del equipo"
+                                    id={'descripcion'}
+                                    name={'descripcion'}
                                     placeholder="información del equipo"
+                                    onChange={(event) => setDescripcion(event.target.value)}
                                 />
                                 <TextField
-                                    id="standard-disabled"
                                     label="Contacto"
-                                    placeholder="write email contact"
+                                    id={'Contacto'}
+                                    name={'Contacto'}
+                                    placeholder="escribir email de contacto"
+                                    onChange={(event) => setContacto(event.target.event)}
                                 />
                                 <TextField
-                                    id="standard-number"
                                     label="Fase"
+                                    id={'fase'}
+                                    name={'fase'}
                                     type="number"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
+                                    onChange={(event) => setFase(event.target.event)}
                                 />
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <Stack spacing={3}>
