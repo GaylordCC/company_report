@@ -73,4 +73,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### clone the project: git clone
 ### enter to folder project
 ### install the project's dependences: npm install
+### npm start: run frontend project on Rails
 
