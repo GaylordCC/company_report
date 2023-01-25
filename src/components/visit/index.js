@@ -14,7 +14,7 @@ import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
 import './__style__/index.css';
 import Autocomplete from '@mui/material/Autocomplete';
 import axios from 'axios';
-
+import { createVisit } from '../../controllers/visits';
 
 const isWeekend = (date) => {
     const day = date.day();
@@ -30,7 +30,7 @@ const Visit = () => {
     //     { label: 'Procaps' }
     // ];
     const [empresas, setEmpresas] = React.useState(null);
-    const [value, setValue] = React.useState(dayjs('2022-04-15'));
+    const [fecha_visita, setFecha_visita] = React.useState(dayjs('2023-01-01'));
     const [profesion, setProfesion] = React.useState(null);
     const [coordinador, setCoordinador] = React.useState(null);
     const [id_empresa, setId_empresa] = React.useState(null);
@@ -38,6 +38,25 @@ const Visit = () => {
     const [descripcion, setDescripcion] = React.useState(null);
     const [contacto, setContacto] = React.useState(null);
     const [fase, setFase] = React.useState(null);
+    const [fecha_ini, setFecha_ini] = React.useState(dayjs('2023-01-01'));
+    const [fecha_fin, setFecha_fin] = React.useState(dayjs('2023-01-01'));
+
+
+    const handleCreateVisit = async() => {
+        console.log(profesion)
+        console.log(coordinador)
+        const {succes, data, errors} = await createVisit({ fecha_visita: fecha_visita, profesion: profesion, 
+            coordinador: coordinador, id_empresa: id_empresa, numero_dias: numero_dias, descripcion: descripcion,
+            contacto: contacto, fase: fase, fecha_ini: fecha_ini, fecha_fin: fecha_fin
+        })
+
+        if (succes) {
+            alert("TODO OK");
+        }else {
+            alert(" :( " + errors);
+        }
+    }
+
 
         return (
             <div className= 'root' >
@@ -61,10 +80,10 @@ const Visit = () => {
                                     <Stack spacing={3}>
                                         <DesktopDateTimePicker
                                             label="Seleccione: Fecha Visita"
-                                            value={value}
+                                            value={fecha_visita}
                                             id={'fecha_visita'}
                                             name={'fecha_visita'}
-                                            onChange={(newValue) => {setValue(newValue);
+                                            onChange={(newValue) => {setFecha_visita(newValue);
                                             }}
                                             renderInput={(params) => <TextField {...params} />}
                                         />
@@ -141,9 +160,11 @@ const Visit = () => {
                                     <Stack spacing={3}>
                                         <DesktopDateTimePicker
                                             label="Día y Hora de Inicio"
-                                            value={value}
+                                            id={'fecha_ini'}
+                                            name={'fecha_ini'}
+                                            value={fecha_ini}
                                             onChange={(newValue) => {
-                                                setValue(newValue);
+                                                setFecha_ini(newValue);
                                             }}
                                             renderInput={(params) => <TextField {...params} />}
                                         />
@@ -153,9 +174,11 @@ const Visit = () => {
                                     <Stack spacing={3}>
                                         <DesktopDateTimePicker
                                             label="Día y Hora de Finalización"
-                                            value={value}
+                                            id={'fecha_fin'}
+                                            name={'fecha_fin'}
+                                            value={fecha_fin}
                                             onChange={(newValue) => {
-                                                setValue(newValue);
+                                                setFecha_fin(newValue);
                                             }}
                                             renderInput={(params) => <TextField {...params} />}
                                         />
@@ -163,7 +186,7 @@ const Visit = () => {
                                 </LocalizationProvider>
                             </div>
                             <div className='sendButton'>
-                                <Button variant="contained" endIcon={<SendIcon />}>
+                                <Button variant="contained" endIcon={<SendIcon />} onClick={handleCreateVisit}>
                                     Send
                                 </Button>
                             </div>
