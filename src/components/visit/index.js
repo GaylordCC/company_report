@@ -1,4 +1,4 @@
-import React, {useState, state} from "react";
+import React, {useState, state, useEffect, useMemo} from "react";
 import dayjs  from "dayjs";
 import Box from '@mui/material/Box'
 import TextField from "@mui/material/TextField";
@@ -15,10 +15,12 @@ import './__style__/index.css';
 import Autocomplete from '@mui/material/Autocomplete';
 import axios from 'axios';
 import { createVisit } from '../../controllers/visits';
+import { companyList } from '../../controllers/companies';
+import { ConstructionOutlined } from "@mui/icons-material";
 
 const isWeekend = (date) => {
     const day = date.day();
-  
+
     return day === 0 || day === 6;
 };
 
@@ -29,7 +31,8 @@ const Visit = () => {
     //     { label: 'Ecopetrol' },
     //     { label: 'Procaps' }
     // ];
-    const [empresas, setEmpresas] = React.useState(null);
+    const [companiesList, setCompaniesList] = React.useState(null);
+    const [companyId, setCompanyId] = React.useState(null);
     const [fecha_visita, setFecha_visita] = React.useState(dayjs('2023-01-01'));
     const [profesion, setProfesion] = React.useState(null);
     const [coordinador, setCoordinador] = React.useState(null);
@@ -40,11 +43,9 @@ const Visit = () => {
     const [fase, setFase] = React.useState(null);
     const [fecha_ini, setFecha_ini] = React.useState(dayjs('2023-01-01'));
     const [fecha_fin, setFecha_fin] = React.useState(dayjs('2023-01-01'));
-
+    const [options, setOptions] = React.useState([]);
 
     const handleCreateVisit = async() => {
-        console.log(profesion)
-        console.log(coordinador)
         const {succes, data, errors} = await createVisit({ fecha_visita: fecha_visita, profesion: profesion, 
             coordinador: coordinador, id_empresa: id_empresa, numero_dias: numero_dias, descripcion: descripcion,
             contacto: contacto, fase: fase, fecha_ini: fecha_ini, fecha_fin: fecha_fin
@@ -57,6 +58,20 @@ const Visit = () => {
         }
     }
 
+    const fetchCompanyList = async() => {
+        const response = await companyList();
+        var array = [];
+        if (response.succes) {
+            response.data.forEach(element => {
+                array.push({ id: element.id, label: element.name })
+            });
+        }
+        setOptions(array);
+    }
+
+    useEffect(()=> {
+        setCompaniesList(fetchCompanyList());
+    }, [])
 
         return (
             <div className= 'root' >
@@ -91,12 +106,14 @@ const Visit = () => {
                                 </LocalizationProvider>
                                 <Autocomplete
                                     disablePortal
-                                    id={'empresas'}
-                                    name={'empresas'}
-                                    options={empresas}
+                                    id={'companyId'}
+                                    name={'companyId'}
+                                    options={options}
                                     sx={{ width: 300 }}
-                                    renderInput={(params) => <TextField {...params} label="Lista de Empresas" />}
-                                    onChange={(event) => setEmpresas(event.target.value)}
+                                    renderInput={(params) => <TextField {...params} label="description" />}
+                                    onChange={(event, value) => setCompanyId(value.id)}
+                                    
+
                                 />
                                 <TextField
                                     label="profesión"

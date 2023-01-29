@@ -14,6 +14,7 @@ export const createCompany = (params) => {
                 phone: params.phone
             }
         })
+        
         return {
             succes: true,
             data: response,
@@ -22,6 +23,26 @@ export const createCompany = (params) => {
         return {
             succes: false,
             error:error
+        }
+    }
+}
+
+export const companyList = async() => {
+    try {
+        const response = await httpRequest ({
+            method: "GET",
+            url: '/companies',
+        })
+
+        return {
+            succes: true,
+            data: response.data,
+        }
+    }catch (error) {
+        return {
+            succes: false,
+            error:error,
+            data: []
         }
     }
 }

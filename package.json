@@ -15,6 +15,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.3",
     "dayjs": "^1.11.7",
+    "fetch": "^1.1.0",
     "lodash": "^4.17.21",
     "lodash-humps": "^3.1.6",
     "lodash.snakecase": "^4.1.1",
