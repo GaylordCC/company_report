@@ -6,16 +6,16 @@ export const createVisit = (params) => {
             method: "POST",
             url: '/visits',
             data: {
-                fecha_visita:   params.fecha_visita,
-                profesion:      params.profesion,
-                coordinador:    params.coordinador,
-                id_empresa:     params.id_empresa,
-                numero_dias:    params.numero_dias,
-                descripcion:    params.descripcion,
-                contacto:       params.contacto,
-                fase:           params.fase,
-                fecha_ini:      params.fecha_ini,
-                fecha_fin:      params.fecha_fin
+                company_id: params.companyId,
+                visit_date: params.fecha_visita,
+                profesion: params.profesion,
+                coordinator: params.coordinador,
+                number_day: params.numero_dias,
+                equimen_description: params.descripcion,
+                contact_email: params.email,
+                phase: params.fase,
+                initial_day: params.fecha_ini,
+                final_day: params.fecha_fin
             }
         })
         return {

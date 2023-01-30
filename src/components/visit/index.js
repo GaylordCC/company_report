@@ -36,10 +36,9 @@ const Visit = () => {
     const [fecha_visita, setFecha_visita] = React.useState(dayjs('2023-01-01'));
     const [profesion, setProfesion] = React.useState(null);
     const [coordinador, setCoordinador] = React.useState(null);
-    const [id_empresa, setId_empresa] = React.useState(null);
     const [numero_dias, setNumero_dias] = React.useState(null);
     const [descripcion, setDescripcion] = React.useState(null);
-    const [contacto, setContacto] = React.useState(null);
+    const [email, setContacto] = React.useState(null);
     const [fase, setFase] = React.useState(null);
     const [fecha_ini, setFecha_ini] = React.useState(dayjs('2023-01-01'));
     const [fecha_fin, setFecha_fin] = React.useState(dayjs('2023-01-01'));
@@ -47,9 +46,9 @@ const Visit = () => {
 
     const handleCreateVisit = async() => {
         const {succes, data, errors} = await createVisit({ fecha_visita: fecha_visita, profesion: profesion, 
-            coordinador: coordinador, id_empresa: id_empresa, numero_dias: numero_dias, descripcion: descripcion,
-            contacto: contacto, fase: fase, fecha_ini: fecha_ini, fecha_fin: fecha_fin
-        })
+                                                           coordinador: coordinador, companyId: companyId, numero_dias: numero_dias, descripcion: descripcion,
+                                                           email: email, fase: fase, fecha_ini: fecha_ini, fecha_fin: fecha_fin
+                                                         })
 
         if (succes) {
             alert("TODO OK");
@@ -112,8 +111,6 @@ const Visit = () => {
                                     sx={{ width: 300 }}
                                     renderInput={(params) => <TextField {...params} label="description" />}
                                     onChange={(event, value) => setCompanyId(value.id)}
-                                    
-
                                 />
                                 <TextField
                                     label="profesión"
@@ -128,16 +125,6 @@ const Visit = () => {
                                     name={'coordinador'}
                                     placeholder="encargado de la visita"
                                     onChange={(event) => setCoordinador(event.target.value)}
-                                />
-                                <TextField
-                                    label="id_empresa a visitar"
-                                    id={'id_empresa'}
-                                    name={'id_empresa'}
-                                    type="number"
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    onChange={(event) => setId_empresa(event.target.value)}
                                 />
                                 <TextField
                                     label="numero de días visita"
@@ -157,21 +144,21 @@ const Visit = () => {
                                     onChange={(event) => setDescripcion(event.target.value)}
                                 />
                                 <TextField
-                                    label="Contacto"
-                                    id={'Contacto'}
-                                    name={'Contacto'}
+                                    label="email_contacto"
                                     placeholder="escribir email de contacto"
-                                    onChange={(event) => setContacto(event.target.event)}
+                                    id={'email'}
+                                    name={'email'}
+                                    onChange={(event) => setContacto(event.target.value)}
                                 />
                                 <TextField
-                                    label="Fase"
+                                    label="fase"
                                     id={'fase'}
                                     name={'fase'}
                                     type="number"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    onChange={(event) => setFase(event.target.event)}
+                                    onChange={(event) => setFase(event.target.value)}
                                 />
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <Stack spacing={3}>
