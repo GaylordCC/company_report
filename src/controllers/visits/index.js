@@ -2,6 +2,7 @@ import httpRequest from '../../services/http_request';
 
 export const createVisit = (params) => {
     try {
+        console.log(params.contactEmail)
         const response = httpRequest ({
             method: "POST",
             url: '/visits',

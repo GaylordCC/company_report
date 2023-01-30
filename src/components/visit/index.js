@@ -26,11 +26,7 @@ const isWeekend = (date) => {
 
 
 const Visit = () => {
-    // const top100Films = [ 
-    //     { label: 'Prime' },
-    //     { label: 'Ecopetrol' },
-    //     { label: 'Procaps' }
-    // ];
+
     const [companiesList, setCompaniesList] = React.useState(null);
     const [companyId, setCompanyId] = React.useState(null);
     const [fecha_visita, setFecha_visita] = React.useState(dayjs('2023-01-01'));
@@ -45,10 +41,10 @@ const Visit = () => {
     const [options, setOptions] = React.useState([]);
 
     const handleCreateVisit = async() => {
-        const {succes, data, errors} = await createVisit({ fecha_visita: fecha_visita, profesion: profesion, 
-                                                           coordinador: coordinador, companyId: companyId, numero_dias: numero_dias, descripcion: descripcion,
+        const {succes, data, errors} = await createVisit({ companyId: companyId, fecha_visita: fecha_visita, profesion: profesion,
+                                                           coordinador: coordinador, numero_dias: numero_dias, descripcion: descripcion,
                                                            email: email, fase: fase, fecha_ini: fecha_ini, fecha_fin: fecha_fin
-                                                         })
+                                                        })
 
         if (succes) {
             alert("TODO OK");
