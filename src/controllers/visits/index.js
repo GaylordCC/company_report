@@ -30,3 +30,24 @@ export const createVisit = (params) => {
         }
     }
 }
+
+export const visitList = async () => {
+    try {
+        const response = await httpRequest ({
+            method: "GET",
+            url: '/visits',
+        })
+
+        return {
+            succes: true,
+            data: response.data,
+        }
+    }catch (error) {
+
+        return {
+            succes: false,
+            error:error,
+             data: []
+        }
+    }
+}

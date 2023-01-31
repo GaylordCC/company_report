@@ -51,7 +51,7 @@ const List = () => {
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
-        rows={rows}
+        rows={companies}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
