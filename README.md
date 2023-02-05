@@ -75,3 +75,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### install the project's dependences: npm install
 ### npm start: run frontend project on Rails
 
+### Template path: material-ui/docs/data/material/getting-started/templates/dashboard/
+

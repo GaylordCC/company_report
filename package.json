@@ -26,6 +26,7 @@
     "react-dom": "^18.2.0",
     "react-final-form": "^6.5.9",
     "react-scripts": "^5.0.1",
+    "recharts": "^2.3.2",
     "styled-components": "^5.3.6",
     "tss-react": "^4.5.2",
     "web-vitals": "^2.1.4"
