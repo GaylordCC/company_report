@@ -1,17 +1,11 @@
 import './App.css';
-import Company from './components/company';
-import Visit from './components/visit';
-import List from './components/company/list';
-import ListV from './components/visit/listV';
-import Dashboard from './components/layouts/dashboard';
+import Routes from './config/routes';
 
 function App() {
   return (
-    // <Company/>
-    // <Visit/>
-    // <List/>
-    // <ListV/>
-    <Dashboard/>
+    <div className='App'>
+      <Routes />
+    </div>
   );
 }
 
