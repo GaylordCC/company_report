@@ -2,32 +2,33 @@ import * as React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Company from "../components/company";
 import Visit from "../components/visit";
-import List from "../components/company/list";
-import ListV from "../components/visit/listV";
+import ListCompany from "../components/company/listCompany";
+import ListVisit from "../components/visit/listVisit";
 import Dashboard from "../components/layouts/dashboard";
 import ReactDOM from "react-dom/client";
+import PrivateRoute from "./PrivateRoute";
 
 function Routes() {
     const router = createBrowserRouter ([
         {
             path: "/",
-            element: <Dashboard/>,
+            element: <PrivateRoute component={ListCompany}/>,
         },
         {
             path: "company",
-            element: <Company/>,
+            element: <PrivateRoute component={Company}/>,
         },
         {
             path: "visit",
-            element: <Visit/>,
+            element: <PrivateRoute component={Visit}/>,
         },
         {
-            path: "list",
-            element: <List/>,
+            path: "list_company",
+            element: <PrivateRoute component={ListCompany}/>,
         },
         {
-            path: "listV",
-            element: <ListV/>,
+            path: "list_visit",
+            element: <PrivateRoute component={ListVisit}/>,
         },
     ]);
     

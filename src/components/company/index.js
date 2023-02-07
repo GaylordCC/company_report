@@ -42,6 +42,7 @@ const Company = () => {
                     sx={{
                             '& .MuiTextField-root': {marginTop: '10px', marginLeft: '20px' , },
                             '& .MuiOutlinedInput-input': {width: '200px', height: '10px'},
+
                         }}
                         noValidate
                         autoComplete="off"

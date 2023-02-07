@@ -1,20 +1,33 @@
 .root {
     font-family: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .title-main {
-    margin-left: 250px;
-    margin-top: 60px;
-    margin-bottom: 60px; 
+
 }
 
 .form-wrapper {
     width: 40%;
     height: 100%;
-    margin-right: 10%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .sendButton {
     display: flex;
-    justify-content: center;   
+    justify-content: center;
+    margin-top: 50px;  
 }
+
+.ButtonContainer {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+}
+

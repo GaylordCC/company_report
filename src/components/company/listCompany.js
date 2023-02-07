@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { companyList } from '../../controllers/companies';
+import Button from '@mui/material/Button';
 
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 70, align: 'center' },
+  { field: 'id', headerName: 'ID', width: 50, align: 'center' },
   { field: 'name', headerName: 'Nombre Empresa', width: 150, align: 'center' },
-  { field: 'city', headerName: 'Ciudad', width: 150 },
-  {field: 'identification', headerName: 'Identificación', type: 'number', width: 150, align: 'center' },
+  { field: 'city', headerName: 'Ciudad', width: 120, align: 'center' },
+  {field: 'identification', headerName: 'Identificación', type: 'number', width: 110, align: 'center' },
   { field: 'adress', headerName: 'Direcciónde la Empresa', width: 180, align: 'center' },
   { field: 'email', headerName: 'Email de Contacto', width: 200, align: 'center' },
   { field: 'phone', headerName: 'Numero de Telefono', width: 150, align: 'center' },
@@ -30,7 +31,7 @@ const rows = [
 
 
 
-const List = () => {
+const ListCompany = () => {
 
 
   const [companies, setCompanies] = React.useState([]);
@@ -49,7 +50,10 @@ const List = () => {
   }, [])
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: 400, width: '80%', marginTop:20 }}>
+      <div className='ButtonContainer'>
+        <Button variant="contained">Crear Compañia</Button>
+      </div>
       <DataGrid
         rows={companies}
         columns={columns}
@@ -61,4 +65,4 @@ const List = () => {
   );
 }
 
-export default List;
+export default ListCompany;
