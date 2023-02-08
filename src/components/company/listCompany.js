@@ -2,16 +2,56 @@ import React, { useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { companyList } from '../../controllers/companies';
 import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import UpdateIcon from '@mui/icons-material/Update';
+import { createTheme } from '@mui/material/styles';
+import red from '@mui/material/colors/red';
 
+const theme = createTheme({
+  palette: {
+    primary: red,
+  },
+});
+
+const handleClick = (param, event) => {
+};
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 50, align: 'center' },
   { field: 'name', headerName: 'Nombre Empresa', width: 150, align: 'center' },
   { field: 'city', headerName: 'Ciudad', width: 120, align: 'center' },
-  {field: 'identification', headerName: 'Identificación', type: 'number', width: 110, align: 'center' },
   { field: 'adress', headerName: 'Direcciónde la Empresa', width: 180, align: 'center' },
   { field: 'email', headerName: 'Email de Contacto', width: 200, align: 'center' },
   { field: 'phone', headerName: 'Numero de Telefono', width: 150, align: 'center' },
+  { field: 'update', headerName: 'Editar', width: 150, align: 'center',
+      renderCell: (cellValues) => {
+        return (
+            <Button
+                variant="outlined"
+                startIcon={<UpdateIcon />}
+                onClick={(event) => {
+                    handleClick(event, cellValues);
+                }}
+            > Actualizar
+            </Button>
+        );
+      }
+  },
+  { field: 'delete', headerName: 'Eliminar', width: 150, align: 'center',
+      renderCell: (cellValues) => {
+        return (
+            <Button
+                variant="outlined"
+                sx={{ color: red[400] }}
+                startIcon={<DeleteIcon />}
+                onClick={(event) => {
+                    handleClick(event, cellValues);
+                }}
+            > Eliminar
+            </Button>
+        );
+      }
+  },
 ];
 
 const rows = [
@@ -50,9 +90,9 @@ const ListCompany = () => {
   }, [])
 
   return (
-    <div style={{ height: 400, width: '80%', marginTop:20 }}>
+    <div style={{ height: 400, width: '80%', marginTop: 20 }}>
       <div className='ButtonContainer'>
-        <Button variant="contained">Crear Compañia</Button>
+        <Button variant="contained" component="a" href="/company">Crear Compañia</Button>
       </div>
       <DataGrid
         rows={companies}

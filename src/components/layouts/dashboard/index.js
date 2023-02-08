@@ -118,7 +118,7 @@ const  Dashboard = ({ component: Component}) => {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              HMM INGENIERÍA S.A.S
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">

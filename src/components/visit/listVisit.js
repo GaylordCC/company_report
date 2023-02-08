@@ -2,6 +2,19 @@ import React, { useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { visitList } from '../../controllers/visits';
 import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import UpdateIcon from '@mui/icons-material/Update';
+import { createTheme } from '@mui/material/styles';
+import red from '@mui/material/colors/red';
+
+const theme = createTheme({
+  palette: {
+    primary: red,
+  },
+});
+
+const handleClick = (param, event) => {
+};
 
 const columns = [
     { field: 'id', heeaderName: 'Identificación', width: 50, align: 'center' }, 
@@ -12,11 +25,41 @@ const columns = [
     { field: 'phase', headerName: 'Fase', type: 'number', width: 60, align: 'center' }, 
     { field: 'initial_day', headerName: 'Día Inicial', width: 150, align: 'center' }, 
     { field: 'final_day', headerName: 'Día Final', width: 150, align: 'center' }, 
+    { field: 'update', headerName: 'Actualizar', width: 150, align: 'center',
+        renderCell: (cellValues) => {
+            return (
+                <Button
+                    variant="outlined"
+                    startIcon={<UpdateIcon />}
+                    onClick={(event) => {
+                        handleClick(event, cellValues);
+                    }}
+                > Actualizar
+                </Button>
+            );
+        }
+    }, 
+    { field: 'delete', headerName: 'Eliminar', width: 150, align: 'center', 
+        renderCell: (cellValues) => {
+            return (
+                <Button
+                    variant="outlined"
+                    sx={{ color: red[400] }}
+                    startIcon={<DeleteIcon />}
+                    onClick={(event) => {
+                        handleClick(event, cellValues);
+                    }}
+                > Eliminar
+                </Button>
+            );
+        }
+    }, 
 ];
 
 const rows = [
     { id: 1, visit_date: '01/01/2023 12:00 AM', number_day: '2', equimen_description: 'Caldera', contact_email: 'dissu123@tequieromucho.com', phase: 2, initial_day: '01/01/2023 12:00 AM' , final_day: '01/01/2023 12:00 AM'},
 ];
+
 
 const ListVisit = () => {
 
@@ -35,16 +78,17 @@ const ListVisit = () => {
     }, [])
 
     return (
-        <div style={{height: 400, width: '80%' }}>
+        <div style={{height: 400, width: '80%', marginTop: 90 }}>
             <div className='ButtonContainer'>
-                <Button variant="contained">Crear Visita</Button>
+                <Button variant="contained" component="a" href="/visit">Crear Visita</Button>
             </div>
             <DataGrid
                 rows={visits}
                 columns={columns}
                 pageSize={5}
-                rowsPerPageOptions={[5]}
+                rowsPerPageOptions={[7]}
                 checkboxSelection
+                onCellClick={handleClick}
             />
         </div>
     );
