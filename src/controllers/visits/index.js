@@ -51,3 +51,23 @@ export const visitList = async () => {
         }
     }
 }
+
+export const deleteVisit = async(id) => {
+    try {
+        const response = await httpRequest ({
+            method: "DELETE",
+            url: `/visits/${id}`,
+        })
+
+        return {
+            succes: true,
+            data: response.data,
+        }
+    }catch (error) {
+        return {
+            succes: false,
+            error:error,
+            data: []
+        }
+    }
+}

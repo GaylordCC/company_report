@@ -46,3 +46,23 @@ export const companyList = async() => {
         }
     }
 }
+
+export const deleteCompany = async(id) => {
+    try {
+        const response = await httpRequest ({
+            method: "DELETE",
+            url: `/companies/${id}`,
+        })
+
+        return {
+            succes: true,
+            data: response.data,
+        }
+    }catch (error) {
+        return {
+            succes: false,
+            error:error,
+            data: []
+        }
+    }
+}

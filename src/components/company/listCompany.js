@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { companyList } from '../../controllers/companies';
+import { companyList, deleteCompany } from '../../controllers/companies';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
@@ -12,47 +12,6 @@ const theme = createTheme({
     primary: red,
   },
 });
-
-const handleClick = (param, event) => {
-};
-
-const columns = [
-  { field: 'id', headerName: 'ID', width: 50, align: 'center' },
-  { field: 'name', headerName: 'Nombre Empresa', width: 150, align: 'center' },
-  { field: 'city', headerName: 'Ciudad', width: 120, align: 'center' },
-  { field: 'adress', headerName: 'Direcciónde la Empresa', width: 180, align: 'center' },
-  { field: 'email', headerName: 'Email de Contacto', width: 200, align: 'center' },
-  { field: 'phone', headerName: 'Numero de Telefono', width: 150, align: 'center' },
-  { field: 'update', headerName: 'Editar', width: 150, align: 'center',
-      renderCell: (cellValues) => {
-        return (
-            <Button
-                variant="outlined"
-                startIcon={<UpdateIcon />}
-                onClick={(event) => {
-                    handleClick(event, cellValues);
-                }}
-            > Actualizar
-            </Button>
-        );
-      }
-  },
-  { field: 'delete', headerName: 'Eliminar', width: 150, align: 'center',
-      renderCell: (cellValues) => {
-        return (
-            <Button
-                variant="outlined"
-                sx={{ color: red[400] }}
-                startIcon={<DeleteIcon />}
-                onClick={(event) => {
-                    handleClick(event, cellValues);
-                }}
-            > Eliminar
-            </Button>
-        );
-      }
-  },
-];
 
 const rows = [
   { id: 1, city: 'Snow', name: 'Jon', identification: 35, adress: 'Via 40 con 80', email: 'gameofThrones@hbo.com', phone: 3568974},
@@ -67,15 +26,65 @@ const rows = [
 ];
 
 
-
-
-
-
 const ListCompany = () => {
-
-
   const [companies, setCompanies] = React.useState([]);
 
+  const handleUpdate = (event, param) => {
+    console.log(param)
+    console.log(event)
+  };
+  
+  const handleDelete = async(event, param) => {
+    console.log("********************************")
+    console.log(param)
+    const {success, data, error} = await deleteCompany(param.id)
+    
+    if (success) {
+      fetchCompanyList();
+    } else if(error) {
+      alert("No fue posible eliminar la empresa")
+    }
+  };
+  
+  const columns = [
+    { field: 'id', headerName: 'ID', width: 50, align: 'center' },
+    { field: 'name', headerName: 'Nombre Empresa', width: 150, align: 'center' },
+    { field: 'city', headerName: 'Ciudad', width: 120, align: 'center' },
+    { field: 'adress', headerName: 'Direcciónde la Empresa', width: 180, align: 'center' },
+    { field: 'email', headerName: 'Email de Contacto', width: 200, align: 'center' },
+    { field: 'phone', headerName: 'Numero de Telefono', width: 150, align: 'center' },
+    { field: 'update', headerName: 'Editar', width: 150, align: 'center',
+        renderCell: (cellValues) => {
+          return (
+              <Button
+                  variant="outlined"
+                  startIcon={<UpdateIcon />}
+                  onClick={(event) => {
+                      handleUpdate(event, cellValues);
+                  }}
+              > Actualizar
+              </Button>
+          );
+        }
+    },
+    { field: 'delete', headerName: 'Eliminar', width: 150, align: 'center',
+        renderCell: (cellValues) => {
+          return (
+              <Button
+                  variant="outlined"
+                  sx={{ color: red[400] }}
+                  startIcon={<DeleteIcon />}
+                  onClick={(event) => {
+                      handleDelete(event, cellValues);
+                  }}
+              > Eliminar
+              </Button>
+          );
+        }
+    },
+  ];
+
+  // Looking for information
   const fetchCompanyList = async() => {
     const response = await companyList();
     console.log(response)
@@ -85,6 +94,7 @@ const ListCompany = () => {
     }
   }
 
+  // Load information
   useEffect(()=> {
     fetchCompanyList();
   }, [])
