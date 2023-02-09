@@ -7,6 +7,7 @@ import UpdateIcon from '@mui/icons-material/Update';
 import { createTheme } from '@mui/material/styles';
 import red from '@mui/material/colors/red';
 
+
 const theme = createTheme({
   palette: {
     primary: red,
@@ -29,14 +30,14 @@ const rows = [
 const ListCompany = () => {
   const [companies, setCompanies] = React.useState([]);
 
+
   const handleUpdate = (event, param) => {
     console.log(param)
     console.log(event)
+    window.location.href = '/company?edit='+param.id;
   };
   
   const handleDelete = async(event, param) => {
-    console.log("********************************")
-    console.log(param)
     const {success, data, error} = await deleteCompany(param.id)
     
     if (success) {

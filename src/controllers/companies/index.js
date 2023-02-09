@@ -66,3 +66,53 @@ export const deleteCompany = async(id) => {
         }
     }
 }
+
+export const getCompany = async(id) => {
+    try {
+        const response = await httpRequest({
+            method: "GET",
+            url: `/companies/${id}`,
+        })
+
+        return {
+            succes: true,
+            data: response.data,
+        }
+
+    } catch (error) {
+
+        return {
+            succes: false,
+            error: error,
+            data: []
+        }
+
+    }
+}
+
+export const updateCompany = (id, params) => {
+    try {
+        const response = httpRequest ({
+            method: "PUT",
+            url: `/companies/${id}`,
+            data: {
+                name: params.name,
+                city: params.city,
+                identification: params.identification,
+                adress: params.address,
+                email: params.email,
+                phone: params.phone
+            }
+        })
+        
+        return {
+            succes: true,
+            data: response,
+        }
+    }catch (error) {
+        return {
+            succes: false,
+            error:error
+        }
+    }
+}
