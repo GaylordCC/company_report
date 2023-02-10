@@ -149,7 +149,6 @@ const Visit = () => {
                                     sx={{ width: 300 }}
                                     renderInput={(params) => <TextField {...params} label="description" />}
                                     onChange={(event, value) => setCompanyId(value.id)}
-                                    value={companyId}
                                 />
                                 <TextField
                                     label="profesión"

@@ -32,9 +32,8 @@ const ListVisit = () => {
   };
   
   const handleDelete = async(event, param) => {
-    console.log("********************************")
-    console.log(param)
     const {success, data, error} = await deleteVisit(param.id)
+    window.location.href = '/list_visit';
     
     if (success) {
         fetchVisitList();
