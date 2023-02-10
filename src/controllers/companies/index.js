@@ -86,7 +86,6 @@ export const getCompany = async(id) => {
             error: error,
             data: []
         }
-
     }
 }
 
@@ -109,7 +108,9 @@ export const updateCompany = (id, params) => {
             succes: true,
             data: response,
         }
+
     }catch (error) {
+        
         return {
             succes: false,
             error:error

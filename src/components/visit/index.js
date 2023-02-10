@@ -14,7 +14,7 @@ import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
 import './__style__/index.css';
 import Autocomplete from '@mui/material/Autocomplete';
 import axios from 'axios';
-import { createVisit } from '../../controllers/visits';
+import { createVisit, updateVisit, getVisit } from '../../controllers/visits';
 import { companyList } from '../../controllers/companies';
 import { ConstructionOutlined } from "@mui/icons-material";
 
@@ -27,30 +27,41 @@ const isWeekend = (date) => {
 
 const Visit = () => {
 
-    const [companiesList, setCompaniesList] = React.useState(null);
-    const [companyId, setCompanyId] = React.useState(null);
+    const [companiesList, setCompaniesList] = React.useState("");
+    const [companyId, setCompanyId] = React.useState([]);
     const [fecha_visita, setFecha_visita] = React.useState(dayjs('2023-01-01'));
-    const [profesion, setProfesion] = React.useState(null);
-    const [coordinador, setCoordinador] = React.useState(null);
-    const [numero_dias, setNumero_dias] = React.useState(null);
-    const [descripcion, setDescripcion] = React.useState(null);
-    const [email, setContacto] = React.useState(null);
-    const [fase, setFase] = React.useState(null);
+    const [profesion, setProfesion] = React.useState("");
+    const [coordinador, setCoordinador] = React.useState("");
+    const [numero_dias, setNumero_dias] = React.useState("");
+    const [descripcion, setDescripcion] = React.useState("");
+    const [email, setContacto] = React.useState("");
+    const [fase, setFase] = React.useState("");
     const [fecha_ini, setFecha_ini] = React.useState(dayjs('2023-01-01'));
     const [fecha_fin, setFecha_fin] = React.useState(dayjs('2023-01-01'));
     const [options, setOptions] = React.useState([]);
+    const [id, setId] = React.useState(null);
 
     const handleCreateVisit = async() => {
-        const {succes, data, errors} = await createVisit({ companyId: companyId, fecha_visita: fecha_visita, profesion: profesion,
-                                                           coordinador: coordinador, numero_dias: numero_dias, descripcion: descripcion,
-                                                           email: email, fase: fase, fecha_ini: fecha_ini, fecha_fin: fecha_fin
-                                                        })
-
-        if (succes) {
-            alert("TODO OK");
+        
+        if (id) {
+            const {succes, data, errors} = await updateVisit(id, { companyId: companyId, fecha_visita: fecha_visita, profesion: profesion,
+                coordinador: coordinador, numero_dias: numero_dias, descripcion: descripcion, email: email, fase: fase, fecha_ini: fecha_ini, fecha_fin: fecha_fin });
+            if (succes) {
+                alert("Actualizado Correctamente")
+                window.location.href = '/list_visit';
+            }else {
+                alert(" :( " + errors);
+            }
         }else {
-            alert(" :( " + errors);
-        }
+            const {succes, data, errors} = await createVisit({ companyId: companyId, fecha_visita: fecha_visita, profesion: profesion,
+                coordinador: coordinador, numero_dias: numero_dias, descripcion: descripcion, email: email, fase: fase, fecha_ini: fecha_ini, fecha_fin: fecha_fin });
+            if (succes) {
+                alert("La visita se creo correctamente");
+                window.location.href = '/list_visit';
+            }else {
+                alert(" :( " + errors);
+            }
+        }        
     }
 
     const fetchCompanyList = async() => {
@@ -67,6 +78,37 @@ const Visit = () => {
     useEffect(()=> {
         setCompaniesList(fetchCompanyList());
     }, [])
+
+    const getParamId = () => {
+        const queryParameters = new URLSearchParams(window.location.search)
+        setId(queryParameters.get("edit"));
+        return queryParameters.get("edit");
+    }
+
+    const fetchVisit = async (id) => {
+        const {succes, data} = await getVisit(id);
+        if (succes) {
+            console.log(data)
+            setFecha_visita(data.visit_date);
+            setProfesion(data.profesion);
+            setCoordinador(data.coordinator);
+            setNumero_dias(data.number_day);
+            setDescripcion(data.equimen_description);
+            setContacto(data.contact_email);
+            setFase(data.phase);
+            setFecha_ini(data.initial_day);
+            setFecha_fin(data.final_day);
+        }
+    }
+
+    useEffect(()=> {
+        var id = getParamId();
+
+        if (id) {
+            fetchVisit(id);
+        }   
+    }, [])
+
 
         return (
             <div className= 'root' >
@@ -107,6 +149,7 @@ const Visit = () => {
                                     sx={{ width: 300 }}
                                     renderInput={(params) => <TextField {...params} label="description" />}
                                     onChange={(event, value) => setCompanyId(value.id)}
+                                    value={companyId}
                                 />
                                 <TextField
                                     label="profesión"
@@ -114,6 +157,7 @@ const Visit = () => {
                                     name={'profesion'}
                                     placeholder="profesion del responsable"
                                     onChange={(event) => setProfesion(event.target.value)}
+                                    value={profesion}
                                 />
                                 <TextField
                                     label="coordinador"
@@ -121,6 +165,7 @@ const Visit = () => {
                                     name={'coordinador'}
                                     placeholder="encargado de la visita"
                                     onChange={(event) => setCoordinador(event.target.value)}
+                                    value={coordinador}
                                 />
                                 <TextField
                                     label="numero de días visita"
@@ -131,6 +176,7 @@ const Visit = () => {
                                         shrink: true,
                                     }}
                                     onChange={(event) => setNumero_dias(event.target.value)}
+                                    value={numero_dias}
                                 />
                                 <TextField
                                     label="descripción del equipo"
@@ -138,6 +184,7 @@ const Visit = () => {
                                     name={'descripcion'}
                                     placeholder="información del equipo"
                                     onChange={(event) => setDescripcion(event.target.value)}
+                                    value={descripcion}
                                 />
                                 <TextField
                                     label="email_contacto"
@@ -145,6 +192,7 @@ const Visit = () => {
                                     id={'email'}
                                     name={'email'}
                                     onChange={(event) => setContacto(event.target.value)}
+                                    value={email}
                                 />
                                 <TextField
                                     label="fase"
@@ -155,6 +203,7 @@ const Visit = () => {
                                         shrink: true,
                                     }}
                                     onChange={(event) => setFase(event.target.value)}
+                                    valu={fase}
                                 />
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <Stack spacing={3}>

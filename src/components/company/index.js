@@ -75,9 +75,6 @@ const Company = () => {
         }   
     }, [])
 
-
-
-
     return (
         <div className='root'>
             <h1 className='title-main'>Registro de Empresas</h1>

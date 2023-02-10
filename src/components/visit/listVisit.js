@@ -24,9 +24,11 @@ const rows = [
 
 const ListVisit = () => {
 
+
   const handleUpdate = (event, param) => {
     console.log(param)
     console.log(event)
+    window.location.href = '/visit?edit='+param.id;
   };
   
   const handleDelete = async(event, param) => {
@@ -94,6 +96,9 @@ const ListVisit = () => {
     useEffect(() => {
         fetchVisitList();
     }, [])
+
+
+
 
     return (
         <div style={{height: 400, width: '80%', marginTop: 90 }}>
