@@ -1,0 +1,43 @@
+.root-report {
+    font-family: inherit;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 400px;
+}
+
+.form-wrapper {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.addIcon {
+    font-family: inherit;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px; 
+}
+
+.fotoPuntoConexion {
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+}
+
+.sendButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.ButtonContainer {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+}

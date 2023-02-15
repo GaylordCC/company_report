@@ -24,23 +24,23 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Visitas" />
     </ListItemButton>
+    <ListItemButton component="a" href="/report">
+      <ListItemIcon>
+        <BarChartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Reportes" />
+    </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="Nuestros Clientes" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>
-      <ListItemText primary="Integrations" />
+      <ListItemText primary="Proyectos" />
     </ListItemButton>
   </React.Fragment>
 );
