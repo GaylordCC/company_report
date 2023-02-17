@@ -5,8 +5,7 @@ import Visit from "../components/visit";
 import ListCompany from "../components/company/listCompany";
 import ListVisit from "../components/visit/listVisit";
 import Report from "../components/report";
-import Dashboard from "../components/layouts/dashboard";
-import ReactDOM from "react-dom/client";
+import ListReport from "../components/report/listReport";
 import PrivateRoute from "./PrivateRoute";
 
 function Routes() {
@@ -34,6 +33,10 @@ function Routes() {
         {
             path: "report",
             element: <PrivateRoute component={Report}/>,
+        },
+        {
+            path: "list_report",
+            element: <PrivateRoute component={ListReport}/>,
         },
     ]);
     

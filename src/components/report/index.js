@@ -7,26 +7,24 @@ import SendIcon from '@mui/icons-material/Send';
 import UploadIcon from '@mui/icons-material/Upload';
 import 'react-datepicker/dist/react-datepicker.css';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker';
 import Stack from '@mui/system/Stack';
-import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import './__style__/index.css';
 import Autocomplete from '@mui/material/Autocomplete';
-import axios from 'axios';
 import { createReport, updateReport, getReport } from '../../controllers/reports';
-import { ConstructionOutlined } from '@mui/icons-material';
+import { visitList } from '../../controllers/visits';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 
 const isWeekend = (date) => {
     const day = date.day();
-
     return day === 0 || day === 6
 };
 
 const Report = () => {
 
+    const [visitsList, setVisitstList] = React.useState("");
+    const [visitId, setVisitId] = React.useState([]);
     const [report_title, setReport_title] = React.useState("");
     const [report_subtitle, setReport_subtitle] = React.useState("");
     const [connection_point, setConnection_point] = React.useState("");
@@ -45,21 +43,96 @@ const Report = () => {
     const [city, setCity] = React.useState("");
     const [department, setDepartment] = React.useState("");
     const [year, setYear] = React.useState("");
+    const [id, setId] = React.useState(null);
+    const [options, setOptions] = React.useState([]);
 
     const handleCreateReport = async() => {
-        const { succes, data, errors } = await createReport({report_title: report_title, report_subtitle: report_subtitle, 
-            connection_point: connection_point, initial_day: initial_day, final_day: final_day, total_days: total_days, 
-            author: author, reviewer: reviewer, client_responsible: client_responsible, equipment: equipment, 
-            equipment_model: equipment_model, working_voltage: working_voltage, connection_type: connection_type, 
-            phase_number: phase_number, total_power: total_power, city: city, department: department, year: year });
-
+        
+        if (id) {
+            const { succes, data, errors } = await updateReport(id, {visitId: visitId, report_title: report_title, report_subtitle: report_subtitle, 
+                connection_point: connection_point, initial_day: initial_day, final_day: final_day, total_days: total_days, 
+                author: author, reviewer: reviewer, client_responsible: client_responsible, equipment: equipment, 
+                equipment_model: equipment_model, working_voltage: working_voltage, connection_type: connection_type, 
+                phase_number: phase_number, total_power: total_power, city: city, department: department, year: year });
+    
             if (succes) {
-                alert("El reporte se creo correctamente");
-                window.location.href = '/list_visit';
+                alert("El reporte se actualizo correctamente");
+                 window.location.href = '/list_report';
             }else {
                 alert(" :(" + errors)
             }
+
+        }else {
+            const { succes, data, errors } = await createReport({visitId: visitId, report_title: report_title, report_subtitle: report_subtitle, 
+                connection_point: connection_point, initial_day: initial_day, final_day: final_day, total_days: total_days, 
+                author: author, reviewer: reviewer, client_responsible: client_responsible, equipment: equipment, 
+                equipment_model: equipment_model, working_voltage: working_voltage, connection_type: connection_type, 
+                phase_number: phase_number, total_power: total_power, city: city, department: department, year: year });
+    
+            if (succes) {
+                alert("El reporte se creo correctamente");
+                window.location.href = '/list_report';
+            }else {
+                alert(" :(" + errors)
+            }            
+        }
     }
+
+    const fetchVisitList = async() => {
+        const response = await visitList();
+        console.log(visitList)
+        var array = [];
+        if (response.succes) {
+            response.data.forEach(element => {
+                array.push({ id: element.id, label: element.equimen_description })
+                // array.push({ id: element.id, label: element.name })
+            });
+        }
+        setOptions(array);  
+    }
+
+    useEffect(()=> {
+        setVisitstList(fetchVisitList());
+    }, [])
+
+    const getParamId = () => {
+        const queryParameters = new URLSearchParams(window.location.search)
+        setId(queryParameters.get("edit"));
+        return queryParameters.get("edit");
+    }
+
+    const fetchReport = async (id) => {
+        const {succes, data} = await getReport(id);
+        if (succes) {
+            setReport_title(data.report_title)
+            setReport_subtitle(data.report_subtitlee)
+            setConnection_point(data.connection_point)
+            setInitial_day(data.initial_day)
+            setFinal_day(data.final_day)
+            setTotal_days(data.total_days_service)
+            setAuthor(data.author)
+            setReviewer(data.reviewer)
+            setClient_responsible(data.client_responsible)
+            setEquipment(data.equipment)
+            setEquipment_model(data.equipment_model)
+            setWorking_voltage(data.working_voltage)
+            setConnection_type(data.connection_type)
+            setPhase_number(data.phase_number)
+            setTotal_power(data.total_power)
+            setCity(data.city)
+            setDepartment(data.department)
+            setYear(data.year)
+        }
+    }
+
+
+    useEffect(()=> {
+        var id = getParamId();
+
+        if (id) {
+            fetchReport(id);
+        }   
+    }, [])
 
     return (
         <div className='root-report' >
@@ -79,10 +152,19 @@ const Report = () => {
                         autoComplete="off"
                     >
                         <div className='report-buttons'>
+                            <Autocomplete
+                                disablePortal
+                                id={'visitId'}
+                                name={'visitId'}
+                                options={options}
+                                sx={{ width: 300 }}
+                                renderInput={(params) => <TextField {...params} label="description" />}
+                                onChange={(event, value) => setVisitId(value.id)}
+                            />
                             <TextField
                                 label="Título del Informe"
                                 id={'report_title'}
-                                name={'treport_title'}
+                                name={'report_title'}
                                 placeholder="título del informe"
                                 onChange={(event) => setReport_title(event.target.value)}
                                 value={report_title}

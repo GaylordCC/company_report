@@ -96,9 +96,6 @@ const ListVisit = () => {
         fetchVisitList();
     }, [])
 
-
-
-
     return (
         <div style={{height: 400, width: '80%', marginTop: 90 }}>
             <div className='ButtonContainer'>
