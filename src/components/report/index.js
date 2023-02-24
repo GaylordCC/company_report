@@ -11,7 +11,8 @@ import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker
 import Stack from '@mui/system/Stack';
 import './__style__/index.css';
 import Autocomplete from '@mui/material/Autocomplete';
-import { createReport, updateReport, getReport } from '../../controllers/reports';
+import { createReport, updateReport, getReport, sendDetailReport } from '../../controllers/reports';
+
 import { visitList } from '../../controllers/visits';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
@@ -45,6 +46,10 @@ const Report = () => {
     const [year, setYear] = React.useState("");
     const [id, setId] = React.useState(null);
     const [options, setOptions] = React.useState([]);
+    const [companyPhotoFile, setCompanyPhotoFile] = React.useState(null);
+    const [connectionPointPhotoFile, setConnectionPointPhotoFile] = React.useState(null);
+    const [csvFile, setCsvFile] = React.useState(null);
+
 
     const handleCreateReport = async() => {
         
@@ -53,7 +58,9 @@ const Report = () => {
                 connection_point: connection_point, initial_day: initial_day, final_day: final_day, total_days: total_days, 
                 author: author, reviewer: reviewer, client_responsible: client_responsible, equipment: equipment, 
                 equipment_model: equipment_model, working_voltage: working_voltage, connection_type: connection_type, 
-                phase_number: phase_number, total_power: total_power, city: city, department: department, year: year });
+                phase_number: phase_number, total_power: total_power, city: city, department: department, year: year,
+                companyPhotoFile: companyPhotoFile, connectionPointPhotoFile: connectionPointPhotoFile 
+            });
     
             if (succes) {
                 alert("El reporte se actualizo correctamente");
@@ -63,17 +70,20 @@ const Report = () => {
             }
 
         }else {
-            const { succes, data, errors } = await createReport({visitId: visitId, report_title: report_title, report_subtitle: report_subtitle, 
+            const { succes, data, errors } = await createReport({
+                visitId: visitId, report_title: report_title, report_subtitle: report_subtitle, 
                 connection_point: connection_point, initial_day: initial_day, final_day: final_day, total_days: total_days, 
                 author: author, reviewer: reviewer, client_responsible: client_responsible, equipment: equipment, 
                 equipment_model: equipment_model, working_voltage: working_voltage, connection_type: connection_type, 
-                phase_number: phase_number, total_power: total_power, city: city, department: department, year: year });
+                phase_number: phase_number, total_power: total_power, city: city, department: department, year: year,
+                companyPhotoFile: companyPhotoFile, connectionPointPhotoFile: connectionPointPhotoFile, csv_file: csvFile
+            });
     
             if (succes) {
                 alert("El reporte se creo correctamente");
-                window.location.href = '/list_report';
+                // window.location.href = '/list_report';
             }else {
-                alert(" :(" + errors)
+                alert("EORRRR  " + errors)
             }            
         }
     }
@@ -85,7 +95,6 @@ const Report = () => {
         if (response.succes) {
             response.data.forEach(element => {
                 array.push({ id: element.id, label: element.equimen_description })
-                // array.push({ id: element.id, label: element.name })
             });
         }
         setOptions(array);  
@@ -104,6 +113,7 @@ const Report = () => {
     const fetchReport = async (id) => {
         const {succes, data} = await getReport(id);
         if (succes) {
+            console.log(data)
             setReport_title(data.report_title)
             setReport_subtitle(data.report_subtitlee)
             setConnection_point(data.connection_point)
@@ -134,6 +144,25 @@ const Report = () => {
         }   
     }, [])
 
+
+    const handlesendDetailReport = async() => {
+
+        if (id) {
+            const { succes, data, errors } = await sendDetailReport(id, { reportId: id, csvFile: csvFile
+            });
+
+            if (succes) {
+                alert("El archivo se envio correctamente");
+                window.location.href = '/list_report'
+            }else {
+                alert(" No fue posible enviar el archivo" + errors)
+            }
+        }
+    }
+    console.log(csvFile)
+    console.log(id)
+
+
     return (
         <div className='root-report' >
             <h1 className='title-main' > Reporte Técnico de la Visita</h1>
@@ -151,6 +180,7 @@ const Report = () => {
                         noValidate
                         autoComplete="off"
                     >
+                        
                         <div className='report-buttons'>
                             <Autocomplete
                                 disablePortal
@@ -336,15 +366,44 @@ const Report = () => {
                                 <Button variant="outlined" component="label" color="error" endIcon={<UploadIcon />}>
                                         {" "}
                                         Escoger Foto Empresa
-                                        <input type="file" hidden />
+                                        <input
+                                            type="file"
+                                            hidden
+                                            onChange={(event)=> setCompanyPhotoFile(event.target.files[0])}
+                                            accept="image/png, image/gif, image/jpeg" 
+                                        />
                                 </Button>
                             </div>
                             <div className='fotoPuntoConexion'>
                                 <Button variant="outlined" component="label" color="error"  endIcon={<UploadIcon />}>
                                         {" "}
                                         Escoger Foto Punto Conexión
-                                        <input type="file" hidden />
+                                        <input 
+                                        type="file" 
+                                        hidden
+                                        onChange={(event)=> setConnectionPointPhotoFile(event.target.files[0])}
+                                        accept="image/png, image/gif, image/jpeg"
+                                        />
                                 </Button>
+                            </div>
+                        </div>
+                        <div className='attachefile'>
+                            <div className="csvbfile">
+                                <Button variant="outlined" component="label" color="error" endIcon={<UploadIcon />}>
+                                        {" "}
+                                        Escoger Archivo en Formato CSV
+                                        <input
+                                            type={"file"}
+                                            hidden
+                                            onChange={(event)=> setCsvFile(event.target.files[0])}
+                                            accept={".csv"} 
+                                        />
+                                </Button>
+                            </div>
+                            <div className="subirbutton">
+                                    <Button variant="contained" color="error" onClick={handlesendDetailReport}>
+                                            Subir Archivo
+                                    </Button>
                             </div>
                         </div>
                         <div className='sendButton'>

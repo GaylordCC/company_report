@@ -40,13 +40,12 @@ instance.interceptors.response.use(
         return response;
     },
     async error => {
-        console.log(error)
         const {response: {status, config}} = error;
         if (status === 401 && config.headers.Authorization){
             //lscache.set(AUTH_TOKEN, '')
             //history.go(/login)
         }else {
-            return Promise.reject(error);
+            throw new Error(error.response.data.error);
         }
     }
 );

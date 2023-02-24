@@ -17,6 +17,7 @@ import axios from 'axios';
 import { createVisit, updateVisit, getVisit } from '../../controllers/visits';
 import { companyList } from '../../controllers/companies';
 import { ConstructionOutlined } from "@mui/icons-material";
+import UploadIcon from '@mui/icons-material/Upload';
 
 const isWeekend = (date) => {
     const day = date.day();
@@ -40,6 +41,7 @@ const Visit = () => {
     const [fecha_fin, setFecha_fin] = React.useState(dayjs('2023-01-01'));
     const [options, setOptions] = React.useState([]);
     const [id, setId] = React.useState(null);
+
 
     const handleCreateVisit = async() => {
         

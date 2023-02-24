@@ -4,6 +4,7 @@ import { reportList, deleteReport } from '../../controllers/reports';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { createTheme } from '@mui/material/styles';
 import red from '@mui/material/colors/red'
 
@@ -86,6 +87,22 @@ const ListReport = () => {
                 )
             }
          },
+         { field: 'generateReport', headerName: 'Generar Informe', width: 250, align: 'center',
+         renderCell: (cellValues) => {
+             return (
+                 <Button
+                     variant='outlined'
+                     startIcon={<MenuBookIcon/>}
+                     onClick={(event) => {
+                         handleUpdate(event, cellValues);
+                     }}
+                 > Generar Informe
+                 </Button>
+             );
+         }
+      },
+
+
     ];
 
     const [reports, setReports] = React.useState([]);

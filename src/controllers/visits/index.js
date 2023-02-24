@@ -1,9 +1,8 @@
 import httpRequest from '../../services/http_request';
 
-export const createVisit = (params) => {
+export const createVisit = async(params) => {
     try {
-        console.log(params.contactEmail)
-        const response = httpRequest ({
+        const response = await httpRequest ({
             method: "POST",
             url: '/visits',
             data: {
