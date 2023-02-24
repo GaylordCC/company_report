@@ -49,11 +49,13 @@ const Report = () => {
     const [companyPhotoFile, setCompanyPhotoFile] = React.useState(null);
     const [connectionPointPhotoFile, setConnectionPointPhotoFile] = React.useState(null);
     const [csvFile, setCsvFile] = React.useState(null);
+    const [disable, setDisable] = React.useState(false);
 
 
     const handleCreateReport = async() => {
         
         if (id) {
+
             const { succes, data, errors } = await updateReport(id, {visitId: visitId, report_title: report_title, report_subtitle: report_subtitle, 
                 connection_point: connection_point, initial_day: initial_day, final_day: final_day, total_days: total_days, 
                 author: author, reviewer: reviewer, client_responsible: client_responsible, equipment: equipment, 
@@ -146,14 +148,14 @@ const Report = () => {
 
 
     const handlesendDetailReport = async() => {
-
+        
         if (id) {
+            setDisable(true);
             const { succes, data, errors } = await sendDetailReport(id, { reportId: id, csvFile: csvFile
             });
-
+            setDisable(false);
             if (succes) {
                 alert("El archivo se envio correctamente");
-                window.location.href = '/list_report'
             }else {
                 alert(" No fue posible enviar el archivo" + errors)
             }
@@ -180,7 +182,7 @@ const Report = () => {
                         noValidate
                         autoComplete="off"
                     >
-                        
+    
                         <div className='report-buttons'>
                             <Autocomplete
                                 disablePortal
@@ -401,13 +403,13 @@ const Report = () => {
                                 </Button>
                             </div>
                             <div className="subirbutton">
-                                    <Button variant="contained" color="error" onClick={handlesendDetailReport}>
+                                    <Button disabled={disable} variant="contained" color="error" onClick={handlesendDetailReport}>
                                             Subir Archivo
                                     </Button>
                             </div>
                         </div>
                         <div className='sendButton'>
-                                <Button variant='contained' endIcon={<SendIcon />} onClick={handleCreateReport}>
+                                <Button disabled={disable} variant='contained' endIcon={<SendIcon />} onClick={handleCreateReport}>
                                     Send
                                 </Button>
                         </div>
