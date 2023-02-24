@@ -53,7 +53,7 @@ const Report = () => {
 
 
     const handleCreateReport = async() => {
-        
+
         if (id) {
 
             const { succes, data, errors } = await updateReport(id, {visitId: visitId, report_title: report_title, report_subtitle: report_subtitle, 
@@ -63,7 +63,7 @@ const Report = () => {
                 phase_number: phase_number, total_power: total_power, city: city, department: department, year: year,
                 companyPhotoFile: companyPhotoFile, connectionPointPhotoFile: connectionPointPhotoFile 
             });
-    
+
             if (succes) {
                 alert("El reporte se actualizo correctamente");
                  window.location.href = '/list_report';
@@ -159,6 +159,8 @@ const Report = () => {
             }else {
                 alert(" No fue posible enviar el archivo" + errors)
             }
+        }else {
+            setDisable(true);
         }
     }
     console.log(csvFile)
@@ -389,25 +391,29 @@ const Report = () => {
                                 </Button>
                             </div>
                         </div>
-                        <div className='attachefile'>
-                            <div className="csvbfile">
-                                <Button variant="outlined" component="label" color="error" endIcon={<UploadIcon />}>
-                                        {" "}
-                                        Escoger Archivo en Formato CSV
-                                        <input
-                                            type={"file"}
-                                            hidden
-                                            onChange={(event)=> setCsvFile(event.target.files[0])}
-                                            accept={".csv"} 
-                                        />
-                                </Button>
-                            </div>
-                            <div className="subirbutton">
-                                    <Button disabled={disable} variant="contained" color="error" onClick={handlesendDetailReport}>
-                                            Subir Archivo
-                                    </Button>
-                            </div>
-                        </div>
+                        {
+                            id  && (
+                                <div className='attachefile'>
+                                    <div className="csvbfile">
+                                        <Button variant="outlined" component="label" color="error" endIcon={<UploadIcon />}>
+                                                {" "}
+                                                Escoger Archivo en Formato CSV
+                                                <input
+                                                    type={"file"}
+                                                    hidden
+                                                    onChange={(event)=> setCsvFile(event.target.files[0])}
+                                                    accept={".csv"} 
+                                                />
+                                        </Button>
+                                    </div>
+                                    <div className="subirbutton">
+                                            <Button disabled={disable} variant="contained" color="error" onClick={handlesendDetailReport}>
+                                                    Subir Archivo
+                                            </Button>
+                                    </div>
+                                </div>
+                            )
+                        }
                         <div className='sendButton'>
                                 <Button disabled={disable} variant='contained' endIcon={<SendIcon />} onClick={handleCreateReport}>
                                     Send
