@@ -55,7 +55,6 @@ const Report = () => {
     const handleCreateReport = async() => {
 
         if (id) {
-
             const { succes, data, errors } = await updateReport(id, {visitId: visitId, report_title: report_title, report_subtitle: report_subtitle, 
                 connection_point: connection_point, initial_day: initial_day, final_day: final_day, total_days: total_days, 
                 author: author, reviewer: reviewer, client_responsible: client_responsible, equipment: equipment, 
@@ -66,7 +65,7 @@ const Report = () => {
 
             if (succes) {
                 alert("El reporte se actualizo correctamente");
-                 window.location.href = '/list_report';
+                // window.location.href = '/list_report';
             }else {
                 alert(" :(" + errors)
             }
@@ -83,7 +82,6 @@ const Report = () => {
     
             if (succes) {
                 alert("El reporte se creo correctamente");
-                // window.location.href = '/list_report';
             }else {
                 alert("EORRRR  " + errors)
             }            
@@ -102,9 +100,6 @@ const Report = () => {
         setOptions(array);  
     }
 
-    useEffect(()=> {
-        setVisitstList(fetchVisitList());
-    }, [])
 
     const getParamId = () => {
         const queryParameters = new URLSearchParams(window.location.search)
@@ -116,8 +111,10 @@ const Report = () => {
         const {succes, data} = await getReport(id);
         if (succes) {
             console.log(data)
+            console.log("***********************")
+            setVisitId(data.visit_id)
             setReport_title(data.report_title)
-            setReport_subtitle(data.report_subtitlee)
+            setReport_subtitle(data.report_subtitle)
             setConnection_point(data.connection_point)
             setInitial_day(data.initial_day)
             setFinal_day(data.final_day)
@@ -139,6 +136,8 @@ const Report = () => {
 
 
     useEffect(()=> {
+        setVisitstList(fetchVisitList());
+
         var id = getParamId();
 
         if (id) {
