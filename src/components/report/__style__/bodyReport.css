@@ -90,13 +90,8 @@
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: justify;
-}
-
-.contentsubtitle {
-    margin-bottom: 20px;
-    margin-top: 40px;
 }
 
 .imgAnalizer {
@@ -112,12 +107,6 @@
     text-align: center;
     margin-bottom: 30px;
 }
-
-/* .bulletText {
-    margin-left: 50px;
-    list-style-type: square;
-    margin-bottom: 30px;
-} */
 
 .imgCP {
     width: 250px;
