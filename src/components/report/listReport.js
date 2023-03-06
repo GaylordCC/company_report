@@ -38,6 +38,10 @@ const ListReport = () => {
         }
     };
 
+    const handleGenerate = (event, param) => {
+        window.location.href = 'body_report';
+    };
+
     const columns = [
         { field: 'id', headerName: 'Identificación', width: 50, align: 'center' },
         { field: 'report_title', headerName: 'Título', width: 150, align: 'center' },
@@ -94,7 +98,7 @@ const ListReport = () => {
                      variant='outlined'
                      startIcon={<MenuBookIcon/>}
                      onClick={(event) => {
-                         handleUpdate(event, cellValues);
+                        handleGenerate(event, cellValues);
                      }}
                  > Generar Informe
                  </Button>

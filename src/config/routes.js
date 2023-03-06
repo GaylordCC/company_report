@@ -9,6 +9,10 @@ import ListReport from "../components/report/listReport";
 import PrivateRoute from "./PrivateRoute";
 import BodyReport from "../components/report/bodyReport";
 import AlternRoute from "./AlternRoute";
+import SigninRoute from "./SigninRoute";
+import SignInSide from "../components/signin/signInSide";
+import ForgotRoute from "./ForgotRoute";
+import Forgot from "../components/signin/forgot";
 
 function Routes() {
     const router = createBrowserRouter ([
@@ -44,6 +48,17 @@ function Routes() {
             path: "body_report",
             element: <AlternRoute component={BodyReport}/>,
         },
+        {
+            path: "sign_in",
+            element: <SigninRoute component={SignInSide}/>,
+        },
+        {
+            path: "forgot",
+            element: <ForgotRoute component={Forgot}/>,
+        },
+
+
+
     ]);
     
     return (
