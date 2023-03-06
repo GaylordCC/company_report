@@ -7,6 +7,8 @@ import ListVisit from "../components/visit/listVisit";
 import Report from "../components/report";
 import ListReport from "../components/report/listReport";
 import PrivateRoute from "./PrivateRoute";
+import BodyReport from "../components/report/bodyReport";
+import AlternRoute from "./AlternRoute";
 
 function Routes() {
     const router = createBrowserRouter ([
@@ -38,11 +40,15 @@ function Routes() {
             path: "list_report",
             element: <PrivateRoute component={ListReport}/>,
         },
+        {
+            path: "body_report",
+            element: <AlternRoute component={BodyReport}/>,
+        },
     ]);
     
     return (
         <React.StrictMode>
-            <RouterProvider router={router} />
+            <RouterProvider router={router} />           
         </React.StrictMode>
     );
 }

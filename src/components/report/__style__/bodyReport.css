@@ -5,6 +5,7 @@
     height: 11in;
     top: 0; bottom: 0; left: 0; right: 0;
     margin: auto;
+    margin-top: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,7 +64,8 @@
     margin: auto;
     margin-top: 50px;
     display: flex;
-    justify-content: left; 
+    justify-content: left;
+    text-align: left;
     flex-direction: column;
 }
 
@@ -90,7 +92,7 @@
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 20px;
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: justify;
 }
 

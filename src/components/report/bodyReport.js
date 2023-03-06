@@ -1,0 +1,718 @@
+import React from "react";
+import './__style__/bodyReport.css';
+import hmm from "./imagen/hmm.jpg";
+import analizador from "./imagen/analizador.jpg";
+import puntoConexion from "./imagen/puntoConexion.jpg";
+import variacionTension from "./imagen/variacionTension.jpg";
+
+
+
+const BodyReport = () => {
+    
+    return (
+        <div>
+            <div className="first-wrapper">
+                <div className="header">
+                    <img className="headerimag" src={hmm} />
+                    <h3>NIT: 901407950-9</h3>
+                </div>
+                <div className="structureReport">
+                    <h1 className="title">Titulo 01 del Informe </h1>
+                    <h2 className="subtitle">Titulo 02 del Informe </h2>
+                    <h3 className="connection-point">Punto de Conexión: </h3>
+                    <h3>Equipo:</h3>
+                    <h3>Fecha de Elaboración:</h3>
+                    <h3>Elaboro por:</h3>
+                    <h3>Revisado por:</h3>
+                    <h3>Cliente Responsable:</h3>
+                    <h3>Ciudad</h3>
+                    <h3>Departamento</h3>
+                    <h3>Año</h3>
+                </div>
+                <div className="footer">
+                    <h3>HMM Ingeniería SAS </h3>
+                    <h3>Calle 57 # 41B-54 Barranquilla Colombia </h3>
+                    <h3>WWW.HMMINGENIERIA.COM</h3>
+                </div>
+            </div>
+            <div className="wrapper">
+                <h1 className="content-table"> Tabla de Contenido</h1>
+                <h2 className="contentsubtitle"> 1. MEDICIONES.</h2>
+                <h2 className="contentsubtitle"> 2. CONCEPTOS.</h2>
+                <h2 className="contentsubtitle"> 3. EQUIPO DE MEDIDA UTILIZADO.</h2>
+                <h2 className="contentsubtitle"> 4. CRITERIOS DE SEGURIDAD UTILIZADOS.</h2>
+                <h2 className="contentsubtitle"> 5. PUNTO DE MEDICIÓN.</h2>
+                <h2 className="contentsubtitle"> 4. CRITERIOS DE SEGURIDAD UTILIZADOS.</h2>
+                <h2 className="contentsubtitle"> 6. RESULTADO DE LAS MEDIDAS.</h2>
+                <h3 className="contentsubtitle"> 6.1 Regulación de tensión.</h3>
+                <h3 className="contentsubtitle"> 6.2 Desbalance de tensión.</h3>
+                <h3 className="contentsubtitle"> 6.3 Desequilibrio de corriente.</h3>
+                <h3 className="contentsubtitle"> 6.3.1 Gráfico de corrientes.</h3>
+                <h3 className="contentsubtitle"> 6.3.2 Distorsiones Armónicas (THD).</h3>
+                <h3 className="contentsubtitle"> 6.3.3 Distorsiones en Voltaje (TDDV).</h3>
+                <h3 className="contentsubtitle"> 6.3.4 Distorsiones en Corrientes (TDDI).</h3>
+                <h3 className="contentsubtitle"> 6.4 Factor de Potencia.</h3>
+                <h3 className="contentsubtitle"> 6.5 Frecuencia.</h3>
+                <h3 className="contentsubtitle"> 6.6 Potencias.</h3>
+                <h3 className="contentsubtitle"> 6.7 Cargabilidad.</h3>
+                <h3 className="contentsubtitle"> 6.8 Anomalías.</h3>
+                <h2 className="contentsubtitle"> 7. CARGABILIDAD.</h2>
+                <h2 className="contentsubtitle"> 8. CONCLUSIONES.</h2>
+            </div>
+            <div className="wrapper">
+                <h2 className="tittlepage"> 1. MEDICIONES.</h2>
+                <p className="paragraph"> Contar con una energía de calidad permitirá minimizar las fallas de 
+                    alimentación eléctrica aumentando la confiabilidad y optimizando la productividad de las empresas. <br/>
+                    Cuando se posee una infraestructura eléctrica que garantice una adecuada calidad de la potencia se 
+                    obtienen beneficios complementarios y que se cuenta con instalaciones seguras que minimizan riesgos 
+                    eléctricos para personas y equipos.
+                </p>
+                <h3 className="contentsubtitle"> 1.1 Registro de Parámetros Eléctricos.</h3>
+                <ul className="paragraph">
+                    <li> Frecuencia.  </li>
+                    <li> Tensión (Voltaje).  </li>
+                    <li> Corriente.  </li>
+                    <li> Potencia (Estudio de Carga).  </li>
+                    <li> Factor de Potencia.  </li>
+                    <li> Desbalance de corriente y tensión.  </li>
+                    <li> Distorsión armónica.  </li>
+                    <li> Registros de ondas de tensión, corriente y potencia.  </li>
+                </ul>
+                <h3 className="contentsubtitle"> 1.2 Normatividad.</h3>
+                <ul className="paragraph">
+                    <li> Norma IEEE 1159-1995, Recommended Practice for Monitoring Electric Power Quality.  </li>
+                    <li> NormaIEEE519-1992,Recommended Practices and Requirements for Harmonic Control in Electrical Power Systems.  </li>
+                    <li> 61000-2-5 Clasificación de los entornos electromagnéticos.  </li>
+                    <li> 61000-2-1Descripcióndelosentornoselectromagnéticosensistemasdeenergíadebajatensión públicos.  </li>
+                    <li> 61000-2-2 Niveles de compatibilidad en sistemas de energía de baja tensión públicos.  </li>
+                    <li> 61000-2-4 Niveles de compatibilidad en instalaciones industriales.  </li>
+                    <li> 61000-2-6 Evaluación de los niveles de emisión en instalaciones industriales.  </li>
+                    <li> 61000-2-8 Huecos de tensión, interrupciones cortas.  </li>
+                </ul>            
+            </div>
+            <div className="wrapper">
+                <ul className="paragraph">
+                    <li> 6072.Impedancia de referencia para líneas de energía de baja tensión 61010.  </li>
+                    <li> Cualquier equipo de medida eléctrico, los analizadores de redes trifásicos deben cumplir
+                        con los requisitos de esta importante Norma Europea de seguridad.
+                    </li>
+                </ul>  
+                <h2 className="tittlepage"> 2. CONCEPTOS.</h2>
+                <h2 className="tittlepage"> CALIDAD DE ENERGÍA:</h2>
+                <p className="paragraph"> La calidad de la energía eléctrica (CEL), se define como la continuidad y confiabilidad del voltaje suministrada 
+                    a un cliente en particular por el operador de red o su sistema de generación en sitio (o ambos cuando hay sincronismo), así como 
+                    la calidad de la corriente de carga que el cliente demanda de este, de tal forma que se garantice la confiabilidad y eficiencia 
+                    operativa de un sistema de potencia eléctrico en particular. <br/>
+                    La evaluación de indicadores de calidad de la energía permite conocer que tan inmune es una instalación a fenómenos perturbadores 
+                    de una óptima calidad de la energía, fenómenos en estado estable como armónicos de voltaje y corriente, variaciones de voltaje de corta 
+                    y larga duración según IEEE1159-1995 o en estado transitorio como variaciones rápidas de voltaje, transitorios de alto contenido energético, 
+                    etc. Mediante esta evaluación de indicadores actuales de la CEL, se logran estructurar las mejores soluciones técnicas que evitaran que la 
+                    instalación eléctrica se vea afectada por estos fenómenos, garantizando así la continuidad y confiabilidad de la operación de todos los equipos 
+                    eléctricos de la instalación.
+                </p>
+                <h3 className="contentsubtitle"> Armónicos:</h3>
+                <p className="paragraph"> Son componentes sinusoidales de una onda periódica o cantidad que posee una frecuencia múltiplo de la frecuencia fundamental. <br/>
+                </p>
+                <h3 className="contentsubtitle"> Distorsión armónica total(THD):</h3>
+                <p className="paragraph"> Es la relación entre el contenido armónico de la señal y la primera armónica o fundamental. Es el parámetro de medición de distorsión 
+                    más conocido por lo que es Recomendable para medir la distorsión en parámetros individuales (I y V). <br/>
+                </p> 
+            </div>
+            <div className="wrapper">
+                <h3 className="contentsubtitle"> Distorsión de demanda total(TDD):</h3>
+                <p className="paragraph"> Es la relación entre la corriente armónica y la demanda máxima de la corriente de carga <br/>
+                </p>
+                <h3 className="contentsubtitle"> Factor de potencia:</h3>
+                <p className="paragraph"> Relación entre potencia activa y potencia aparente, del mismo sistema eléctrico o parte de él. <br/>
+                </p> 
+                <h3 className="paragraph"> Frecuencia:</h3>
+                <p className="paragraph"> Número de períodos por segundo de uma onda. Se mide em Hertz o ciclos por segundo. <br/>
+                </p>
+                <h3 className="contentsubtitle"> Potencia activa:</h3>
+                <p className="paragraph"> Potencia consumida por las bombillas, aparatos, artefactos y motores que se encuentran en el predio del usuario. Se mide en kilovatios [kW]. <br/>
+                </p>
+                <h3 className="contentsubtitle"> Potencia aparente:</h3>
+                <p class="paragraph"> Potencia resultante de la suma geométrica de la potencia activa y la potencia reactiva, medida en kVA. <br/>
+                </p>
+                <h3 class="contentsubtitle"> Potencia reactiva:</h3>
+                <p className="paragraph"> Potencia absorbida por cargas reactivas que se encuentran en las industrias, transformadores, redes o por motores, medida en kVAR. <br/>
+                </p>
+                <h3 className="contentsubtitle"> Potencia reactiva:</h3>
+                <p className="paragraph"> Potencia absorbida por cargas reactivas que se encuentran en las industrias, transformadores, redes o por motores, medida en kVAR. <br/>
+                </p>
+                <h3 className="contentsubtitle"> Regulación de tensión:</h3>
+                <p className="paragraph"> La regulación de tensión es la caída de tensión en una red debido a la impedancia serie de los conductores la cual se opone al paso de la corriente eléctrica. <br/>
+                </p>
+            </div>
+            <div className="wrapper">
+                <h2 className="tittlepage"> 3.0 EQUIPO DE MEDIDA UTILIZADO.</h2>
+                <img className="imgAnalizer" src={analizador} />
+                <span className="imgLabel">Imagen 1. Analizador de redes METREL 2892 Utilizado en el diagnóstico.</span>
+        
+                <p className="paragraph"> Para la ejecución del diagnóstico de calidad de la energía eléctrica en el punto solicitado, se implementó un analizador de redes eléctricas: <br/>
+                </p>
+                <ul className="tittlepage">
+                    <li> MI 2892. </li>
+                    <li> Con capacidad de detectar y registrar durante 15 días continuos en intervalos de 5 minutos y 
+                        100 muestras por ciclo, todas las perturbaciones que pueden afectar 
+                        la operación confiable de las instalaciones eléctricas. 
+                    </li>
+                    <li> Para la medición, se utilizó un Analizador de Redes Trifásico que fue instalado durante un 
+                        periodo de 6 días continuos. 
+                    </li>
+                    <li> Se obtuvieron los datos de todos los parámetros eléctricos incluyendo la potencia Activa,
+                        Reactiva y Aparente;<br/> y la energía total demandada por el sistema.
+                    </li>
+                </ul>
+                <h2 className="tittlepage"> 4.0 CRITERIOS DE SEGURIDAD UTILIZADOS.</h2>
+                <p className="paragraph"> Se tuvo en cuenta las respectivas medidas preventivas para realizar la instalación 
+                    del analizador <br/> de red, se contó con la presencia de personal técnico especializado entrenado para 
+                    este tipo labor. Asimismo, se consideraron las normas y procedimientos de seguridad industrial, con 
+                    la finalidad de tener confiabilidad en el proceso de adquisición de datos y en la integridad física 
+                    del personal operativo.
+                </p>
+            </div>
+            <div className="wrapper">
+                <h2 className="tittlepage"> 5.0 PUNTO DE MEDICIÓN.</h2>
+                <img className="imgCP" src={puntoConexion} />
+                <h3 className="imgLabel">Imagen 2. Punto de Conexión.</h3>
+                <h2 className="tittlepage"> 6.0 RESULTADO DE LAS MEDIDAS.</h2>
+                <p className="paragraph"> El presente informe contiene los resultados del diagnóstico de Calidad de Potencia 
+                    realizado en la subestación eléctrica principal de: <br/>
+                </p>
+                <ul className="tittlepage">
+                    <li> TRF 500KVA. </li>
+                    <li> PALOMINO - GUAJIRA </li>
+                </ul>
+                <p className="paragraph"> En la Tabla No.1 se presentan las fechas, horas e intervalos entre registros.
+                    El equipo se programó para capturar los siguientes datos:
+                </p>
+                <table>
+                    <tr>
+                    <th>Modelo</th>
+                    <th>Conexión</th>
+                    <th>Día de Inicio</th>
+                    <th>Hora de Inicio</th>
+                    <th>Día de Final</th>
+                    <th>Hora de Finalización</th>
+                    <th>Fase</th>
+                    </tr>
+                    <tr>
+                    <td>2892</td>
+                    <td>3F-4H</td>
+                    <td>16/01/2023</td>
+                    <td>11:30:00 a. m.</td>
+                    <td>23/01/2023</td>
+                    <td>11:30:00 . Am.</td>
+                    <td>3</td>
+                    </tr>
+                </table>
+                <span className="imgLabel">Tabla No.1.</span>
+            </div>
+            <div className="wrapper">
+                <p className="paragraph"> Los resultados de las mediciones se presentan a continuación en forma de tablas y 
+                    resumen. Posteriormente, se realiza una descripción del comportamiento de los parámetros registrados.
+                </p>
+                <p className="paragraph"> También se presenta las diferentes curvas del comportamiento de los parámetros eléctricos en el 
+                    periodo de medición. 
+                </p>
+                <p className="paragraph">  En la Tabla No.2, se puede observar los valores máximos, mínimos y promedio de los parámetros medidos.
+                    Cabe resaltar que, los datos presentados en cada fila no son necesariamente coincidentes en el tiempo. 
+                </p>
+                <table>
+                    <tr>
+                    <th colspan="3">Punto Medido</th>
+                    <th colspan="3">Tensión [V]</th>
+                    <th colspan="3">Corriente [A]</th>
+                    <th>Factor de Potencia</th>
+                    <th colspan="3">Potencias</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td>V1</td>
+                        <td>V2</td>
+                        <td>V3</td>
+                        <td>I1</td>
+                        <td>I2</td>
+                        <td>I3</td>
+                        <td>COS (fi)</td>
+                        <td>P[kW]</td>
+                        <td>Q[kVA]</td>
+                        <td>S[kVA]</td>
+                    </tr>
+                    <tr>
+                    <td rowspan="3">Valores</td>
+                    <td colspan="2">Maximo</td>
+                    <td>495,17</td>
+                    <td>494,39</td>
+                    <td>504,42</td>
+                    <td>94,63</td>
+                    <td>94,23</td>
+                    <td>94,39</td>
+                    <td>0,92</td>
+                    <td>57,05</td>
+                    <td>61,23</td>
+                    <td>65,82</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Minimo</td>
+                        <td >413,95</td>
+                        <td>1</td>
+                        <td>0.33</td>
+                        <td>2</td>
+                        <td>57</td>
+                        <td>77</td>
+                        <td>77</td>
+                        <td>77</td>
+                        <td>77</td>
+                        <td>77</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Promedio</td>
+                        <td >449,20</td>
+                        <td>25</td>
+                        <td>0.75</td>
+                        <td>13</td>
+                        <td>57</td>
+                        <td>77</td>
+                        <td>77</td>
+                        <td>77</td>
+                        <td>77</td>
+                        <td>77</td>
+                    </tr>
+                </table>
+                <span className="imgLabel">Tabla No.2. Valores Máximos, Promedios y Mínimos de Parámetros Medidos.</span>
+                <p className="paragraph"> Los valores máximos y mínimos registrados corresponden a valores medidos durante 
+                    el intervalo de las muestras. 
+                </p>
+                <h3 className="contentsubtitle"> 6.1 Regulación de tensión.</h3>
+                <p className="paragraph"> En la Tabla No.3 se aprecia las variaciones de tensión con respecto al valor nominal.</p>
+                <table className="table3">
+                    <tr>
+                    <th>Acometida Principal</th>
+                    <th>Tensión Nominal</th>
+                    <th>Máximo V [%]</th>
+                    <th>Promedio V [%]</th>
+                    <th>Minimo V [%]</th>
+                    </tr>
+                    <tr>
+                    <td>Trafo</td>
+                    <td>450</td>
+                    <td>9.9</td>
+                    <td>0.2</td>
+                    <td>-6.5</td>
+                    </tr>
+                </table>
+                <span className="imgLabel">Tabla No.3. Variaciones de tensión con respecto al valor nominal.</span>
+            </div>
+            <div className="wrapper">
+                <p className="paragraph"> La Norma Técnica Colombiana NTC 1340 establece los límites máximos de variación de
+                    tensión, siendo estos de: +10% y -10%.
+                </p>
+                <p className="paragraph"> Nota: Los valores se encuentran dentro de los límites establecidos.
+                </p>
+                <img className="imgVVoltage" src={variacionTension} />
+                <h3 className="imgLabel">Comportamiento de la variación de la tensión del sistema.</h3>
+                <h3 className="contentsubtitle"> 6.2 Desbalance de tensión.</h3>
+                <h3 className="tableLabel">Tendencia de tensiones.</h3>
+                <table className="table3">
+                    <tr>
+                    <th colspan="3">Desequilibrio de tensión [%]</th>
+                    <th className="table3a">Norma: 2 %</th>
+                    </tr>
+                    <tr className="table3b">
+                    <th>Maximo</th>
+                    <th>Mínimo</th>
+                    <th>Mediana</th>
+                    <th>Promedio</th>
+                    </tr>
+                    <tr className="table3c">
+                    <td>450</td>
+                    <td>9.9</td>
+                    <td>0.2</td>
+                    <td>-6.5</td>
+                    </tr>
+                </table>
+                <span className="imgLabel">Tabla No.4. Desbalances de tensión.</span>
+            </div>
+            <div className="wrapper">
+                <img className="imgDVoltage" src={variacionTension} />
+                <h3 className="imgLabel">Tendencia Desequilibrio de tensión.</h3>
+                <p className="paragraph"> Otro parámetro de la Calidad de Tensión es el desbalance. Estos se calculan como: 
+                    La máxima diferencia entre las magnitudes de cada fase y el promedio de las fases, dividida sobre el 
+                    promedio y expresada en tanto por cien. La tabla No. 4 presenta el resumen de estos desbalances 
+                    registradas durante la medición. <br/>
+                    El límite máximo admisible para desbalances en tensión es del 2%. Por lo tanto, 
+                    los desbalances registrados durante la medición:
+                </p>
+                <ul className="paragraph">
+                    <li> Si se encuentra dentro de los parametros recomendado por la Norma</li>
+                </ul>
+                <h3 className="contentsubtitle"> 6.3 Desequilibrio de corriente.</h3>
+                <h3 className="tableLabel">Tendencia de corriente.</h3>
+                <table className="table3">
+                    <tr>
+                    <th colspan="3">Desequilibrio de corrientes [%]</th>
+                    <th className="table3a">Norma: 10 %</th>
+                    </tr>
+                    <tr className="table3b">
+                    <th>Maximo</th>
+                    <th>Mínimo</th>
+                    <th>Mediana</th>
+                    <th>Promedio</th>
+                    </tr>
+                    <tr className="table3c">
+                    <td>454,64</td>
+                    <td>3,66</td>
+                    <td>44,36</td>
+                    <td>40,52</td>
+                    </tr>
+                </table>
+                <span className="imgLabel">Tabla No.5. Desbalances de corrientes.</span>
+            </div>
+            <div className="wrapper">
+                <p className="paragraph"> El desequilibrio promedio de la corriente es de 40.52 <br/>
+                    Supera el límite establecido del (10%) que indica la Norma IEEE 1159-92. (No Cumple).
+                </p>
+                <img className="imgDVoltage" src={variacionTension} />
+                <h3 className="imgLabel">Tendencia Desequilibrio de corriente.</h3>
+                <h3 className="contentsubtitle">6.3.1	Gráfico de corrientes.</h3>
+                <p className="paragraph">CORRIENTE L1</p>
+                <img className="imgDVoltage" src={variacionTension} />
+            </div>
+            <div className="wrapper">
+                <p className="paragraph">CORRIENTE L2</p>
+                <img className="imgDVoltage" src={variacionTension} />
+                <p className="paragraph">CORRIENTE L3</p>
+                <img className="imgDVoltage" src={variacionTension} />
+            </div>
+            <div className="wrapper">
+                <p className="paragraph">CORRIENTE N</p>
+                <img className="imgDVoltage" src={variacionTension} />
+                <h3 className="contentsubtitle">6.3.2	Distorsiones Armónicas (THD).</h3>
+                <table className="table3">
+                    <tr>
+                    <th colspan="7">Armonicos en Tensión</th>
+                    <th className="table3a">Norma: 5 %</th>
+                    </tr>
+                    <tr>
+                    <th colspan="2">U1</th>
+                    <th colspan="2">U2</th>
+                    <th colspan="2">U3</th>
+                    <th colspan="2">THDV Total</th>
+                    </tr>
+                    <tr>
+                    <td>Máximo</td>
+                    <td>40,2</td>
+                    <td>Máximo</td>
+                    <td>40,52</td>
+                    <td>Máximo</td>
+                    <td>40,52</td>
+                    <td>Máximo</td>
+                    <td>40,52</td>
+                    </tr>
+                    <tr>
+                    <td>Mínimo</td>
+                    <td>3,66</td>
+                    <td>Mínimo</td>
+                    <td>40,52</td>
+                    <td>Mínimo</td>
+                    <td>40,52</td>
+                    <td>Mínimo</td>
+                    <td>40,52</td>
+                    </tr>
+                    <tr>
+                    <td>Mediana</td>
+                    <td>3,66</td>
+                    <td>Mediana</td>
+                    <td>40,52</td>
+                    <td>Mediana</td>
+                    <td>40,52</td>
+                    <td>Mediana</td>
+                    <td>40,52</td>
+                    </tr>
+                    <tr>
+                    <td>Promedio</td>
+                    <td>3,66</td>
+                    <td>Promedio</td>
+                    <td>40,52</td>
+                    <td>Promedio</td>
+                    <td>40,52</td>
+                    <td>Promedio</td>
+                    <td>40,52</td>
+                    </tr>  
+                </table>
+                <span className="imgLabel">Tabla No. 6. Distorsión Armónica.</span>
+            </div>
+            <div className="wrapper">
+                <p className="paragraph"> La distorsión armónica es causada por la presencia de señales con 
+                    frecuencias múltiplo de la fundamental (60Hz), que se suman a la onda fundamental, 
+                    deformándola. <br/> Las distorsiones armónicas se miden con los parámetros THDV en tensiones 
+                    y TDDI en corrientes. Estos indicadores se denominan Distorsiones Totales Armónicas. 
+                    El THD es la relación porcentual entre el contenido de distorsión armónica total y la 
+                    componente fundamental. <br/> En corrientes, el THD se escala proporcionalmente a la 
+                    corriente nominal del transformador. <br/> Este parámetro escalado se denomina TDD. 
+                    En la Tabla No.6 se presentan los niveles de distorsión armónica registrados tanto 
+                    en Tensión como en Corrientes durante las mediciones. A continuación, se presentará 
+                    una explicación de los indicadores y un análisis de los resultados.
+                    El THD en tensiones es una medida del nivel de distorsión de la señal de tensión 
+                    (onda no sinusoidal pura) que entrega el operador de red en el punto de conexión 
+                    del cliente. En este caso es la señal que proviene de la Subestación Eléctrica o 
+                    punto Alimentador del Tablero en cuestión. <br/> Los armónicos son la componente 
+                    sinusoidal de una onda periódica a una frecuencia múltiplo entero de la frecuencia 
+                    fundamental (60Hz). Los armónicos puedan causar sobrecalentamiento en conductores 
+                    afectando su nivel de aislamiento. En los devanados de los motores se puede originar 
+                    incrementos de temperatura generando ruido y oscilaciones de torque en el rotor lo 
+                    cual conduce a resonancias y vibraciones mecánicas. Sobre temperatura en capacitores 
+                    y en los casos más severos, riesgo de explosión debido a la rotura del dieléctrico. <br/>
+                    Las pantallas electrónicas y la iluminación sufren intermitencias, interruptores 
+                    automáticos pueden presentarse disparos no deseados, fallo en computadores y falsas 
+                    lecturas de medidores. <br/> Para identificar la carga que causa la distorsión, 
+                    la THD de corriente se debe medir a la entrada y en cada una de las salidas de los 
+                    diferentes circuitos. La THDI medida proporciona información sobre fenómenos observados 
+                    en una instalación:
+                </p>
+                <ul className="paragraph">
+                    <li> Un valor de THDI inferior al 10 % se considera normal. Prácticamente no existe 
+                        riesgo de funcionamiento anómalo en los equipos.
+                    </li>
+                    <li> Un valor de THDI comprendido entre el 10 y el 50 % revela una distorsión 
+                        armónica significativa. Existe el riesgo de que aumente la temperatura.
+                    </li>
+                    <li> Un valor de THDI superior al 50 % revela una distorsión armónica importante. 
+                        El funcionamiento anómalo de los equipos es probable. Un análisis profundo y 
+                        un sistema de atenuación son necesarios.
+                    </li>
+                </ul>
+            </div>
+            <div className="wrapper">
+                <h3 className="contentsubtitle">6.3.3	Distorsiones en Voltaje (TDDV).</h3>
+                <img className="imgDVoltage" src={variacionTension} />
+                <p className="paragraph"> La norma IEEE Std-519 limita al 5% el nivel de distorsión armónica en sistemas de
+                    distribución con tensiones inferiores a 69kV. <br/> El THD registrado en tensión durante los períodos de medición:
+                    No superaron el máximo permitido por la norma en valor promedio.    
+                </p>
+                <h3 className="contentsubtitle">6.3.4	Distorsiones en Corrientes (TDDI).</h3>
+                <table className="table3">
+                    <tr>
+                    <th colspan="7">Armonicos en Tensión</th>
+                    <th className="table3a">Norma: 10-15 %</th>
+                    </tr>
+                    <tr>
+                    <th colspan="2">I1</th>
+                    <th colspan="2">I2</th>
+                    <th colspan="2">I3</th>
+                    <th colspan="2">THDI Total</th>
+                    </tr>
+                    <tr>
+                    <td>Máximo</td>
+                    <td>40,2</td>
+                    <td>Máximo</td>
+                    <td>40,52</td>
+                    <td>Máximo</td>
+                    <td>40,52</td>
+                    <td>Máximo</td>
+                    <td>40,52</td>
+                    </tr>
+                    <tr>
+                    <td>Mínimo</td>
+                    <td>3,66</td>
+                    <td>Mínimo</td>
+                    <td>40,52</td>
+                    <td>Mínimo</td>
+                    <td>40,52</td>
+                    <td>Mínimo</td>
+                    <td>40,52</td>
+                    </tr>
+                    <tr>
+                    <td>Mediana</td>
+                    <td>3,66</td>
+                    <td>Mediana</td>
+                    <td>40,52</td>
+                    <td>Mediana</td>
+                    <td>40,52</td>
+                    <td>Mediana</td>
+                    <td>40,52</td>
+                    </tr>
+                    <tr>
+                    <td>Promedio</td>
+                    <td>3,66</td>
+                    <td>Promedio</td>
+                    <td>40,52</td>
+                    <td>Promedio</td>
+                    <td>40,52</td>
+                    <td>Promedio</td>
+                    <td>40,52</td>
+                    </tr>  
+                </table>
+            </div>
+            <div className="wrapper">
+                <img className="imgDVoltage" src={variacionTension} />
+                <p className="paragraph"> La distorsión armónica en corrientes es responsabilidad 
+                    del usuario y, por lo tanto, las normas limitan el máximo contenido de 
+                    distorsión armónica que un usuario puede entregar a la red. <br/> El 
+                    parámetro de medición es el TDD y se calcula refiriendo el THDI a un
+                    valor en por unidad, con base en la corriente máxima de carga.   
+                </p>
+                <p className="paragraph"> De acuerdo con la norma IEEE 519-92, el límite máximo
+                    de TDDI depende de la relación entre el nivel de cortocircuito en el punto 
+                    de conexión del usuario y la corriente máxima de carga. Este límite varía 
+                    entre 10% y 15%.<br/>De acuerdo con la Tabla No.6 durante la medición 
+                    se presentaron valores de TDDI. Este valor:<br/> 
+                    Se encuentra dentro del rango permitido entre el 10 % y 15% por lo tanto, 
+                    cumple con lo establecido por la Norma IEEE 519-92. 
+                </p>
+                <h3 className="contentsubtitle">6.4	Factor de Potencia.</h3>
+                <img className="imgDVoltage" src={variacionTension} />
+            </div>
+            <div className="wrapper">
+                <p className="paragraph"> El factor de potencia es un parámetro que indica el consumo
+                    de energía reactiva, la cual se penaliza económicamente cuando sobrepasa el 
+                    límite del 50% de la energía activa consumida, establecido por la Resolución
+                    CREG No. 082 del 2002. En el Punto de Medición el Factor de Potencia promedio es:<br/>
+                    Se encuentra dentro de los parámetros estipulados por la norma, teniendo en 
+                    cuenta que el valor mínimo exigido es (cos = 0.90) y el máximo es (cos = 1.00).
+                </p>
+                <table className="table3">
+                    <tr>
+                    <th colspan="4">Factor de Potencia</th>
+                    </tr>
+                    <tr className="table3b">
+                    <th>Maximo</th>
+                    <th>Mínimo</th>
+                    <th>Mediana</th>
+                    <th>Promedio</th>
+                    </tr>
+                    <tr className="table3c">
+                    <td>454,64</td>
+                    <td>3,66</td>
+                    <td>44,36</td>
+                    <td>40,52</td>
+                    </tr>
+                </table>
+                <h3 className="paragraph">6.5 Frecuencia.</h3>
+                <table className="table3">
+                    <tr>
+                    <th colspan="4">Frecuencia del Sistema (Hz)</th>
+                    </tr>
+                    <tr className="table3b">
+                    <th>Limites</th>
+                    <th>Total</th>
+                    <th>Medida</th>
+                    </tr>
+                    <tr className="table3c">
+                    <td>Limite Superior</td>
+                    <td>3,66</td>
+                    <td>44,36</td>
+                    </tr>
+                    <tr className="table3c">
+                    <td>Limite Inferior</td>
+                    <td>3,66</td>
+                    <td>44,36</td>
+                    </tr>
+                </table>
+                <p className="paragraph"> De acuerdo con la Resolución CREG No. 025 de 1995, “La 
+                    frecuencia objetivo del SIN (Sistema Interconectado Nacional) es 60,00 Hz 
+                    y su rango de variación de operación está entre 59,80 y 60,20 Hz, excepto 
+                    en estados de emergencia, fallas, déficit energético y períodos de 
+                    restablecimiento”. Durante la medición, la frecuencia del sistema promedio 
+                    en períodos de 1 minutos estuvo entre 59,99 Hz. Es importante destacar que, 
+                    en Colombia, de acuerdo con la reglamentación vigente, el mantenimiento de 
+                    la frecuencia del sistema es responsabilidad de los generadores y no de los 
+                    distribuidores.<br/>
+                </p>
+            </div>
+            <div className="wrapper">
+                <p className="paragraph"> Los valores registrados se encuentran dentro del rango 
+                    establecido.
+                </p>
+                <img className="imgDVoltage" src={variacionTension} />
+                <h3 className="paragraph">6.6 Potencias.</h3>
+                <ul className="paragraph">
+                    <li>Potencia Activa, Reactiva y Aparente</li>
+                </ul>
+                <h3 className="contentsubtitle">Potencia Activa (kW)</h3>
+                <img className="imgDVoltage" src={variacionTension} />
+            </div>
+            <div className="wrapper">
+                <h3 className="contentsubtitle">Potencia Reactiva (kvar)</h3>
+                <img className="imgDVoltage" src={variacionTension} />
+                <h3 className="paragraph">Potencia Aparente Se (KVA)</h3>
+                <img className="imgDVoltage" src={variacionTension} />
+                <table className="table3">
+                    <tr className="table3b">
+                    <th>Maxima Potencia Kvar</th>
+                    <th>Maxima Potencia KW</th>
+                    <th>Maxima Potencia KVA</th>
+                    </tr>
+                    <tr className="table3c">
+                        <td>3,66</td>
+                        <td>3,66</td>
+                        <td>44,36</td>
+                    </tr>
+                    <tr className="table3b">
+                    <th>Minima Potencia Kvar</th>
+                    <th>Minima Potencia KW</th>
+                    <th>Minima Potencia KVA</th>
+                    </tr>
+                    <tr className="table3c">
+                        <td>3,66</td>
+                        <td>3,66</td>
+                        <td>44,36</td>
+                    </tr>
+                    <tr className="table3b">
+                    <th>Promedio Potencia Kvar</th>
+                    <th>Promedio Potencia KW</th>
+                    <th>Promedio Potencia KVA</th>
+                    </tr>
+                    <tr className="table3c">
+                    <td>3,66</td>
+                    <td>3,66</td>
+                    <td>44,36</td>
+                    </tr>
+                </table>
+                <p className="paragraph"> Los límites establecidos en la Resolución CREG 108 de 1997;
+                    la cual dicta que la reactiva no debe superar el 50% de la activa.
+                </p>
+            </div>
+            <div className="wrapper">
+                <h2 className="tittlepage">7. CARGABILIDAD.</h2>
+                <img className="imgDVoltage" src={variacionTension} />
+                <p className="paragraph"> La cargabilidad promedio es igulal a: 3.64 %.
+                </p>
+                <table className="table3">
+                    <tr className="table3b">
+                        <th colspan="5">Cargabilidad</th>
+                    </tr>
+                    <tr className="table3c">
+                        <td>Máximo</td>
+                        <td>3,66</td>
+                        <td>%</td>
+                        <td>44,36</td>
+                        <td>kVa</td>
+                    </tr>
+                    <tr className="table3c">
+                        <td>Mínimo</td>
+                        <td>3,66</td>
+                        <td>%</td>
+                        <td>44,36</td>
+                        <td>kVa</td>
+                    </tr>
+                    <tr className="table3c">
+                    <td>Promedio</td>
+                    <td>3,66</td>
+                    <td>%</td>
+                    <td>44,36</td>
+                    <td>kVa</td>
+                    </tr>            
+                </table>
+            </div>
+            <div className="wrapper">
+                <h2 className="tittlepage">8. CONCLUSIONES</h2>
+                <div className="CONCLUSIONES"></div>
+            </div>
+        </div>
+    )
+}
+
+export default BodyReport;
