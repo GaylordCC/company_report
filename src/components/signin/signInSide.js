@@ -38,6 +38,11 @@ export default function SignInSide() {
     });
   };
 
+  const handleForgot = (event, param) => {
+    window.location.href = 'forgot';
+  };
+
+
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -70,7 +75,7 @@ export default function SignInSide() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Iniciar Sesión
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
@@ -78,7 +83,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="dirección de correo electrónico"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -87,15 +92,15 @@ export default function SignInSide() {
                 margin="normal"
                 required
                 fullWidth
-                name="password"
-                label="Password"
+                name="contraseña"
+                label="contraseña"
                 type="password"
                 id="password"
                 autoComplete="current-password"
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                label="Recordarme"
               />
               <Button
                 type="submit"
@@ -103,12 +108,16 @@ export default function SignInSide() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Iniciar Sesión
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
+                  <Link href="#" variant="body2"
+                      onClick={(event) => {
+                        handleForgot(event);
+                      }}
+                  >
+                    Olvidé mi contraseña?
                   </Link>
                 </Grid>
                 {/* <Grid item>
