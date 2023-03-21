@@ -13,6 +13,10 @@ import SigninRoute from "./SigninRoute";
 import SignInSide from "../components/signin/signInSide";
 import ForgotRoute from "./ForgotRoute";
 import Forgot from "../components/signin/forgot";
+import BarChart from "../components/chart/BarChart";
+import BarChartRoute from "./BarChartRoute";
+import LineChart from "../components/chart/LineChart";
+import LineChartRoute from "./LineChartRoute";
 
 function Routes() {
     const router = createBrowserRouter ([
@@ -55,6 +59,14 @@ function Routes() {
         {
             path: "forgot",
             element: <ForgotRoute component={Forgot}/>,
+        },
+        {
+            path: "barchart",
+            element: <BarChartRoute component={BarChart}/>,
+        },
+        {
+            path: "linechart",
+            element: <LineChartRoute component={LineChart}/>,
         },
 
 
