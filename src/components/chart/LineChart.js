@@ -11,6 +11,7 @@ const LineChart = () => {
     const [u2, setU_2] = React.useState("");
     const [u3, setU_3] = React.useState("");
     const [h1, setHora] = React.useState("");
+    const [P5_u1, setP5_u1] = React.useState("");
 
     
     const fetchChart = async (id) =>{
@@ -24,6 +25,7 @@ const LineChart = () => {
             setU_2(data.u2)
             setU_3(data.u3)
             setHora(data.h1)
+            setP5_u1(data.P5_u1)
         }
     }
 
@@ -47,7 +49,7 @@ const LineChart = () => {
                 data: (u1) ,
                 backgroundColor: 'aqua',
                 borderColor: 'black',
-                borderWidth: 1.5,
+                borderWidth: 1.0,
             },
             {
                 label: 'u2',
@@ -55,7 +57,7 @@ const LineChart = () => {
                 data:  (u2),
                 backgroundColor: 'green',
                 borderColor: 'black',
-                borderWidth: 1.5,
+                borderWidth: 1.0,
             },
             {
                 label: 'u3',
@@ -63,8 +65,15 @@ const LineChart = () => {
                 data:  (u3),
                 backgroundColor: 'red',
                 borderColor: 'black',
-                borderWidth: 1.5,
+                borderWidth: 1.0,
             },
+            {
+                label: 'P5_u1',
+                data:  (P5_u1),
+                backgroundColor: 'blue',
+                borderColor: 'blue',
+                borderWidth: 0.1,
+            }
 
         ]
     }
