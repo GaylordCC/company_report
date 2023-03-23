@@ -61,11 +61,11 @@ function Routes() {
             element: <ForgotRoute component={Forgot}/>,
         },
         {
-            path: "barchart",
+            path: "barchart/:id",
             element: <BarChartRoute component={BarChart}/>,
         },
         {
-            path: "linechart",
+            path: "linechart/:id",
             element: <LineChartRoute component={LineChart}/>,
         },
 
