@@ -19,79 +19,121 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       
     <script>
-        const data = [];
-        const data2 = [];
-        let prev = 100;
-        let prev2 = 80;
-        for (let i = 0; i < 1000; i++) {
-            prev += 5 - Math.random() * 10;
-            data.push({x: i, y: prev});
-            prev2 += 5 - Math.random() * 10;
-            data2.push({x: i, y: prev2});
-        }
+        const data = [ 2, 7, 3, 10, 1 ];
+        const data2 = [ 6, 9, 5, 9, 7];
+        const data3 = [ 5, 4, 7, 3, 9];
+        const labels = [ 'lunes', 'martes', 'miercoles', 'jueves', 'viernes'];
+        const indexes = [];
+        let larg = labels.length;
+        var counter = 0;
+        const coA = [];
+        labels.forEach((element, index) => {
+                indexes.push(index);
+                counter = counter + 1;
+                coA.push(counter);
+        });
 
-        const totalDuration = 10000;
-        const delayBetweenPoints = totalDuration / data.length;
-        const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+        
+        const ca = [ ];
+        const ca2 = [ ];
+
+        for (let ie = 1; ie <= larg; ie++) {
+            console.log("HOLA MUNDO")  
+            ca.push({y: data[ie-1], x: ie})
+        };
+
+        for (let i = 1; i <= larg; i++) {
+            console.log("HOLA MUNDO")  
+            ca2.push({y: data2[i-1], x: i})
+        };
+
+        console.log(ca)
+        console.log(ca2)
+
+        // let prev = 100;
+        // let prev2 = 80;
+        // for (let i = 0; i < 1000; i++) {
+        //     prev += 5 - Math.random() * 10;
+        //     data.push({x: i, y: prev});
+        //     prev2 += 5 - Math.random() * 10;
+        //     data2.push({x: i, y: prev2});
+        // }
+    
+        // const totalDuration = 10000;
+        // const delayBetweenPoints = totalDuration / data.length;
+        // const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
 
         const ctx = document.getElementById('myChart');
         new Chart(ctx, {
             type: 'line',
             data: {
+                labels: labels,
                 datasets: [{
+                    label: "data",
+                    backgroundColor: 'red',
                     borderColor: 'red',
                     borderWidth: 1,
                     radius: 0,
                     data: data,
                 },
                 {
+                    label: "data2",
+                    backgroundColor: 'blue',
                     borderColor: 'blue',
                     borderWidth: 1,
                     radius: 0,
                     data: data2,
+                }, 
+                {
+                    label: "data3",
+                    borderColor: 'green',
+                    backgroundColor: 'green',
+                    borderWidth: 1,
+                    radius: 0,
+                    data: data3,
                 }]
             },
-            options: {
-                animation: {
-                    x: {
-                        type: 'number',
-                        easing: 'linear',
-                        duration: delayBetweenPoints,
-                        from: NaN, // the point is initially skipped
-                        delay(ctx) {
-                            if (ctx.type !== 'data' || ctx.xStarted) {
-                                return 0;
-                            }
-                            ctx.xStarted = true;
-                            return ctx.index * delayBetweenPoints;
-                        }
-                    },
-                    y: {
-                        type: 'number',
-                        easing: 'linear',
-                        duration: delayBetweenPoints,
-                        from: previousY,
-                        delay(ctx) {
-                            if (ctx.type !== 'data' || ctx.yStarted) {
-                                return 0;
-                            }
-                            ctx.yStarted = true;
-                            return ctx.index * delayBetweenPoints;
-                        }
-                    }
-                },
-                interaction: {
-                    intersect: false
-                },
-                plugins: {
-                    legend: false
-                },
-                scales: {
-                     x: {
-                        type: 'linear'
-                    }
-                }
-            }
+        //     options: {
+        //         animation: {
+        //             ca: {
+        //                 // type: 'number',
+        //                 easing: 'linear',
+        //                 duration: delayBetweenPoints,
+        //                 from: NaN, // the point is initially skipped
+        //                 delay(ctx) {
+        //                     if (ctx.type !== 'data' || ctx.xStarted) {
+        //                         return 0;
+        //                     }
+        //                     ctx.xStarted = true;
+        //                     return ctx.index * delayBetweenPoints;
+        //                 }
+        //             },
+        //             ca2: {
+        //                 // type: 'number',
+        //                 easing: 'linear',
+        //                 duration: delayBetweenPoints,
+        //                 from: previousY,
+        //                 delay(ctx) {
+        //                     if (ctx.type !== 'data' || ctx.yStarted) {
+        //                         return 0;
+        //                     }
+        //                     ctx.yStarted = true;
+        //                     return ctx.index * delayBetweenPoints;
+        //                 }
+        //             }
+        //         },
+        //         interaction: {
+        //             intersect: false
+        //         },
+        //         plugins: {
+        //             legend: false
+        //         },
+        //         scales: {
+        //              x: {
+        //                 type: 'linear'
+        //             }
+        //         }
+        //     }
         });
     </script>
 </body>

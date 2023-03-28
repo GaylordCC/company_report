@@ -17,6 +17,8 @@ import BarChart from "../components/chart/BarChart";
 import BarChartRoute from "./BarChartRoute";
 import LineChart from "../components/chart/LineChart";
 import LineChartRoute from "./LineChartRoute";
+import LineChart2 from "../components/chart/LineChart2";
+import LineChart2Route from "./LineChart2Route";
 
 function Routes() {
     const router = createBrowserRouter ([
@@ -49,7 +51,7 @@ function Routes() {
             element: <PrivateRoute component={ListReport}/>,
         },
         {
-            path: "body_report",
+            path: "body_report/:id",
             element: <AlternRoute component={BodyReport}/>,
         },
         {
@@ -67,6 +69,10 @@ function Routes() {
         {
             path: "linechart/:id",
             element: <LineChartRoute component={LineChart}/>,
+        },
+        {
+            path: "linechart2/:id",
+            element: <LineChart2Route component={LineChart2}/>,
         },
 
 

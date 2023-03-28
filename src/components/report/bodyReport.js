@@ -4,6 +4,7 @@ import hmm from "./imagen/hmm.jpg";
 import analizador from "./imagen/analizador.jpg";
 import puntoConexion from "./imagen/puntoConexion.jpg";
 import variacionTension from "./imagen/variacionTension.jpg";
+import LineChart2 from "../chart/LineChart2";
 
 
 
@@ -35,29 +36,29 @@ const BodyReport = () => {
                     <h3>WWW.HMMINGENIERIA.COM</h3>
                 </div>
             </div>
-            <div className="wrapper">
+            <div className="wrapper-CT">
                 <h1 className="content-table"> Tabla de Contenido</h1>
-                <h2 className="contentsubtitle"> 1. MEDICIONES.</h2>
-                <h2 className="contentsubtitle"> 2. CONCEPTOS.</h2>
-                <h2 className="contentsubtitle"> 3. EQUIPO DE MEDIDA UTILIZADO.</h2>
-                <h2 className="contentsubtitle"> 4. CRITERIOS DE SEGURIDAD UTILIZADOS.</h2>
-                <h2 className="contentsubtitle"> 5. PUNTO DE MEDICIÓN.</h2>
-                <h2 className="contentsubtitle"> 4. CRITERIOS DE SEGURIDAD UTILIZADOS.</h2>
-                <h2 className="contentsubtitle"> 6. RESULTADO DE LAS MEDIDAS.</h2>
-                <h3 className="contentsubtitle"> 6.1 Regulación de tensión.</h3>
-                <h3 className="contentsubtitle"> 6.2 Desbalance de tensión.</h3>
-                <h3 className="contentsubtitle"> 6.3 Desequilibrio de corriente.</h3>
-                <h3 className="contentsubtitle"> 6.3.1 Gráfico de corrientes.</h3>
-                <h3 className="contentsubtitle"> 6.3.2 Distorsiones Armónicas (THD).</h3>
-                <h3 className="contentsubtitle"> 6.3.3 Distorsiones en Voltaje (TDDV).</h3>
-                <h3 className="contentsubtitle"> 6.3.4 Distorsiones en Corrientes (TDDI).</h3>
-                <h3 className="contentsubtitle"> 6.4 Factor de Potencia.</h3>
-                <h3 className="contentsubtitle"> 6.5 Frecuencia.</h3>
-                <h3 className="contentsubtitle"> 6.6 Potencias.</h3>
-                <h3 className="contentsubtitle"> 6.7 Cargabilidad.</h3>
-                <h3 className="contentsubtitle"> 6.8 Anomalías.</h3>
-                <h2 className="contentsubtitle"> 7. CARGABILIDAD.</h2>
-                <h2 className="contentsubtitle"> 8. CONCLUSIONES.</h2>
+                <h2 className="contentsubtitle-TC"> 1. MEDICIONES.</h2>
+                <h2 className="contentsubtitle-TC"> 2. CONCEPTOS.</h2>
+                <h2 className="contentsubtitle-TC"> 3. EQUIPO DE MEDIDA UTILIZADO.</h2>
+                <h2 className="contentsubtitle-TC"> 4. CRITERIOS DE SEGURIDAD UTILIZADOS.</h2>
+                <h2 className="contentsubtitle-TC"> 5. PUNTO DE MEDICIÓN.</h2>
+                <h2 className="contentsubtitle-TC"> 4. CRITERIOS DE SEGURIDAD UTILIZADOS.</h2>
+                <h2 className="contentsubtitle-TC"> 6. RESULTADO DE LAS MEDIDAS.</h2>
+                <h3 className="contentsubtitle-TC"> 6.1 Regulación de tensión.</h3>
+                <h3 className="contentsubtitle-TC"> 6.2 Desbalance de tensión.</h3>
+                <h3 className="contentsubtitle-TC"> 6.3 Desequilibrio de corriente.</h3>
+                <h3 className="contentsubtitle-TC"> 6.3.1 Gráfico de corrientes.</h3>
+                <h3 className="contentsubtitle-TC"> 6.3.2 Distorsiones Armónicas (THD).</h3>
+                <h3 className="contentsubtitle-TC"> 6.3.3 Distorsiones en Voltaje (TDDV).</h3>
+                <h3 className="contentsubtitle-TC"> 6.3.4 Distorsiones en Corrientes (TDDI).</h3>
+                <h3 className="contentsubtitle-TC"> 6.4 Factor de Potencia.</h3>
+                <h3 className="contentsubtitle-TC"> 6.5 Frecuencia.</h3>
+                <h3 className="contentsubtitle-TC"> 6.6 Potencias.</h3>
+                <h3 className="contentsubtitle-TC"> 6.7 Cargabilidad.</h3>
+                <h3 className="contentsubtitle-TC"> 6.8 Anomalías.</h3>
+                <h2 className="contentsubtitle-TC"> 7. CARGABILIDAD.</h2>
+                <h2 className="contentsubtitle-TC"> 8. CONCLUSIONES.</h2>
             </div>
             <div className="wrapper">
                 <h2 className="tittlepage"> 1. MEDICIONES.</h2>
@@ -311,7 +312,10 @@ const BodyReport = () => {
                 </p>
                 <p className="paragraph"> Nota: Los valores se encuentran dentro de los límites establecidos.
                 </p>
-                <img className="imgVVoltage" src={variacionTension} />
+                {/* <img className="imgVVoltage" src={variacionTension} /> */}
+                <div className="Chart-Voltage">
+                    <LineChart2/>
+                </div>
                 <h3 className="imgLabel">Comportamiento de la variación de la tensión del sistema.</h3>
                 <h3 className="contentsubtitle"> 6.2 Desbalance de tensión.</h3>
                 <h3 className="tableLabel">Tendencia de tensiones.</h3>

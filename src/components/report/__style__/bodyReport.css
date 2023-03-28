@@ -41,6 +41,7 @@
     align-items: center;
     justify-content:center;
     flex-direction: column;
+    line-height: 0px;
 }
 
 .footer {
@@ -55,14 +56,28 @@
     line-height: 0px;
 }
 
+.wrapper-CT {
+    border: 2px solid #dd830c;
+    font-family: inherit;
+    width: 8.5in;
+    height: 11in;
+    text-align: left;
+    margin: auto;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: left;
+    flex-direction: column;
+}
+
+
 .wrapper {
     border: 2px solid #dd830c;
     font-family: inherit;
     width: 8.5in;
     height: 11in;
-    top: 0; bottom: 0; left: 0; right: 0;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 80px;
+    padding-top: 50px;
     display: flex;
     justify-content: left;
     text-align: left;
@@ -77,13 +92,21 @@
     margin-bottom: 40px;
 }
 
+.contentsubtitle-TC {
+    line-height: 0px;
+    margin-left: 50px;
+    display: flex;
+    line-height: 1.0;
+}
 .contentsubtitle {
     line-height: 0px;
     margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .tittlepage {
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 50px;
 }
 
@@ -92,7 +115,7 @@
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: justify;
 }
 
@@ -177,5 +200,10 @@ td {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.Chart-Voltage {
+    display: block;
+    margin: auto;
 }
 

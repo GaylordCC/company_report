@@ -71,7 +71,7 @@ const LineChart = () => {
                 label: 'P5_u1',
                 data:  (P5_u1),
                 backgroundColor: 'blue',
-                borderColor: 'blue',
+                borderColor: 'black',
                 borderWidth: 0.1,
             }
 
