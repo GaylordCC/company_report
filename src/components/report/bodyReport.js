@@ -1,15 +1,80 @@
-import React from "react";
+import React, { useEffect} from "react";
 import './__style__/bodyReport.css';
 import hmm from "./imagen/hmm.jpg";
 import analizador from "./imagen/analizador.jpg";
 import puntoConexion from "./imagen/puntoConexion.jpg";
 import variacionTension from "./imagen/variacionTension.jpg";
 import LineChart2 from "../chart/LineChart2";
+import { getReport } from '../../controllers/lineCharts';
 
 
 
-const BodyReport = () => {
-    
+const BodyReport = () => {  
+
+    const [id, setId] = React.useState(null);
+    const [u1, setU_1] = React.useState("");
+    const [u2, setU_2] = React.useState("");
+    const [u3, setU_3] = React.useState("");
+    const [h1, setHora] = React.useState("");
+    const [P5_u1, setP5_u1] = React.useState("");
+    const [D_u1, setD_u1] = React.useState("");
+    const [D_u2, setD_u2] = React.useState("");
+    const [D_u3, setD_u3] = React.useState("");
+    const [D_i1, setD_i1] = React.useState("");
+    const [D_i2, setD_i2] = React.useState("");
+    const [D_i3, setD_i3] = React.useState("");
+    const [i1, seti1] = React.useState("");
+    const [i2, seti2] = React.useState("");
+    const [i3, seti3] = React.useState("");
+    const [In, setIn] = React.useState("");
+    const [uper, setUper] = React.useState("");
+    const [iper, setIper] = React.useState("");
+    const [f, setF] = React.useState("");
+    // const [pf_c, setPf_c] = React.useState("");
+    const [pf_i, setPf_i] = React.useState("");
+    const [pa, setPa] = React.useState("");
+    const [pr, setPr] = React.useState("");
+
+    const fetchChart = async (id) =>{
+    const { succes, data } = await getReport(id);
+    console.log(id)
+    console.log(D_u2)
+
+        if (succes) {
+            setU_1(data.u1)
+            setU_2(data.u2)
+            setU_3(data.u3)
+            setHora(data.h1)
+            setP5_u1(data.P5_u1)
+            setD_u1(data.D_u1)
+            setD_u2(data.D_u2)
+            setD_u3(data.D_u3)
+            setD_i1(data.D_i1)
+            setD_i2(data.D_i2)
+            setD_i3(data.D_i3)
+            seti1(data.i1)
+            seti2(data.i2)
+            seti3(data.i3)
+            setIn(data.In)
+            setUper(data.uper)
+            setIper(data.iper)
+            setF(data.f)
+            // setPf_c(data.pf_c)
+            setPf_i(data.pf_i)
+            setPa(data.pa)
+            setPr(data.pr)
+         }
+    }
+
+    useEffect(()=> {
+        const params = new URLSearchParams(window.location.search)
+        var paramsId = window.location.pathname.toString().split("/").pop()
+        if(paramsId) {
+            setId(paramsId);
+            fetchChart(paramsId);
+        }
+    }, [])
+
     return (
         <div>
             <div className="first-wrapper">
@@ -312,11 +377,10 @@ const BodyReport = () => {
                 </p>
                 <p className="paragraph"> Nota: Los valores se encuentran dentro de los límites establecidos.
                 </p>
-                {/* <img className="imgVVoltage" src={variacionTension} /> */}
                 <div className="Chart-Voltage">
-                    <LineChart2/>
+                    <LineChart2 x1={u1} x2={u2} x3={u3} y={h1} name="CV" title1="u1" title2="u2" title3="u3"/>
                 </div>
-                <h3 className="imgLabel">Comportamiento de la variación de la tensión del sistema.</h3>
+                <h5 className="imgLabel">Comportamiento de la variación de la tensión del sistema.</h5>
                 <h3 className="contentsubtitle"> 6.2 Desbalance de tensión.</h3>
                 <h3 className="tableLabel">Tendencia de tensiones.</h3>
                 <table className="table3">
@@ -340,8 +404,10 @@ const BodyReport = () => {
                 <span className="imgLabel">Tabla No.4. Desbalances de tensión.</span>
             </div>
             <div className="wrapper">
-                <img className="imgDVoltage" src={variacionTension} />
-                <h3 className="imgLabel">Tendencia Desequilibrio de tensión.</h3>
+                <div className="Chart-Voltage">
+                    <LineChart2 x1={uper} y={h1} name="CU" title1="u_per" />
+                </div>
+                <h5 className="imgLabel">Tendencia Desequilibrio de tensión.</h5>
                 <p className="paragraph"> Otro parámetro de la Calidad de Tensión es el desbalance. Estos se calculan como: 
                     La máxima diferencia entre las magnitudes de cada fase y el promedio de las fases, dividida sobre el 
                     promedio y expresada en tanto por cien. La tabla No. 4 presenta el resumen de estos desbalances 
@@ -378,21 +444,31 @@ const BodyReport = () => {
                 <p className="paragraph"> El desequilibrio promedio de la corriente es de 40.52 <br/>
                     Supera el límite establecido del (10%) que indica la Norma IEEE 1159-92. (No Cumple).
                 </p>
-                <img className="imgDVoltage" src={variacionTension} />
-                <h3 className="imgLabel">Tendencia Desequilibrio de corriente.</h3>
+                <div className="Chart-Voltage">
+                    <LineChart2 x1={iper} y={h1} name="CDI" title1="D_i1" />
+                </div>
+                <h5 className="imgLabel">Tendencia Desequilibrio de corriente.</h5>
                 <h3 className="contentsubtitle">6.3.1	Gráfico de corrientes.</h3>
                 <p className="paragraph">CORRIENTE L1</p>
-                <img className="imgDVoltage" src={variacionTension} />
+                <div className="Chart-Voltage">
+                    <LineChart2 x1={i1} y={h1} name="I1" title1="i1" />
+                </div>
             </div>
             <div className="wrapper">
                 <p className="paragraph">CORRIENTE L2</p>
-                <img className="imgDVoltage" src={variacionTension} />
+                <div className="Chart-Voltage">
+                    <LineChart2 x1={i2} y={h1} name="I2" title1="i2" />
+                </div>
                 <p className="paragraph">CORRIENTE L3</p>
-                <img className="imgDVoltage" src={variacionTension} />
+                <div className="Chart-Voltage">
+                    <LineChart2 x1={i3} y={h1} name="I3" title1="i3" />
+                </div>
             </div>
             <div className="wrapper">
                 <p className="paragraph">CORRIENTE N</p>
-                <img className="imgDVoltage" src={variacionTension} />
+                <div className="Chart-Voltage">
+                    <LineChart2 x1={In} y={h1} name="In" title1="in" />
+                </div>
                 <h3 className="contentsubtitle">6.3.2	Distorsiones Armónicas (THD).</h3>
                 <table className="table3">
                     <tr>
@@ -491,7 +567,9 @@ const BodyReport = () => {
             </div>
             <div className="wrapper">
                 <h3 className="contentsubtitle">6.3.3	Distorsiones en Voltaje (TDDV).</h3>
-                <img className="imgDVoltage" src={variacionTension} />
+                <div className="Chart-Voltage">
+                    <LineChart2 x1={D_u1} x2={D_u2} x3={D_u3} y={h1} name="DU" title1="D_u1" title2="D_u2" title3="D_u3"/>
+                </div>
                 <p className="paragraph"> La norma IEEE Std-519 limita al 5% el nivel de distorsión armónica en sistemas de
                     distribución con tensiones inferiores a 69kV. <br/> El THD registrado en tensión durante los períodos de medición:
                     No superaron el máximo permitido por la norma en valor promedio.    
@@ -551,7 +629,9 @@ const BodyReport = () => {
                 </table>
             </div>
             <div className="wrapper">
-                <img className="imgDVoltage" src={variacionTension} />
+                <div className="Chart-Voltage">
+                    <LineChart2 x1={D_i1} x2={D_i2} x3={D_i3} y={h1} name="DI" title1="D_i1" title2="D_i2" title3="D_i3"/>
+                </div>
                 <p className="paragraph"> La distorsión armónica en corrientes es responsabilidad 
                     del usuario y, por lo tanto, las normas limitan el máximo contenido de 
                     distorsión armónica que un usuario puede entregar a la red. <br/> El 
@@ -567,7 +647,9 @@ const BodyReport = () => {
                     cumple con lo establecido por la Norma IEEE 519-92. 
                 </p>
                 <h3 className="contentsubtitle">6.4	Factor de Potencia.</h3>
-                <img className="imgDVoltage" src={variacionTension} />
+                <div className="Chart-Voltage">
+                    <LineChart2 x2={pf_i} y={h1} name="PF" title2="pf_i" />
+                </div>
             </div>
             <div className="wrapper">
                 <p className="paragraph"> El factor de potencia es un parámetro que indica el consumo
@@ -630,17 +712,23 @@ const BodyReport = () => {
                 <p className="paragraph"> Los valores registrados se encuentran dentro del rango 
                     establecido.
                 </p>
-                <img className="imgDVoltage" src={variacionTension} />
+                <div className="Chart-Voltage">
+                    <LineChart2 x1={f} y={h1} name="frecuencia" title1="f" />
+                </div>
                 <h3 className="paragraph">6.6 Potencias.</h3>
                 <ul className="paragraph">
                     <li>Potencia Activa, Reactiva y Aparente</li>
                 </ul>
                 <h3 className="contentsubtitle">Potencia Activa (kW)</h3>
-                <img className="imgDVoltage" src={variacionTension} />
+                <div className="Chart-Voltage">
+                    <LineChart2 x2={pa} y={h1} name="activa" title2="Potencia Activa [kW]" />
+                </div>
             </div>
             <div className="wrapper">
                 <h3 className="contentsubtitle">Potencia Reactiva (kvar)</h3>
-                <img className="imgDVoltage" src={variacionTension} />
+                <div className="Chart-Voltage">
+                    <LineChart2 x2={pr} y={h1} name="reactiva" title2="Potencia Reactiva [Kvar]" />
+                </div>
                 <h3 className="paragraph">Potencia Aparente Se (KVA)</h3>
                 <img className="imgDVoltage" src={variacionTension} />
                 <table className="table3">
