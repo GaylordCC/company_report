@@ -30,15 +30,16 @@ const BodyReport = () => {
     const [uper, setUper] = React.useState("");
     const [iper, setIper] = React.useState("");
     const [f, setF] = React.useState("");
-    // const [pf_c, setPf_c] = React.useState("");
     const [pf_i, setPf_i] = React.useState("");
     const [pa, setPa] = React.useState("");
     const [pr, setPr] = React.useState("");
+    const [eqm, setEqm] = React.useState("");
 
     const fetchChart = async (id) =>{
     const { succes, data } = await getReport(id);
     console.log(id)
-    console.log(D_u2)
+    console.log("WOWWWWW")
+    console.log(data.eqm)
 
         if (succes) {
             setU_1(data.u1)
@@ -63,6 +64,7 @@ const BodyReport = () => {
             setPf_i(data.pf_i)
             setPa(data.pa)
             setPr(data.pr)
+            setEqm(data.eqm)
          }
     }
 
@@ -264,7 +266,9 @@ const BodyReport = () => {
                     <th>Fase</th>
                     </tr>
                     <tr>
-                    <td>2892</td>
+                    <td>
+                        {eqm}
+                    </td>
                     <td>3F-4H</td>
                     <td>16/01/2023</td>
                     <td>11:30:00 a. m.</td>
