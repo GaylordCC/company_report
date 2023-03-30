@@ -34,12 +34,42 @@ const BodyReport = () => {
     const [pa, setPa] = React.useState("");
     const [pr, setPr] = React.useState("");
     const [eqm, setEqm] = React.useState("");
+    const [ct, setCt] = React.useState("");
+    const [ind, setInd] = React.useState("");
+    const [fd, setFd] = React.useState("");
+    const [fa, setFa] = React.useState("");
+    const [u_1_min, setU_1_min] = React.useState("");
+    const [u_1_max, setU_1_max] = React.useState("");
+    const [u_1_prom, setU_1_prom] = React.useState("");
+    const [u_2_min, setU_2_min] = React.useState("");
+    const [u_2_max, setU_2_max] = React.useState("");
+    const [u_2_prom, setU_2_prom] = React.useState("");
+    const [u_3_min, setU_3_min] = React.useState("");
+    const [u_3_max, setU_3_max] = React.useState("");
+    const [u_3_prom, setU_3_prom] = React.useState("");
+    const [I_1_min, setI_1_min] = React.useState("");
+    const [I_1_max, setI_1_max] = React.useState("");
+    const [I_1_prom, setI_1_prom] = React.useState("");
+    const [I_2_min, setI_2_min] = React.useState("");
+    const [I_2_max, setI_2_max] = React.useState("");
+    const [I_2_prom, setI_2_prom] = React.useState("");
+    const [I_3_min, setI_3_min] = React.useState("");
+    const [I_3_max, setI_3_max] = React.useState("");
+    const [I_3_prom, setI_3_prom] = React.useState("");
+    const [p_fetot_ind_min, setP_fetot_ind_min] = React.useState("");
+    const [p_fetot_ind_max, setP_fetot_ind_max] = React.useState("");
+    const [p_fetot_ind_prom, setP_fetot_ind_prom] = React.useState("");
+    const [p_fund_tot_min, setP_fund_tot_min] = React.useState("");
+    const [p_fund_tot_max, setP_fund_tot_max] = React.useState("");
+    const [p_fund_tot_prom, setP_fund_tot_prom] = React.useState("");
+    const [q_tot_ind_min, setQ_tot_ind_min] = React.useState("");
+    const [q_tot_ind_max, setQ_tot_ind_max] = React.useState("");
+    const [q_tot_ind_prom, setQ_tot_ind_prom] = React.useState("");
 
     const fetchChart = async (id) =>{
     const { succes, data } = await getReport(id);
     console.log(id)
     console.log("WOWWWWW")
-    console.log(data.eqm)
 
         if (succes) {
             setU_1(data.u1)
@@ -65,6 +95,37 @@ const BodyReport = () => {
             setPa(data.pa)
             setPr(data.pr)
             setEqm(data.eqm)
+            setCt(data.ct)
+            setInd(data.ind)
+            setFd(data.fd)
+            setFa(data.fa)
+            setU_1_min(data.indic.u_1_min)
+            setU_1_max(data.indic.u_1_max)
+            setU_1_prom(data.indic.u_1_prom)
+            setU_2_min(data.indic.u_2_min)
+            setU_2_max(data.indic.u_2_max)
+            setU_2_prom(data.indic.u_2_prom)
+            setU_3_min(data.indic.u_3_min)
+            setU_3_max(data.indic.u_3_max)
+            setU_3_prom(data.indic.u_3_prom)
+            setI_1_min(data.indic.I_1_min)
+            setI_1_max(data.indic.I_1_max)
+            setI_1_prom(data.indic.I_1_prom)
+            setI_2_min(data.indic.I_2_min)
+            setI_2_max(data.indic.I_2_max)
+            setI_2_prom(data.indic.I_2_prom)
+            setI_3_min(data.indic.I_3_min)
+            setI_3_max(data.indic.I_3_max)
+            setI_3_prom(data.indic.I_3_prom)
+            setP_fetot_ind_min(data.indic.p_fetot_ind_min)
+            setP_fetot_ind_max(data.indic.p_fetot_ind_max)
+            setP_fetot_ind_max(data.indic.p_fetot_ind_prom)
+            setP_fund_tot_min(data.indic.p_fund_tot_min)
+            setP_fund_tot_max(data.indic.p_fund_tot_max)
+            setP_fund_tot_prom(data.indic.p_fund_tot_prom)
+            setQ_tot_ind_min(data.indic.q_tot_ind_min)
+            setQ_tot_ind_max(data.indic.q_tot_ind_max)
+            setQ_tot_ind_prom(data.indic.q_tot_ind_prom)
          }
     }
 
@@ -260,24 +321,18 @@ const BodyReport = () => {
                     <th>Modelo</th>
                     <th>Conexión</th>
                     <th>Día de Inicio</th>
-                    <th>Hora de Inicio</th>
                     <th>Día de Final</th>
-                    <th>Hora de Finalización</th>
                     <th>Fase</th>
                     </tr>
                     <tr>
-                    <td>
-                        {eqm}
-                    </td>
-                    <td>3F-4H</td>
-                    <td>16/01/2023</td>
-                    <td>11:30:00 a. m.</td>
-                    <td>23/01/2023</td>
-                    <td>11:30:00 . Am.</td>
-                    <td>3</td>
+                    <td> {eqm} </td>
+                    <td> {ct} </td>
+                    <td> {ind} </td>
+                    <td> {fd} </td>
+                    <td> {fa} </td>
                     </tr>
                 </table>
-                <span className="imgLabel">Tabla No.1.</span>
+                <h5 className="imgLabel">Tabla No.1.</h5>
             </div>
             <div className="wrapper">
                 <p className="paragraph"> Los resultados de las mediciones se presentan a continuación en forma de tablas y 
@@ -313,42 +368,42 @@ const BodyReport = () => {
                     <tr>
                     <td rowspan="3">Valores</td>
                     <td colspan="2">Maximo</td>
-                    <td>495,17</td>
-                    <td>494,39</td>
-                    <td>504,42</td>
-                    <td>94,63</td>
-                    <td>94,23</td>
-                    <td>94,39</td>
-                    <td>0,92</td>
-                    <td>57,05</td>
-                    <td>61,23</td>
-                    <td>65,82</td>
+                    <td> {u_1_max} </td>
+                    <td> {u_2_max} </td>
+                    <td> {u_3_max} </td>
+                    <td> {I_1_max} </td>
+                    <td> {I_2_max} </td>
+                    <td> {I_3_max} </td>
+                    <td>{p_fetot_ind_max}</td>
+                    <td> {p_fund_tot_max} </td>
+                    <td> {q_tot_ind_max} </td>
+                    <td>DP</td>
                     </tr>
                     <tr>
                         <td colspan="2">Minimo</td>
-                        <td >413,95</td>
-                        <td>1</td>
-                        <td>0.33</td>
-                        <td>2</td>
-                        <td>57</td>
-                        <td>77</td>
-                        <td>77</td>
-                        <td>77</td>
-                        <td>77</td>
-                        <td>77</td>
+                        <td > {u_1_min} </td>
+                        <td> {u_2_min} </td>
+                        <td> {u_3_min} </td>
+                        <td> {I_1_min} </td>
+                        <td> {I_2_min} </td>
+                        <td> {I_3_min} </td>
+                        <td> {p_fetot_ind_min} </td>
+                        <td> {p_fund_tot_min} </td>
+                        <td> {q_tot_ind_min} </td>
+                        <td>DP</td>
                     </tr>
                     <tr>
                         <td colspan="2">Promedio</td>
-                        <td >449,20</td>
-                        <td>25</td>
-                        <td>0.75</td>
-                        <td>13</td>
-                        <td>57</td>
-                        <td>77</td>
-                        <td>77</td>
-                        <td>77</td>
-                        <td>77</td>
-                        <td>77</td>
+                        <td> DP </td>
+                        <td> DP </td>
+                        <td> DP </td>
+                        <td> DP </td>
+                        <td> DP </td>
+                        <td> DP </td>
+                        <td> DP </td>
+                        <td> DP </td>
+                        <td> DP </td>
+                        <td> DP </td>
                     </tr>
                 </table>
                 <span className="imgLabel">Tabla No.2. Valores Máximos, Promedios y Mínimos de Parámetros Medidos.</span>
