@@ -41,30 +41,50 @@ const BodyReport = () => {
     const [u_1_min, setU_1_min] = React.useState("");
     const [u_1_max, setU_1_max] = React.useState("");
     const [u_1_prom, setU_1_prom] = React.useState("");
+    var n1pro = Number(u_1_prom);
+    let prom_u1 = n1pro.toFixed(2);
     const [u_2_min, setU_2_min] = React.useState("");
     const [u_2_max, setU_2_max] = React.useState("");
     const [u_2_prom, setU_2_prom] = React.useState("");
+    var n2pro = Number(u_2_prom);
+    let prom_u2 = n2pro.toFixed(2);
     const [u_3_min, setU_3_min] = React.useState("");
     const [u_3_max, setU_3_max] = React.useState("");
     const [u_3_prom, setU_3_prom] = React.useState("");
+    var n3pro = Number(u_3_prom);
+    let prom_u3 = n3pro.toFixed(2);
     const [I_1_min, setI_1_min] = React.useState("");
     const [I_1_max, setI_1_max] = React.useState("");
     const [I_1_prom, setI_1_prom] = React.useState("");
+    var n4pro = Number(I_1_prom);
+    let prom_I1 = n4pro.toFixed(2);
     const [I_2_min, setI_2_min] = React.useState("");
     const [I_2_max, setI_2_max] = React.useState("");
     const [I_2_prom, setI_2_prom] = React.useState("");
+    var n5pro = Number(I_2_prom);
+    let prom_I2 = n5pro.toFixed(2);
     const [I_3_min, setI_3_min] = React.useState("");
     const [I_3_max, setI_3_max] = React.useState("");
     const [I_3_prom, setI_3_prom] = React.useState("");
+    var n6pro = Number(I_3_prom);
+    let prom_I3 = n6pro.toFixed(2);
     const [p_fetot_ind_min, setP_fetot_ind_min] = React.useState("");
     const [p_fetot_ind_max, setP_fetot_ind_max] = React.useState("");
+    var n7pro = Number(p_fetot_ind_max);
+    let fp_max = n7pro.toFixed(2);
     const [p_fetot_ind_prom, setP_fetot_ind_prom] = React.useState("");
+    var n8pro = Number(p_fetot_ind_prom);
+    let fp_prom = n8pro.toFixed(2);
     const [p_fund_tot_min, setP_fund_tot_min] = React.useState("");
     const [p_fund_tot_max, setP_fund_tot_max] = React.useState("");
     const [p_fund_tot_prom, setP_fund_tot_prom] = React.useState("");
+    var n9pro = Number(p_fund_tot_prom);
+    let pa_prom = n9pro.toFixed(2);
     const [q_tot_ind_min, setQ_tot_ind_min] = React.useState("");
     const [q_tot_ind_max, setQ_tot_ind_max] = React.useState("");
     const [q_tot_ind_prom, setQ_tot_ind_prom] = React.useState("");
+    var n10pro = Number(q_tot_ind_prom);
+    let pr_prom = n10pro.toFixed(2);
 
     const fetchChart = async (id) =>{
     const { succes, data } = await getReport(id);
@@ -119,7 +139,7 @@ const BodyReport = () => {
             setI_3_prom(data.indic.I_3_prom)
             setP_fetot_ind_min(data.indic.p_fetot_ind_min)
             setP_fetot_ind_max(data.indic.p_fetot_ind_max)
-            setP_fetot_ind_max(data.indic.p_fetot_ind_prom)
+            setP_fetot_ind_prom(data.indic.p_fetot_ind_prom)
             setP_fund_tot_min(data.indic.p_fund_tot_min)
             setP_fund_tot_max(data.indic.p_fund_tot_max)
             setP_fund_tot_prom(data.indic.p_fund_tot_prom)
@@ -374,7 +394,7 @@ const BodyReport = () => {
                     <td> {I_1_max} </td>
                     <td> {I_2_max} </td>
                     <td> {I_3_max} </td>
-                    <td>{p_fetot_ind_max}</td>
+                    <td> {fp_max} </td>
                     <td> {p_fund_tot_max} </td>
                     <td> {q_tot_ind_max} </td>
                     <td>DP</td>
@@ -394,15 +414,15 @@ const BodyReport = () => {
                     </tr>
                     <tr>
                         <td colspan="2">Promedio</td>
-                        <td> DP </td>
-                        <td> DP </td>
-                        <td> DP </td>
-                        <td> DP </td>
-                        <td> DP </td>
-                        <td> DP </td>
-                        <td> DP </td>
-                        <td> DP </td>
-                        <td> DP </td>
+                        <td> {prom_u1} </td>
+                        <td> {prom_u2} </td>
+                        <td> {prom_u3} </td>
+                        <td> {prom_I1} </td>
+                        <td> {prom_I2} </td>
+                        <td> {prom_I3} </td>
+                        <td> {fp_prom} </td>
+                        <td> {pa_prom} </td>
+                        <td> {pr_prom} </td>
                         <td> DP </td>
                     </tr>
                 </table>
