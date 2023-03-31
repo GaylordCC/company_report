@@ -7,8 +7,6 @@ import variacionTension from "./imagen/variacionTension.jpg";
 import LineChart2 from "../chart/LineChart2";
 import { getReport } from '../../controllers/lineCharts';
 
-
-
 const BodyReport = () => {  
 
     const [id, setId] = React.useState(null);
@@ -86,10 +84,9 @@ const BodyReport = () => {
     var n10pro = Number(q_tot_ind_prom);
     let pr_prom = n10pro.toFixed(2);
 
+
     const fetchChart = async (id) =>{
     const { succes, data } = await getReport(id);
-    console.log(id)
-    console.log("WOWWWWW")
 
         if (succes) {
             setU_1(data.u1)
@@ -110,7 +107,6 @@ const BodyReport = () => {
             setUper(data.uper)
             setIper(data.iper)
             setF(data.f)
-            // setPf_c(data.pf_c)
             setPf_i(data.pf_i)
             setPa(data.pa)
             setPr(data.pr)
@@ -386,7 +382,7 @@ const BodyReport = () => {
                         <td>S[kVA]</td>
                     </tr>
                     <tr>
-                    <td rowspan="3">Valores</td>
+                    <td rowspan="6">Valores</td>
                     <td colspan="2">Maximo</td>
                     <td> {u_1_max} </td>
                     <td> {u_2_max} </td>
@@ -423,6 +419,45 @@ const BodyReport = () => {
                         <td> {fp_prom} </td>
                         <td> {pa_prom} </td>
                         <td> {pr_prom} </td>
+                        <td> DP </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Percentil 99</td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> DP </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Percentil 95</td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> DP </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Percentil 5</td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
+                        <td> dddd </td>
                         <td> DP </td>
                     </tr>
                 </table>
