@@ -84,6 +84,45 @@ const BodyReport = () => {
     var n10pro = Number(q_tot_ind_prom);
     let pr_prom = n10pro.toFixed(2);
 
+    const [u_1_percentil_99, setU_1_percentil_99] = React.useState("");
+    const [u_1_percentil_95, setU_1_percentil_95] = React.useState("");
+    const [u_1_percentil_5, setU_1_percentil_5] = React.useState("");
+    
+    const [u_2_percentil_99, setU_2_percentil_99] = React.useState("");
+    const [u_2_percentil_95, setU_2_percentil_95] = React.useState("");
+    const [u_2_percentil_5, setU_2_percentil_5] = React.useState("");
+    
+    const [u_3_percentil_99, setU_3_percentil_99] = React.useState("");
+    const [u_3_percentil_95, setU_3_percentil_95] = React.useState("");
+    const [u_3_percentil_5, setU_3_percentil_5] = React.useState("");
+    
+    const [I_1_percentil_99, setI_1_percentil_99] = React.useState("");
+    const [I_1_percentil_95, setI_1_percentil_95] = React.useState("");
+    const [I_1_percentil_5, setI_1_percentil_5] = React.useState("");
+    console.log(I_1_percentil_99)
+    console.log(u_3_percentil_99)
+    console.log("*************************")
+    const [I_2_percentil_99, setI_2_percentil_99] = React.useState("");
+    const [I_2_percentil_95, setI_2_percentil_95] = React.useState("");
+    const [I_2_percentil_5, setI_2_percentil_5] = React.useState("");
+    
+    const [I_3_percentil_99, setI_3_percentil_99] = React.useState("");
+    const [I_3_percentil_95, setI_3_percentil_95] = React.useState("");
+    const [I_3_percentil_5, setI_3_percentil_5] = React.useState("");
+    
+    const [p_fetot_ind_percentil_99, setP_fetot_ind_percentil_99] = React.useState("");
+    const [p_fetot_ind_percentil_95, setP_fetot_ind_percentil_95] = React.useState("");
+    const [p_fetot_ind_percentil_5, setP_fetot_ind_percentil_5] = React.useState("");
+    
+    const [p_fund_tot_percentil_99, setP_fund_tot_percentil_99] = React.useState("");
+    const [p_fund_tot_percentil_95, setP_fund_tot_percentil_95] = React.useState("");
+    const [p_fund_tot_percentil_5, setP_fund_tot_percentil_5] = React.useState("");
+    
+    const [q_tot_ind_percentil_99, setQ_tot_ind_percentil_99] = React.useState("");
+    const [q_tot_ind_percentil_95, setQ_tot_ind_percentil_95] = React.useState("");
+    const [q_tot_ind_percentil_5, setQ_tot_ind_percentil_5] = React.useState("");
+
+
 
     const fetchChart = async (id) =>{
     const { succes, data } = await getReport(id);
@@ -142,6 +181,39 @@ const BodyReport = () => {
             setQ_tot_ind_min(data.indic.q_tot_ind_min)
             setQ_tot_ind_max(data.indic.q_tot_ind_max)
             setQ_tot_ind_prom(data.indic.q_tot_ind_prom)
+            
+            setU_1_percentil_99(data.indic.u_1_percentil_99)
+            setU_1_percentil_95(data.indic.u_1_percentil_95)
+            setU_1_percentil_5(data.indic.u_1_percentil_5)
+            setU_2_percentil_99(data.indic.u_2_percentil_99)
+            setU_2_percentil_95(data.indic.u_2_percentil_95)
+            setU_2_percentil_5(data.indic.u_2_percentil_5)
+            setU_3_percentil_99(data.indic.u_3_percentil_99)
+            setU_3_percentil_95(data.indic.u_3_percentil_95)
+            setU_3_percentil_5(data.indic.u_3_percentil_5)
+            setI_1_percentil_99(data.indic.I_1_percentil_99)
+            setI_1_percentil_95(data.indic.I_1_percentil_95)
+            setI_1_percentil_5(data.indic.I_1_percentil_5)
+            setI_2_percentil_99(data.indic.I_2_percentil_99)
+            setI_2_percentil_95(data.indic.I_2_percentil_95)
+            setI_2_percentil_5(data.indic.I_2_percentil_5)
+            setI_3_percentil_99(data.indic.I_3_percentil_99)
+            setI_3_percentil_95(data.indic.I_3_percentil_95)
+            setI_3_percentil_5(data.indic.I_3_percentil_5)
+            setP_fetot_ind_percentil_99(data.indic.p_fetot_ind_percentil_99)
+            setP_fetot_ind_percentil_95(data.indic.p_fetot_ind_percentil_95)
+            setP_fetot_ind_percentil_5(data.indic.p_fetot_ind_percentil_5)
+            setP_fund_tot_percentil_99(data.indic.p_fund_tot_percentil_99)
+            setP_fund_tot_percentil_95(data.indic.p_fund_tot_percentil_95)
+            setP_fund_tot_percentil_5(data.indic.p_fund_tot_percentil_5)
+            setQ_tot_ind_percentil_99(data.indic.q_tot_ind_percentil_99)
+            setQ_tot_ind_percentil_95(data.indic.q_tot_ind_percentil_95)
+            setQ_tot_ind_percentil_5(data.indic.q_tot_ind_percentil_5)
+
+
+
+
+
          }
     }
 
@@ -423,41 +495,41 @@ const BodyReport = () => {
                     </tr>
                     <tr>
                         <td colspan="2">Percentil 99</td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
+                        <td> {u_1_percentil_99} </td>
+                        <td> {u_2_percentil_99} </td>
+                        <td> {u_3_percentil_99} </td>
+                        <td> {I_1_percentil_99} </td>
+                        <td> {I_2_percentil_99} </td>
+                        <td> {I_3_percentil_99} </td>
+                        <td> {p_fetot_ind_percentil_99} </td>
+                        <td> {p_fund_tot_percentil_99} </td>
+                        <td> {q_tot_ind_percentil_99} </td>
                         <td> DP </td>
                     </tr>
                     <tr>
                         <td colspan="2">Percentil 95</td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
+                        <td> {u_1_percentil_95} </td>
+                        <td> {u_2_percentil_95} </td>
+                        <td> {u_3_percentil_95} </td>
+                        <td> {I_1_percentil_95} </td>
+                        <td> {I_2_percentil_95} </td>
+                        <td> {I_3_percentil_95} </td>
+                        <td> {p_fetot_ind_percentil_95} </td>
+                        <td> {p_fund_tot_percentil_95} </td>
+                        <td> {q_tot_ind_percentil_95} </td>
                         <td> DP </td>
                     </tr>
                     <tr>
                         <td colspan="2">Percentil 5</td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
-                        <td> dddd </td>
+                        <td> {u_1_percentil_5} </td>
+                        <td> {u_2_percentil_5} </td>
+                        <td> {u_3_percentil_5} </td>
+                        <td> {I_1_percentil_5} </td>
+                        <td> {I_2_percentil_5} </td>
+                        <td> {I_3_percentil_5} </td>
+                        <td> {p_fetot_ind_percentil_5} </td>
+                        <td> {p_fund_tot_percentil_5} </td>
+                        <td> {q_tot_ind_percentil_5} </td>
                         <td> DP </td>
                     </tr>
                 </table>
