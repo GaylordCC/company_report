@@ -99,9 +99,7 @@ const BodyReport = () => {
     const [I_1_percentil_99, setI_1_percentil_99] = React.useState("");
     const [I_1_percentil_95, setI_1_percentil_95] = React.useState("");
     const [I_1_percentil_5, setI_1_percentil_5] = React.useState("");
-    console.log(I_1_percentil_99)
-    console.log(u_3_percentil_99)
-    console.log("*************************")
+
     const [I_2_percentil_99, setI_2_percentil_99] = React.useState("");
     const [I_2_percentil_95, setI_2_percentil_95] = React.useState("");
     const [I_2_percentil_5, setI_2_percentil_5] = React.useState("");
@@ -121,6 +119,78 @@ const BodyReport = () => {
     const [q_tot_ind_percentil_99, setQ_tot_ind_percentil_99] = React.useState("");
     const [q_tot_ind_percentil_95, setQ_tot_ind_percentil_95] = React.useState("");
     const [q_tot_ind_percentil_5, setQ_tot_ind_percentil_5] = React.useState("");
+    
+    const [unom, setUnom] = React.useState("");
+
+    const [u_percent_min, setU_percent_min] = React.useState("");
+    const [u_percent_max, setU_percent_max] = React.useState("");
+    const [u_percent_prom, setU_percent_prom] = React.useState("");
+    const [u_percent_percentil_99, setU_percent_percentil_99] = React.useState("");
+    const [u_percent_percentil_95, setU_percent_percentil_95] = React.useState("");
+    const [u_percent_percentil_5, setU_percent_percentil_5] = React.useState("");
+    
+    const [i_percent_min, setI_percent_min] = React.useState("");
+    const [i_percent_max, setI_percent_max] = React.useState("");
+    const [i_percent_prom, setI_percent_prom] = React.useState("");
+    const [i_percent_percentil_99, setI_percent_percentil_99] = React.useState("");
+    const [i_percent_percentil_95, setI_percent_percentil_95] = React.useState("");
+    const [i_percent_percentil_5, setI_percent_percentil_5] = React.useState("");
+    
+    const [thd_u_1_min, setThd_u_1_min] = React.useState("");
+    const [thd_u_1_max, setThd_u_1_max] = React.useState("");
+    const [thd_u_1_prom, setThd_u_1_prom] = React.useState("");
+    var n11pro = Number(thd_u_1_prom);
+    let DT1_prom = n11pro.toFixed(2);
+    const [thd_u_1_percentil_99, setThd_u_1_percentil_99] = React.useState("");
+    const [thd_u_1_percentil_95, setThd_u_1_percentil_95] = React.useState("");
+    const [thd_u_1_percentil_5, setThd_u_1_percentil_5] = React.useState("");
+    
+    const [thd_u_2_min, setThd_u_2_min] = React.useState("");
+    const [thd_u_2_max, setThd_u_2_max] = React.useState("");
+    const [thd_u_2_prom, setThd_u_2_prom] = React.useState("");
+    var n12pro = Number(thd_u_2_prom);
+    let DT2_prom = n12pro.toFixed(2);
+    const [thd_u_2_percentil_99, setThd_u_2_percentil_99] = React.useState("");
+    const [thd_u_2_percentil_95, setThd_u_2_percentil_95] = React.useState("");
+    const [thd_u_2_percentil_5, setThd_u_2_percentil_5] = React.useState("");
+    
+    const [thd_u_3_min, setThd_u_3_min] = React.useState("");
+    const [thd_u_3_max, setThd_u_3_max] = React.useState("");
+    const [thd_u_3_prom, setThd_u_3_prom] = React.useState("");
+    var n13pro = Number(thd_u_3_prom);
+    let DT3_prom = n13pro.toFixed(2);
+    const [thd_u_3_percentil_99, setThd_u_3_percentil_99] = React.useState("");
+    const [thd_u_3_percentil_95, setThd_u_3_percentil_95] = React.useState("");
+    const [thd_u_3_percentil_5, sethd_u_3_percentil_5] = React.useState("");
+    
+    const [thd_i_1_min, setThd_i_1_min] = React.useState("");
+    const [thd_i_1_max, setThd_i_1_max] = React.useState("");
+    const [thd_i_1_prom, setThd_i_1_prom] = React.useState("");
+    var n14pro = Number(thd_i_1_prom);
+    let DI1_prom = n14pro.toFixed(2);
+    const [thd_i_1_percentil_99, setThd_i_1_percentil_99] = React.useState("");
+    const [thd_i_1_percentil_95, setThd_i_1_percentil_95] = React.useState("");
+    const [thd_i_1_percentil_5, setThd_i_1_percentil_5] = React.useState("");
+    
+    const [thd_i_2_min, setThd_i_2_min] = React.useState("");
+    const [thd_i_2_max, setThd_i_2_max] = React.useState("");
+    const [thd_i_2_prom, setThd_i_2_prom] = React.useState("");
+    var n15pro = Number(thd_i_2_prom);
+    let DI2_prom = n15pro.toFixed(2);
+    const [thd_i_2_percentil_99, setThd_i_2_percentil_99] = React.useState("");
+    const [thd_i_2_percentil_95, setThd_i_2_percentil_95] = React.useState("");
+    const [thd_i_2_percentil_5, setThd_i_2_percentil_5] = React.useState("");
+    
+    const [thd_i_3_min, setThd_i_3_min] = React.useState("");
+    const [thd_i_3_max, setThd_i_3_max] = React.useState("");
+    const [thd_i_3_prom, setThd_i_3_prom] = React.useState("");
+    var n16pro = Number(thd_i_3_prom);
+    let DI3_prom = n16pro.toFixed(2);
+    const [thd_i_3_percentil_99, setThd_i_3_percentil_99] = React.useState("");
+    const [thd_i_3_percentil_95, setThd_i_3_percentil_95] = React.useState("");
+    const [thd_i_3_percentil_5, setThd_i_3_percentil_5] = React.useState("");
+
+
 
 
 
@@ -181,7 +251,6 @@ const BodyReport = () => {
             setQ_tot_ind_min(data.indic.q_tot_ind_min)
             setQ_tot_ind_max(data.indic.q_tot_ind_max)
             setQ_tot_ind_prom(data.indic.q_tot_ind_prom)
-            
             setU_1_percentil_99(data.indic.u_1_percentil_99)
             setU_1_percentil_95(data.indic.u_1_percentil_95)
             setU_1_percentil_5(data.indic.u_1_percentil_5)
@@ -209,10 +278,63 @@ const BodyReport = () => {
             setQ_tot_ind_percentil_99(data.indic.q_tot_ind_percentil_99)
             setQ_tot_ind_percentil_95(data.indic.q_tot_ind_percentil_95)
             setQ_tot_ind_percentil_5(data.indic.q_tot_ind_percentil_5)
+            setUnom(data.unom)
 
-
-
-
+            setU_percent_min(data.indic.u_percent_min)
+            setU_percent_max(data.indic.u_percent_max)
+            setU_percent_prom(data.indic.u_percent_prom)
+            setU_percent_percentil_99(data.indic.u_percent_percentil_99)
+            setU_percent_percentil_95(data.indic.u_percent_percentil_95)
+            setU_percent_percentil_5(data.indic.u_percent_percentil_5)
+            
+            setI_percent_min(data.indic.i_percent_min)
+            setI_percent_max(data.indic.i_percent_max)
+            setI_percent_prom(data.indic.i_percent_prom)
+            setI_percent_percentil_99(data.indic.i_percent_percentil_99)
+            setI_percent_percentil_95(data.indic.i_percent_percentil_95)
+            setI_percent_percentil_5(data.indic.i_percent_percentil_5)
+            
+            setThd_u_1_min(data.indic.thd_u_1_min)
+            setThd_u_1_max(data.indic.thd_u_1_max)
+            setThd_u_1_prom(data.indic.thd_u_1_prom)
+            setThd_u_1_percentil_99(data.indic.thd_u_1_percentil_99)
+            setThd_u_1_percentil_95(data.indic.thd_u_1_percentil_95)
+            setThd_u_1_percentil_5(data.indic.thd_u_1_percentil_5)
+            
+            setThd_u_2_min(data.indic.thd_u_2_min)
+            setThd_u_2_max(data.indic.thd_u_2_max)
+            setThd_u_2_prom(data.indic.thd_u_2_prom)
+            setThd_u_2_percentil_99(data.indic.thd_u_2_percentil_99)
+            setThd_u_2_percentil_95(data.indic.thd_u_2_percentil_95)
+            setThd_u_2_percentil_5(data.indic.thd_u_2_percentil_5)
+            
+            setThd_u_3_min(data.indic.thd_u_3_min)
+            setThd_u_3_max(data.indic.thd_u_3_max)
+            setThd_u_3_prom(data.indic.thd_u_3_prom)
+            setThd_u_3_percentil_99(data.indic.thd_u_3_percentil_99)
+            setThd_u_3_percentil_95(data.indic.thd_u_3_percentil_95)
+            sethd_u_3_percentil_5(data.indic.thd_u_3_percentil_5)
+            
+            setThd_i_1_min(data.indic.thd_i_1_min)
+            setThd_i_1_max(data.indic.thd_i_1_max)
+            setThd_i_1_prom(data.indic.thd_i_1_prom)
+            setThd_i_1_percentil_99(data.indic.thd_i_1_percentil_99)
+            setThd_i_1_percentil_95(data.indic.thd_i_1_percentil_95)
+            setThd_i_1_percentil_5(data.indic.thd_i_1_percentil_5)
+            
+            setThd_i_2_min(data.indic.thd_i_2_min)
+            setThd_i_2_max(data.indic.thd_i_2_max)
+            setThd_i_2_prom(data.indic.thd_i_2_prom)
+            setThd_i_2_percentil_99(data.indic.thd_i_2_percentil_99)
+            setThd_i_2_percentil_95(data.indic.thd_i_2_percentil_95)
+            setThd_i_2_percentil_5(data.indic.thd_i_2_percentil_5)
+            
+            setThd_i_3_min(data.indic.thd_i_3_min)
+            setThd_i_3_max(data.indic.thd_i_3_max)
+            setThd_i_3_prom(data.indic.thd_i_3_prom)
+            setThd_i_3_percentil_99(data.indic.thd_i_3_percentil_99)
+            setThd_i_3_percentil_95(data.indic.thd_i_3_percentil_95)
+            setThd_i_3_percentil_5(data.indic.thd_i_3_percentil_5)
 
          }
     }
@@ -537,6 +659,9 @@ const BodyReport = () => {
                 <p className="paragraph"> Los valores máximos y mínimos registrados corresponden a valores medidos durante 
                     el intervalo de las muestras. 
                 </p>
+            </div>
+            <div className="wrapper">
+                
                 <h3 className="contentsubtitle"> 6.1 Regulación de tensión.</h3>
                 <p className="paragraph"> En la Tabla No.3 se aprecia las variaciones de tensión con respecto al valor nominal.</p>
                 <table className="table3">
@@ -549,13 +674,16 @@ const BodyReport = () => {
                     </tr>
                     <tr>
                     <td>Trafo</td>
-                    <td>450</td>
+                    <td>{unom}</td>
                     <td>9.9</td>
                     <td>0.2</td>
                     <td>-6.5</td>
                     </tr>
                 </table>
                 <span className="imgLabel">Tabla No.3. Variaciones de tensión con respecto al valor nominal.</span>
+
+
+                
             </div>
             <div className="wrapper">
                 <p className="paragraph"> La Norma Técnica Colombiana NTC 1340 establece los límites máximos de variación de
@@ -571,20 +699,24 @@ const BodyReport = () => {
                 <h3 className="tableLabel">Tendencia de tensiones.</h3>
                 <table className="table3">
                     <tr>
-                    <th colspan="3">Desequilibrio de tensión [%]</th>
+                    <th colspan="5">Desequilibrio de tensión [%]</th>
                     <th className="table3a">Norma: 2 %</th>
                     </tr>
                     <tr className="table3b">
                     <th>Maximo</th>
                     <th>Mínimo</th>
-                    <th>Mediana</th>
                     <th>Promedio</th>
+                    <th>Percentil 99</th>
+                    <th>Percentil 95</th>
+                    <th>Percentil 5</th>
                     </tr>
                     <tr className="table3c">
-                    <td>450</td>
-                    <td>9.9</td>
-                    <td>0.2</td>
-                    <td>-6.5</td>
+                    <td>{u_percent_max}</td>
+                    <td>{u_percent_min}</td>
+                    <td>{u_percent_prom}</td>
+                    <td>{u_percent_percentil_99}</td>
+                    <td>{u_percent_percentil_95}</td>
+                    <td>{u_percent_percentil_5}</td>
                     </tr>
                 </table>
                 <span className="imgLabel">Tabla No.4. Desbalances de tensión.</span>
@@ -608,20 +740,24 @@ const BodyReport = () => {
                 <h3 className="tableLabel">Tendencia de corriente.</h3>
                 <table className="table3">
                     <tr>
-                    <th colspan="3">Desequilibrio de corrientes [%]</th>
+                    <th colspan="5">Desequilibrio de corrientes [%]</th>
                     <th className="table3a">Norma: 10 %</th>
                     </tr>
                     <tr className="table3b">
                     <th>Maximo</th>
                     <th>Mínimo</th>
-                    <th>Mediana</th>
                     <th>Promedio</th>
+                    <th>Percentil 99</th>
+                    <th>Percentil 95</th>
+                    <th>Percentil 5</th>
                     </tr>
                     <tr className="table3c">
-                    <td>454,64</td>
-                    <td>3,66</td>
-                    <td>44,36</td>
-                    <td>40,52</td>
+                    <td>{i_percent_max}</td>
+                    <td>{i_percent_min}</td>
+                    <td>{i_percent_prom}</td>
+                    <td>{i_percent_percentil_99}</td>
+                    <td>{i_percent_percentil_95}</td>
+                    <td>{i_percent_percentil_5}</td>
                     </tr>
                 </table>
                 <span className="imgLabel">Tabla No.5. Desbalances de corrientes.</span>
@@ -669,42 +805,62 @@ const BodyReport = () => {
                     </tr>
                     <tr>
                     <td>Máximo</td>
-                    <td>40,2</td>
+                    <td>{thd_u_1_max}</td>
                     <td>Máximo</td>
-                    <td>40,52</td>
+                    <td>{thd_u_2_max}</td>
                     <td>Máximo</td>
-                    <td>40,52</td>
+                    <td>{thd_u_3_max}</td>
                     <td>Máximo</td>
                     <td>40,52</td>
                     </tr>
                     <tr>
                     <td>Mínimo</td>
-                    <td>3,66</td>
+                    <td>{thd_u_1_min}</td>
                     <td>Mínimo</td>
-                    <td>40,52</td>
+                    <td>{thd_u_2_min}</td>
                     <td>Mínimo</td>
-                    <td>40,52</td>
+                    <td>{thd_u_3_min}</td>
                     <td>Mínimo</td>
                     <td>40,52</td>
                     </tr>
                     <tr>
-                    <td>Mediana</td>
-                    <td>3,66</td>
-                    <td>Mediana</td>
+                    <td>Promedio</td>
+                    <td>{DT1_prom}</td>
+                    <td>Promedio</td>
+                    <td>{DT2_prom}</td>
+                    <td>Promedio</td>
+                    <td>{DT3_prom}</td>
+                    <td>Promedio</td>
                     <td>40,52</td>
-                    <td>Mediana</td>
-                    <td>40,52</td>
-                    <td>Mediana</td>
-                    <td>40,52</td>
-                    </tr>
+                    </tr>  
                     <tr>
-                    <td>Promedio</td>
-                    <td>3,66</td>
-                    <td>Promedio</td>
+                    <td>Percentil 99</td>
+                    <td>{thd_u_1_percentil_99}</td>
+                    <td>Percentil 99</td>
+                    <td>{thd_u_2_percentil_99}</td>
+                    <td>Percentil 99</td>
+                    <td>{thd_u_3_percentil_99}</td>
+                    <td>Percentil 99</td>
                     <td>40,52</td>
-                    <td>Promedio</td>
+                    </tr>  
+                    <tr>
+                    <td>Percentil 95</td>
+                    <td>{thd_u_1_percentil_95}</td>
+                    <td>Percentil 95</td>
+                    <td>{thd_u_2_percentil_95}</td>
+                    <td>Percentil 95</td>
+                    <td>{thd_u_3_percentil_95}</td>
+                    <td>Percentil 95</td>
                     <td>40,52</td>
-                    <td>Promedio</td>
+                    </tr>  
+                    <tr>
+                    <td>Percentil 5</td>
+                    <td>{thd_u_1_percentil_5}</td>
+                    <td>Percentil 5</td>
+                    <td>{thd_u_2_percentil_5}</td>
+                    <td>Percentil 5</td>
+                    <td>{thd_u_3_percentil_5}</td>
+                    <td>Percentil 5</td>
                     <td>40,52</td>
                     </tr>  
                 </table>
@@ -774,42 +930,62 @@ const BodyReport = () => {
                     </tr>
                     <tr>
                     <td>Máximo</td>
-                    <td>40,2</td>
+                    <td>{thd_i_1_max}</td>
                     <td>Máximo</td>
-                    <td>40,52</td>
+                    <td>{thd_i_2_max}</td>
                     <td>Máximo</td>
-                    <td>40,52</td>
+                    <td>{thd_i_3_max}</td>
                     <td>Máximo</td>
                     <td>40,52</td>
                     </tr>
                     <tr>
                     <td>Mínimo</td>
-                    <td>3,66</td>
+                    <td>{thd_i_1_min}</td>
                     <td>Mínimo</td>
-                    <td>40,52</td>
+                    <td>{thd_i_2_min}</td>
                     <td>Mínimo</td>
-                    <td>40,52</td>
+                    <td>{thd_i_3_min}</td>
                     <td>Mínimo</td>
                     <td>40,52</td>
                     </tr>
                     <tr>
-                    <td>Mediana</td>
-                    <td>3,66</td>
-                    <td>Mediana</td>
+                    <td>Promedio</td>
+                    <td>{DI1_prom}</td>
+                    <td>Promedio</td>
+                    <td>{DI2_prom}</td>
+                    <td>Promedio</td>
+                    <td>{DI3_prom}</td>
+                    <td>Promedio</td>
                     <td>40,52</td>
-                    <td>Mediana</td>
-                    <td>40,52</td>
-                    <td>Mediana</td>
-                    <td>40,52</td>
-                    </tr>
+                    </tr>  
                     <tr>
-                    <td>Promedio</td>
-                    <td>3,66</td>
-                    <td>Promedio</td>
+                    <td>Percentil 99</td>
+                    <td>{thd_i_1_percentil_99}</td>
+                    <td>Percentil 99</td>
+                    <td>{thd_i_2_percentil_99}</td>
+                    <td>Percentil 99</td>
+                    <td>{thd_i_3_percentil_99}</td>
+                    <td>Percentil 99</td>
                     <td>40,52</td>
-                    <td>Promedio</td>
+                    </tr>  
+                    <tr>
+                    <td>Percentil 95</td>
+                    <td>{thd_i_1_percentil_95}</td>
+                    <td>Percentil 95</td>
+                    <td>{thd_i_2_percentil_95}</td>
+                    <td>Percentil 95</td>
+                    <td>{thd_i_3_percentil_95}</td>
+                    <td>Percentil 95</td>
                     <td>40,52</td>
-                    <td>Promedio</td>
+                    </tr>  
+                    <tr>
+                    <td>Percentil 5</td>
+                    <td>{thd_i_1_percentil_5}</td>
+                    <td>Percentil 5</td>
+                    <td>{thd_i_2_percentil_5}</td>
+                    <td>Percentil 5</td>
+                    <td>{thd_i_3_percentil_5}</td>
+                    <td>Percentil 5</td>
                     <td>40,52</td>
                     </tr>  
                 </table>
