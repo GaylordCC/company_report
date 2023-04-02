@@ -190,10 +190,6 @@ const BodyReport = () => {
     const [thd_i_3_percentil_95, setThd_i_3_percentil_95] = React.useState("");
     const [thd_i_3_percentil_5, setThd_i_3_percentil_5] = React.useState("");
 
-
-
-
-
     const fetchChart = async (id) =>{
     const { succes, data } = await getReport(id);
 
@@ -1023,19 +1019,23 @@ const BodyReport = () => {
                 </p>
                 <table className="table3">
                     <tr>
-                    <th colspan="4">Factor de Potencia</th>
+                    <th colspan="6">Factor de Potencia</th>
                     </tr>
                     <tr className="table3b">
                     <th>Maximo</th>
                     <th>Mínimo</th>
-                    <th>Mediana</th>
                     <th>Promedio</th>
+                    <th>Percentil 99</th>
+                    <th>percentil 95</th>
+                    <th>Percentil 5</th>
                     </tr>
                     <tr className="table3c">
-                    <td>454,64</td>
-                    <td>3,66</td>
-                    <td>44,36</td>
-                    <td>40,52</td>
+                    <td>{p_fetot_ind_max}</td>
+                    <td>{p_fetot_ind_min}</td>
+                    <td>{fp_prom}</td>
+                    <td>{p_fetot_ind_percentil_99}</td>
+                    <td>{p_fetot_ind_percentil_95}</td>
+                    <td>{p_fetot_ind_percentil_5}</td>
                     </tr>
                 </table>
                 <h3 className="paragraph">6.5 Frecuencia.</h3>
@@ -1095,34 +1095,64 @@ const BodyReport = () => {
                 <img className="imgDVoltage" src={variacionTension} />
                 <table className="table3">
                     <tr className="table3b">
-                    <th>Maxima Potencia Kvar</th>
-                    <th>Maxima Potencia KW</th>
-                    <th>Maxima Potencia KVA</th>
+                    <th>Maxima Potencia [Kvar]</th>
+                    <th>Maxima Potencia [KW]</th>
+                    <th>Maxima Potencia [KVA]</th>
                     </tr>
                     <tr className="table3c">
-                        <td>3,66</td>
-                        <td>3,66</td>
-                        <td>44,36</td>
+                        <td>{q_tot_ind_max}</td>
+                        <td>{p_fund_tot_max}</td>
+                        <td>DP</td>
                     </tr>
                     <tr className="table3b">
-                    <th>Minima Potencia Kvar</th>
-                    <th>Minima Potencia KW</th>
-                    <th>Minima Potencia KVA</th>
+                    <th>Minima Potencia [Kvar]</th>
+                    <th>Minima Potencia [KW]</th>
+                    <th>Minima Potencia [KVA]</th>
                     </tr>
                     <tr className="table3c">
-                        <td>3,66</td>
-                        <td>3,66</td>
-                        <td>44,36</td>
+                        <td>{q_tot_ind_min}</td>
+                        <td>{p_fund_tot_min}</td>
+                        <td>DP</td>
                     </tr>
                     <tr className="table3b">
-                    <th>Promedio Potencia Kvar</th>
-                    <th>Promedio Potencia KW</th>
-                    <th>Promedio Potencia KVA</th>
+                    <th>Promedio Potencia [Kvar]</th>
+                    <th>Promedio Potencia [KW]</th>
+                    <th>Promedio Potencia [KVA]</th>
                     </tr>
                     <tr className="table3c">
-                    <td>3,66</td>
-                    <td>3,66</td>
-                    <td>44,36</td>
+                    <td>{pr_prom}</td>
+                    <td>{pa_prom}</td>
+                    <td>DP</td>
+                    </tr>
+                    <tr className="table3b">
+                    <th>Percentil 99 [Kvar]</th>
+                    <th>Percentil 99 [KW]</th>
+                    <th>Percentil 99 [KVA]</th>
+                    </tr>
+                    <tr className="table3c">
+                    <td>{q_tot_ind_percentil_99}</td>
+                    <td>{p_fund_tot_percentil_99}</td>
+                    <td>DP</td>
+                    </tr>
+                    <tr className="table3b">
+                    <th>Percentil 95 [Kvar]</th>
+                    <th>Percentil 95 [KW]</th>
+                    <th>Percentil 95 [KVA]</th>
+                    </tr>
+                    <tr className="table3c">
+                    <td>{q_tot_ind_percentil_95}</td>
+                    <td>{p_fund_tot_percentil_95}</td>
+                    <td>DP</td>
+                    </tr>
+                    <tr className="table3b">
+                    <th>Percentil 5 [Kvar]</th>
+                    <th>Percentil 5 [KW]</th>
+                    <th>Percentil 5 [KVA]</th>
+                    </tr>
+                    <tr className="table3c">
+                    <td>{q_tot_ind_percentil_5}</td>
+                    <td>{p_fund_tot_percentil_5}</td>
+                    <td>DP</td>
                     </tr>
                 </table>
                 <p className="paragraph"> Los límites establecidos en la Resolución CREG 108 de 1997;
