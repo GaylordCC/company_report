@@ -677,11 +677,6 @@ const BodyReport = () => {
                     </tr>
                 </table>
                 <span className="imgLabel">Tabla No.3. Variaciones de tensión con respecto al valor nominal.</span>
-
-
-                
-            </div>
-            <div className="wrapper">
                 <p className="paragraph"> La Norma Técnica Colombiana NTC 1340 establece los límites máximos de variación de
                     tensión, siendo estos de: +10% y -10%.
                 </p>
@@ -691,6 +686,11 @@ const BodyReport = () => {
                     <LineChart2 x1={u1} x2={u2} x3={u3} y={h1} name="CV" title1="u1" title2="u2" title3="u3"/>
                 </div>
                 <h5 className="imgLabel">Comportamiento de la variación de la tensión del sistema.</h5>
+
+
+                
+            </div>
+            <div className="wrapper">
                 <h3 className="contentsubtitle"> 6.2 Desbalance de tensión.</h3>
                 <h3 className="tableLabel">Tendencia de tensiones.</h3>
                 <table className="table3">
@@ -716,8 +716,6 @@ const BodyReport = () => {
                     </tr>
                 </table>
                 <span className="imgLabel">Tabla No.4. Desbalances de tensión.</span>
-            </div>
-            <div className="wrapper">
                 <div className="Chart-Voltage">
                     <LineChart2 x1={uper} y={h1} name="CU" title1="u_per" />
                 </div>
@@ -729,6 +727,8 @@ const BodyReport = () => {
                     El límite máximo admisible para desbalances en tensión es del 2%. Por lo tanto, 
                     los desbalances registrados durante la medición:
                 </p>
+            </div>
+            <div className="wrapper">
                 <ul className="paragraph">
                     <li> Si se encuentra dentro de los parametros recomendado por la Norma</li>
                 </ul>
@@ -757,8 +757,6 @@ const BodyReport = () => {
                     </tr>
                 </table>
                 <span className="imgLabel">Tabla No.5. Desbalances de corrientes.</span>
-            </div>
-            <div className="wrapper">
                 <p className="paragraph"> El desequilibrio promedio de la corriente es de 40.52 <br/>
                     Supera el límite establecido del (10%) que indica la Norma IEEE 1159-92. (No Cumple).
                 </p>
@@ -766,27 +764,29 @@ const BodyReport = () => {
                     <LineChart2 x1={iper} y={h1} name="CDI" title1="D_i1" />
                 </div>
                 <h5 className="imgLabel">Tendencia Desequilibrio de corriente.</h5>
+            </div>
+            <div className="wrapper">
                 <h3 className="contentsubtitle">6.3.1	Gráfico de corrientes.</h3>
                 <p className="paragraph">CORRIENTE L1</p>
                 <div className="Chart-Voltage">
                     <LineChart2 x1={i1} y={h1} name="I1" title1="i1" />
                 </div>
-            </div>
-            <div className="wrapper">
                 <p className="paragraph">CORRIENTE L2</p>
                 <div className="Chart-Voltage">
                     <LineChart2 x1={i2} y={h1} name="I2" title1="i2" />
                 </div>
+            </div>
+            <div className="wrapper">
                 <p className="paragraph">CORRIENTE L3</p>
                 <div className="Chart-Voltage">
                     <LineChart2 x1={i3} y={h1} name="I3" title1="i3" />
                 </div>
-            </div>
-            <div className="wrapper">
                 <p className="paragraph">CORRIENTE N</p>
                 <div className="Chart-Voltage">
                     <LineChart2 x1={In} y={h1} name="In" title1="in" />
                 </div>
+            </div>
+            <div className="wrapper">
                 <h3 className="contentsubtitle">6.3.2	Distorsiones Armónicas (THD).</h3>
                 <table className="table3">
                     <tr>
@@ -861,8 +861,6 @@ const BodyReport = () => {
                     </tr>  
                 </table>
                 <span className="imgLabel">Tabla No. 6. Distorsión Armónica.</span>
-            </div>
-            <div className="wrapper">
                 <p className="paragraph"> La distorsión armónica es causada por la presencia de señales con 
                     frecuencias múltiplo de la fundamental (60Hz), que se suman a la onda fundamental, 
                     deformándola. <br/> Las distorsiones armónicas se miden con los parámetros THDV en tensiones 
@@ -876,7 +874,13 @@ const BodyReport = () => {
                     El THD en tensiones es una medida del nivel de distorsión de la señal de tensión 
                     (onda no sinusoidal pura) que entrega el operador de red en el punto de conexión 
                     del cliente. En este caso es la señal que proviene de la Subestación Eléctrica o 
-                    punto Alimentador del Tablero en cuestión. <br/> Los armónicos son la componente 
+                    punto Alimentador del Tablero en cuestión.
+                </p>
+
+
+            </div>
+            <div className="wrapper">
+                <p className="paragraph"> Los armónicos son la componente 
                     sinusoidal de una onda periódica a una frecuencia múltiplo entero de la frecuencia 
                     fundamental (60Hz). Los armónicos puedan causar sobrecalentamiento en conductores 
                     afectando su nivel de aislamiento. En los devanados de los motores se puede originar 
@@ -1004,12 +1008,12 @@ const BodyReport = () => {
                     Se encuentra dentro del rango permitido entre el 10 % y 15% por lo tanto, 
                     cumple con lo establecido por la Norma IEEE 519-92. 
                 </p>
+            </div>
+            <div className="wrapper">
                 <h3 className="contentsubtitle">6.4	Factor de Potencia.</h3>
                 <div className="Chart-Voltage">
                     <LineChart2 x2={pf_i} y={h1} name="PF" title2="pf_i" />
                 </div>
-            </div>
-            <div className="wrapper">
                 <p className="paragraph"> El factor de potencia es un parámetro que indica el consumo
                     de energía reactiva, la cual se penaliza económicamente cuando sobrepasa el 
                     límite del 50% de la energía activa consumida, establecido por la Resolución
@@ -1038,6 +1042,8 @@ const BodyReport = () => {
                     <td>{p_fetot_ind_percentil_5}</td>
                     </tr>
                 </table>
+            </div>
+            <div className="wrapper">
                 <h3 className="paragraph">6.5 Frecuencia.</h3>
                 <table className="table3">
                     <tr>
@@ -1069,14 +1075,14 @@ const BodyReport = () => {
                     la frecuencia del sistema es responsabilidad de los generadores y no de los 
                     distribuidores.<br/>
                 </p>
-            </div>
-            <div className="wrapper">
                 <p className="paragraph"> Los valores registrados se encuentran dentro del rango 
                     establecido.
                 </p>
                 <div className="Chart-Voltage">
                     <LineChart2 x1={f} y={h1} name="frecuencia" title1="f" />
                 </div>
+            </div>
+            <div className="wrapper">
                 <h3 className="paragraph">6.6 Potencias.</h3>
                 <ul className="paragraph">
                     <li>Potencia Activa, Reactiva y Aparente</li>
@@ -1085,12 +1091,12 @@ const BodyReport = () => {
                 <div className="Chart-Voltage">
                     <LineChart2 x2={pa} y={h1} name="activa" title2="Potencia Activa [kW]" />
                 </div>
-            </div>
-            <div className="wrapper">
                 <h3 className="contentsubtitle">Potencia Reactiva (kvar)</h3>
                 <div className="Chart-Voltage">
                     <LineChart2 x2={pr} y={h1} name="reactiva" title2="Potencia Reactiva [Kvar]" />
                 </div>
+            </div>
+            <div className="wrapper">
                 <h3 className="paragraph">Potencia Aparente Se (KVA)</h3>
                 <img className="imgDVoltage" src={variacionTension} />
                 <table className="table3">
