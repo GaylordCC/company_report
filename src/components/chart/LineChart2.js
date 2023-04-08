@@ -41,6 +41,14 @@ export default function LineChart2 (props) {
                     borderWidth: 1,
                     radius: 0,
                     data: (props.x3),
+                },
+                {
+                    label: props.title4,
+                    borderColor: 'black',
+                    backgroundColor: 'black',
+                    borderWidth: 1,
+                    radius: 0,
+                    data: (props.x4),
                 }]
             },
     

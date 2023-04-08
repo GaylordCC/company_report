@@ -51,6 +51,24 @@ const BodyReport = () => {
     const [u_3_prom, setU_3_prom] = React.useState("");
     var n3pro = Number(u_3_prom);
     let prom_u3 = n3pro.toFixed(2);
+    let M_u = new Array(u_1_max, u_2_max, u_3_max);
+    const Max_u = Math.max(...M_u);
+    let Mi_u = new Array(u_1_min, u_2_min, u_3_min);
+    const Min_u = Math.min(...Mi_u);
+    const Mpr_u = new Array(prom_u1, prom_u2, prom_u3);
+    const Mu = Mpr_u.map(str => {
+        return parseInt(str, 10);
+      });
+    var sum = 0;
+    Mu.forEach(function(num) { sum += num });
+    const average = sum / Mu.length;
+    const u_promedio = average.toFixed(2);
+
+    // console.log(Max_u)
+    // console.log(Min_u)
+    // console.log(u_promedio)
+    // console.log("CHINAAAAAA")
+
     const [I_1_min, setI_1_min] = React.useState("");
     const [I_1_max, setI_1_max] = React.useState("");
     const [I_1_prom, setI_1_prom] = React.useState("");
@@ -99,28 +117,68 @@ const BodyReport = () => {
     const [I_1_percentil_99, setI_1_percentil_99] = React.useState("");
     const [I_1_percentil_95, setI_1_percentil_95] = React.useState("");
     const [I_1_percentil_5, setI_1_percentil_5] = React.useState("");
+    var counter = i1.length;
+    var L99_I1 = new Array(counter).fill(I_1_percentil_99);
+    var L95_I1 = new Array(counter).fill(I_1_percentil_95);
+    var L5_I1 = new Array(counter).fill(I_1_percentil_5);
 
     const [I_2_percentil_99, setI_2_percentil_99] = React.useState("");
     const [I_2_percentil_95, setI_2_percentil_95] = React.useState("");
     const [I_2_percentil_5, setI_2_percentil_5] = React.useState("");
+    var counter = i2.length;
+    var L99_I2 = new Array(counter).fill(I_2_percentil_99);
+    var L95_I2 = new Array(counter).fill(I_2_percentil_95);
+    var L5_I2 = new Array(counter).fill(I_2_percentil_5);
     
     const [I_3_percentil_99, setI_3_percentil_99] = React.useState("");
     const [I_3_percentil_95, setI_3_percentil_95] = React.useState("");
     const [I_3_percentil_5, setI_3_percentil_5] = React.useState("");
+    var counter = i3.length;
+    var L99_I3 = new Array(counter).fill(I_3_percentil_99);
+    var L95_I3 = new Array(counter).fill(I_3_percentil_95);
+    var L5_I3 = new Array(counter).fill(I_3_percentil_5);
     
     const [p_fetot_ind_percentil_99, setP_fetot_ind_percentil_99] = React.useState("");
     const [p_fetot_ind_percentil_95, setP_fetot_ind_percentil_95] = React.useState("");
     const [p_fetot_ind_percentil_5, setP_fetot_ind_percentil_5] = React.useState("");
-    
+    var counter = pf_i.length;
+    var L99_fp = new Array(counter).fill(p_fetot_ind_percentil_99);
+    var L95_fp = new Array(counter).fill(p_fetot_ind_percentil_95);
+    var L5_fp = new Array(counter).fill(p_fetot_ind_percentil_5);
+
     const [p_fund_tot_percentil_99, setP_fund_tot_percentil_99] = React.useState("");
     const [p_fund_tot_percentil_95, setP_fund_tot_percentil_95] = React.useState("");
     const [p_fund_tot_percentil_5, setP_fund_tot_percentil_5] = React.useState("");
+    var counter = pa.length;
+    var L99_pa = new Array(counter).fill(p_fund_tot_percentil_99);
+    var L95_pa = new Array(counter).fill(p_fund_tot_percentil_95);
+    var L5_pa = new Array(counter).fill(p_fund_tot_percentil_5);
     
     const [q_tot_ind_percentil_99, setQ_tot_ind_percentil_99] = React.useState("");
     const [q_tot_ind_percentil_95, setQ_tot_ind_percentil_95] = React.useState("");
     const [q_tot_ind_percentil_5, setQ_tot_ind_percentil_5] = React.useState("");
+    var counter = pr.length;
+    var L99_pr = new Array(counter).fill(q_tot_ind_percentil_99);
+    var L95_pr = new Array(counter).fill(q_tot_ind_percentil_95);
+    var L5_pr = new Array(counter).fill(q_tot_ind_percentil_5);
     
     const [unom, setUnom] = React.useState("");
+
+    var V_max = Math.abs(((unom[0] - Max_u) / unom[0])*100);
+    var Vmax = V_max.toFixed(2);
+    
+    var V_min = Math.abs(((unom[0] - Min_u) / unom[0])*100);
+    var Vmin = V_min.toFixed(2);
+    
+    var V_prom = Math.abs(((unom[0] - u_promedio) / unom[0])*100);
+    var Vprom = V_prom.toFixed(2);
+
+    console.log(Vmax)
+    console.log(Vmin)
+    console.log(Vprom)
+    console.log(Min_u)
+    console.log(u_promedio)
+    console.log("CHINAAAAAA")
 
     const [u_percent_min, setU_percent_min] = React.useState("");
     const [u_percent_max, setU_percent_max] = React.useState("");
@@ -128,14 +186,24 @@ const BodyReport = () => {
     const [u_percent_percentil_99, setU_percent_percentil_99] = React.useState("");
     const [u_percent_percentil_95, setU_percent_percentil_95] = React.useState("");
     const [u_percent_percentil_5, setU_percent_percentil_5] = React.useState("");
-    
+    var counter = uper.length;
+    var L99_u_per = new Array(counter).fill(u_percent_percentil_99);
+    var L95_u_per = new Array(counter).fill(u_percent_percentil_95);
+    var L5_u_per = new Array(counter).fill(u_percent_percentil_5);
+
     const [i_percent_min, setI_percent_min] = React.useState("");
     const [i_percent_max, setI_percent_max] = React.useState("");
     const [i_percent_prom, setI_percent_prom] = React.useState("");
+    var n17pro = Number(i_percent_prom);
+    let iper_prom = n17pro.toFixed(2);
     const [i_percent_percentil_99, setI_percent_percentil_99] = React.useState("");
     const [i_percent_percentil_95, setI_percent_percentil_95] = React.useState("");
     const [i_percent_percentil_5, setI_percent_percentil_5] = React.useState("");
-    
+    var counter = iper.length;
+    var L99_i_per = new Array(counter).fill(i_percent_percentil_99);
+    var L95_i_per = new Array(counter).fill(i_percent_percentil_95);
+    var L5_i_per = new Array(counter).fill(i_percent_percentil_5);
+
     const [thd_u_1_min, setThd_u_1_min] = React.useState("");
     const [thd_u_1_max, setThd_u_1_max] = React.useState("");
     const [thd_u_1_prom, setThd_u_1_prom] = React.useState("");
@@ -395,14 +463,14 @@ const BodyReport = () => {
                 <h2 className="contentsubtitle-TC"> 8. CONCLUSIONES.</h2>
             </div>
             <div className="wrapper">
-                <h2 className="tittlepage"> 1. MEDICIONES.</h2>
+                <h3 className="tittlepage"> 1. MEDICIONES.</h3>
                 <p className="paragraph"> Contar con una energía de calidad permitirá minimizar las fallas de 
                     alimentación eléctrica aumentando la confiabilidad y optimizando la productividad de las empresas. <br/>
                     Cuando se posee una infraestructura eléctrica que garantice una adecuada calidad de la potencia se 
                     obtienen beneficios complementarios y que se cuenta con instalaciones seguras que minimizan riesgos 
                     eléctricos para personas y equipos.
                 </p>
-                <h3 className="contentsubtitle"> 1.1 Registro de Parámetros Eléctricos.</h3>
+                <h4 className="contentsubtitle"> 1.1 Registro de Parámetros Eléctricos.</h4>
                 <ul className="paragraph">
                     <li> Frecuencia.  </li>
                     <li> Tensión (Voltaje).  </li>
@@ -413,7 +481,7 @@ const BodyReport = () => {
                     <li> Distorsión armónica.  </li>
                     <li> Registros de ondas de tensión, corriente y potencia.  </li>
                 </ul>
-                <h3 className="contentsubtitle"> 1.2 Normatividad.</h3>
+                <h4 className="contentsubtitle"> 1.2 Normatividad.</h4>
                 <ul className="paragraph">
                     <li> Norma IEEE 1159-1995, Recommended Practice for Monitoring Electric Power Quality.  </li>
                     <li> NormaIEEE519-1992,Recommended Practices and Requirements for Harmonic Control in Electrical Power Systems.  </li>
@@ -432,8 +500,8 @@ const BodyReport = () => {
                         con los requisitos de esta importante Norma Europea de seguridad.
                     </li>
                 </ul>  
-                <h2 className="tittlepage"> 2. CONCEPTOS.</h2>
-                <h2 className="tittlepage"> CALIDAD DE ENERGÍA:</h2>
+                <h3 className="tittlepage"> 2. CONCEPTOS.</h3>
+                <h4 className="tittlepage"> CALIDAD DE ENERGÍA:</h4>
                 <p className="paragraph"> La calidad de la energía eléctrica (CEL), se define como la continuidad y confiabilidad del voltaje suministrada 
                     a un cliente en particular por el operador de red o su sistema de generación en sitio (o ambos cuando hay sincronismo), así como 
                     la calidad de la corriente de carga que el cliente demanda de este, de tal forma que se garantice la confiabilidad y eficiencia 
@@ -445,42 +513,42 @@ const BodyReport = () => {
                     instalación eléctrica se vea afectada por estos fenómenos, garantizando así la continuidad y confiabilidad de la operación de todos los equipos 
                     eléctricos de la instalación.
                 </p>
-                <h3 className="contentsubtitle"> Armónicos:</h3>
+                <h4 className="contentsubtitle"> Armónicos:</h4>
                 <p className="paragraph"> Son componentes sinusoidales de una onda periódica o cantidad que posee una frecuencia múltiplo de la frecuencia fundamental. <br/>
                 </p>
-                <h3 className="contentsubtitle"> Distorsión armónica total(THD):</h3>
+                <h4 className="contentsubtitle"> Distorsión armónica total(THD):</h4>
                 <p className="paragraph"> Es la relación entre el contenido armónico de la señal y la primera armónica o fundamental. Es el parámetro de medición de distorsión 
                     más conocido por lo que es Recomendable para medir la distorsión en parámetros individuales (I y V). <br/>
                 </p> 
             </div>
             <div className="wrapper">
-                <h3 className="contentsubtitle"> Distorsión de demanda total(TDD):</h3>
+                <h4 className="contentsubtitle"> Distorsión de demanda total(TDD):</h4>
                 <p className="paragraph"> Es la relación entre la corriente armónica y la demanda máxima de la corriente de carga <br/>
                 </p>
-                <h3 className="contentsubtitle"> Factor de potencia:</h3>
+                <h4 className="contentsubtitle"> Factor de potencia:</h4>
                 <p className="paragraph"> Relación entre potencia activa y potencia aparente, del mismo sistema eléctrico o parte de él. <br/>
                 </p> 
-                <h3 className="paragraph"> Frecuencia:</h3>
+                <h4 className="paragraph"> Frecuencia:</h4>
                 <p className="paragraph"> Número de períodos por segundo de uma onda. Se mide em Hertz o ciclos por segundo. <br/>
                 </p>
-                <h3 className="contentsubtitle"> Potencia activa:</h3>
+                <h4 className="contentsubtitle"> Potencia activa:</h4>
                 <p className="paragraph"> Potencia consumida por las bombillas, aparatos, artefactos y motores que se encuentran en el predio del usuario. Se mide en kilovatios [kW]. <br/>
                 </p>
-                <h3 className="contentsubtitle"> Potencia aparente:</h3>
+                <h4 className="contentsubtitle"> Potencia aparente:</h4>
                 <p class="paragraph"> Potencia resultante de la suma geométrica de la potencia activa y la potencia reactiva, medida en kVA. <br/>
                 </p>
-                <h3 class="contentsubtitle"> Potencia reactiva:</h3>
+                <h4 class="contentsubtitle"> Potencia reactiva:</h4>
                 <p className="paragraph"> Potencia absorbida por cargas reactivas que se encuentran en las industrias, transformadores, redes o por motores, medida en kVAR. <br/>
                 </p>
-                <h3 className="contentsubtitle"> Potencia reactiva:</h3>
+                <h4 className="contentsubtitle"> Potencia reactiva:</h4>
                 <p className="paragraph"> Potencia absorbida por cargas reactivas que se encuentran en las industrias, transformadores, redes o por motores, medida en kVAR. <br/>
                 </p>
-                <h3 className="contentsubtitle"> Regulación de tensión:</h3>
+                <h4 className="contentsubtitle"> Regulación de tensión:</h4>
                 <p className="paragraph"> La regulación de tensión es la caída de tensión en una red debido a la impedancia serie de los conductores la cual se opone al paso de la corriente eléctrica. <br/>
                 </p>
             </div>
             <div className="wrapper">
-                <h2 className="tittlepage"> 3.0 EQUIPO DE MEDIDA UTILIZADO.</h2>
+                <h3 className="tittlepage"> 3.0 EQUIPO DE MEDIDA UTILIZADO.</h3>
                 <img className="imgAnalizer" src={analizador} />
                 <span className="imgLabel">Imagen 1. Analizador de redes METREL 2892 Utilizado en el diagnóstico.</span>
         
@@ -499,7 +567,7 @@ const BodyReport = () => {
                         Reactiva y Aparente;<br/> y la energía total demandada por el sistema.
                     </li>
                 </ul>
-                <h2 className="tittlepage"> 4.0 CRITERIOS DE SEGURIDAD UTILIZADOS.</h2>
+                <h3 className="tittlepage"> 4.0 CRITERIOS DE SEGURIDAD UTILIZADOS.</h3>
                 <p className="paragraph"> Se tuvo en cuenta las respectivas medidas preventivas para realizar la instalación 
                     del analizador <br/> de red, se contó con la presencia de personal técnico especializado entrenado para 
                     este tipo labor. Asimismo, se consideraron las normas y procedimientos de seguridad industrial, con 
@@ -508,10 +576,10 @@ const BodyReport = () => {
                 </p>
             </div>
             <div className="wrapper">
-                <h2 className="tittlepage"> 5.0 PUNTO DE MEDICIÓN.</h2>
+                <h3 className="tittlepage"> 5.0 PUNTO DE MEDICIÓN.</h3>
                 <img className="imgCP" src={puntoConexion} />
-                <h3 className="imgLabel">Imagen 2. Punto de Conexión.</h3>
-                <h2 className="tittlepage"> 6.0 RESULTADO DE LAS MEDIDAS.</h2>
+                <span className="imgLabel">Imagen 2. Punto de Conexión.</span>
+                <h3 className="tittlepage"> 6.0 RESULTADO DE LAS MEDIDAS.</h3>
                 <p className="paragraph"> El presente informe contiene los resultados del diagnóstico de Calidad de Potencia 
                     realizado en la subestación eléctrica principal de: <br/>
                 </p>
@@ -538,7 +606,7 @@ const BodyReport = () => {
                     <td> {fa} </td>
                     </tr>
                 </table>
-                <h5 className="imgLabel">Tabla No.1.</h5>
+                <span className="imgLabel">Tabla No.1.</span>
             </div>
             <div className="wrapper">
                 <p className="paragraph"> Los resultados de las mediciones se presentan a continuación en forma de tablas y 
@@ -658,7 +726,7 @@ const BodyReport = () => {
             </div>
             <div className="wrapper">
                 
-                <h3 className="contentsubtitle"> 6.1 Regulación de tensión.</h3>
+                <h3 className="contentsubtitle"> 6.1 Regulación de Tensión.</h3>
                 <p className="paragraph"> En la Tabla No.3 se aprecia las variaciones de tensión con respecto al valor nominal.</p>
                 <table className="table3">
                     <tr>
@@ -671,9 +739,9 @@ const BodyReport = () => {
                     <tr>
                     <td>Trafo</td>
                     <td>{unom}</td>
-                    <td>9.9</td>
-                    <td>0.2</td>
-                    <td>-6.5</td>
+                    <td>{Vmax}</td>
+                    <td>{Vprom}</td>
+                    <td>{Vmin}</td>
                     </tr>
                 </table>
                 <span className="imgLabel">Tabla No.3. Variaciones de tensión con respecto al valor nominal.</span>
@@ -685,17 +753,13 @@ const BodyReport = () => {
                 <div className="Chart-Voltage">
                     <LineChart2 x1={u1} x2={u2} x3={u3} y={h1} name="CV" title1="u1" title2="u2" title3="u3"/>
                 </div>
-                <h5 className="imgLabel">Comportamiento de la variación de la tensión del sistema.</h5>
-
-
-                
+                <span className="imgLabel">Comportamiento de la variación de la tensión del sistema.</span>
             </div>
             <div className="wrapper">
-                <h3 className="contentsubtitle"> 6.2 Desbalance de tensión.</h3>
-                <h3 className="tableLabel">Tendencia de tensiones.</h3>
+                <h3 className="contentsubtitle"> 6.2 Desbalance de Tensión.</h3>
                 <table className="table3">
                     <tr>
-                    <th colspan="5">Desequilibrio de tensión [%]</th>
+                    <th colspan="5">Desbalance de tensión [%]</th>
                     <th className="table3a">Norma: 2 %</th>
                     </tr>
                     <tr className="table3b">
@@ -717,9 +781,9 @@ const BodyReport = () => {
                 </table>
                 <span className="imgLabel">Tabla No.4. Desbalances de tensión.</span>
                 <div className="Chart-Voltage">
-                    <LineChart2 x1={uper} y={h1} name="CU" title1="u_per" />
+                    <LineChart2 x1={uper} x2={L99_u_per} x3={L95_u_per} x4={L5_u_per} y={h1} name="CU" title1="u_per" title2="u_percentil 99" title3="u_percentil 95" title4="u_percentil 5"/>
                 </div>
-                <h5 className="imgLabel">Tendencia Desequilibrio de tensión.</h5>
+                <span className="imgLabel">Tendencia Desbalance de Tensión.</span>
                 <p className="paragraph"> Otro parámetro de la Calidad de Tensión es el desbalance. Estos se calculan como: 
                     La máxima diferencia entre las magnitudes de cada fase y el promedio de las fases, dividida sobre el 
                     promedio y expresada en tanto por cien. La tabla No. 4 presenta el resumen de estos desbalances 
@@ -732,11 +796,10 @@ const BodyReport = () => {
                 <ul className="paragraph">
                     <li> Si se encuentra dentro de los parametros recomendado por la Norma</li>
                 </ul>
-                <h3 className="contentsubtitle"> 6.3 Desequilibrio de corriente.</h3>
-                <h3 className="tableLabel">Tendencia de corriente.</h3>
+                <h3 className="contentsubtitle"> 6.3 Desbalance de Corriente.</h3>
                 <table className="table3">
                     <tr>
-                    <th colspan="5">Desequilibrio de corrientes [%]</th>
+                    <th colspan="5">Desbalance de Corrientes [%]</th>
                     <th className="table3a">Norma: 10 %</th>
                     </tr>
                     <tr className="table3b">
@@ -750,36 +813,36 @@ const BodyReport = () => {
                     <tr className="table3c">
                     <td>{i_percent_max}</td>
                     <td>{i_percent_min}</td>
-                    <td>{i_percent_prom}</td>
+                    <td>{iper_prom}</td>
                     <td>{i_percent_percentil_99}</td>
                     <td>{i_percent_percentil_95}</td>
                     <td>{i_percent_percentil_5}</td>
                     </tr>
                 </table>
-                <span className="imgLabel">Tabla No.5. Desbalances de corrientes.</span>
-                <p className="paragraph"> El desequilibrio promedio de la corriente es de 40.52 <br/>
+                <span className="imgLabel">Tabla No.5. Desbalances de Corrientes.</span>
+                <p className="paragraph"> El desbalance promedio de la corriente es de {iper_prom} <br/>
                     Supera el límite establecido del (10%) que indica la Norma IEEE 1159-92. (No Cumple).
                 </p>
                 <div className="Chart-Voltage">
-                    <LineChart2 x1={iper} y={h1} name="CDI" title1="D_i1" />
+                    <LineChart2 x1={iper} x2={L99_i_per} x3={L95_i_per} x4={L5_i_per} y={h1} name="CDI" title1="i_per" title2="i_percentil 99" title3="i_percentil 95" title4="i_percentil 5"/>
                 </div>
-                <h5 className="imgLabel">Tendencia Desequilibrio de corriente.</h5>
+                <span className="imgLabel">Tendencia Desbalance de Corriente.</span>
             </div>
             <div className="wrapper">
-                <h3 className="contentsubtitle">6.3.1	Gráfico de corrientes.</h3>
+                <h3 className="contentsubtitle">6.3.1	Gráfico de Corrientes.</h3>
                 <p className="paragraph">CORRIENTE L1</p>
                 <div className="Chart-Voltage">
-                    <LineChart2 x1={i1} y={h1} name="I1" title1="i1" />
+                    <LineChart2 x1={i1} x2={L99_I1} x3={L95_I1} x4={L5_I1} y={h1} name="I1" title1="i1" title2="i1_percentil 99" title3="i1_percentil 95" title4="i1_percentil 5"/>
                 </div>
                 <p className="paragraph">CORRIENTE L2</p>
                 <div className="Chart-Voltage">
-                    <LineChart2 x1={i2} y={h1} name="I2" title1="i2" />
+                    <LineChart2 x1={i2} x2={L99_I2} x3={L95_I2} x4={L5_I2} y={h1} name="I2" title1="i2" title2="i2_percentil 99" title3="i2_percentil 95" title4="i2_percentil 5"/>
                 </div>
             </div>
             <div className="wrapper">
                 <p className="paragraph">CORRIENTE L3</p>
                 <div className="Chart-Voltage">
-                    <LineChart2 x1={i3} y={h1} name="I3" title1="i3" />
+                    <LineChart2 x1={i3} x2={L99_I3} x3={L95_I3} x4={L5_I3} y={h1} name="I3" title1="i3" title2="i3_percentil 99" title3="i3_percentil 95" title4="i3_percentil 5"/>
                 </div>
                 <p className="paragraph">CORRIENTE N</p>
                 <div className="Chart-Voltage">
@@ -876,8 +939,6 @@ const BodyReport = () => {
                     del cliente. En este caso es la señal que proviene de la Subestación Eléctrica o 
                     punto Alimentador del Tablero en cuestión.
                 </p>
-
-
             </div>
             <div className="wrapper">
                 <p className="paragraph"> Los armónicos son la componente 
@@ -906,16 +967,16 @@ const BodyReport = () => {
                         un sistema de atenuación son necesarios.
                     </li>
                 </ul>
+                <p className="paragraph"> La norma IEEE Std-519 limita al 5% el nivel de distorsión armónica en sistemas de
+                    distribución con tensiones inferiores a 69kV. <br/> El THD registrado en tensión durante los períodos de medición:
+                    No superaron el máximo permitido por la norma en valor promedio.    
+                </p>
             </div>
             <div className="wrapper">
                 <h3 className="contentsubtitle">6.3.3	Distorsiones en Voltaje (TDDV).</h3>
                 <div className="Chart-Voltage">
                     <LineChart2 x1={D_u1} x2={D_u2} x3={D_u3} y={h1} name="DU" title1="D_u1" title2="D_u2" title3="D_u3"/>
                 </div>
-                <p className="paragraph"> La norma IEEE Std-519 limita al 5% el nivel de distorsión armónica en sistemas de
-                    distribución con tensiones inferiores a 69kV. <br/> El THD registrado en tensión durante los períodos de medición:
-                    No superaron el máximo permitido por la norma en valor promedio.    
-                </p>
                 <h3 className="contentsubtitle">6.3.4	Distorsiones en Corrientes (TDDI).</h3>
                 <table className="table3">
                     <tr>
@@ -1012,7 +1073,7 @@ const BodyReport = () => {
             <div className="wrapper">
                 <h3 className="contentsubtitle">6.4	Factor de Potencia.</h3>
                 <div className="Chart-Voltage">
-                    <LineChart2 x2={pf_i} y={h1} name="PF" title2="pf_i" />
+                    <LineChart2 x1={pf_i} x2={L99_fp} x3={L95_fp} x4={L5_fp} y={h1} name="PF" title1="pf_i" title2="fp_percentil 99" title3="fp_percentil 95" title4="fp_percentil 5"/>
                 </div>
                 <p className="paragraph"> El factor de potencia es un parámetro que indica el consumo
                     de energía reactiva, la cual se penaliza económicamente cuando sobrepasa el 
@@ -1044,7 +1105,7 @@ const BodyReport = () => {
                 </table>
             </div>
             <div className="wrapper">
-                <h3 className="paragraph">6.5 Frecuencia.</h3>
+                <h3 className="contentsubtitle">6.5 Frecuencia.</h3>
                 <table className="table3">
                     <tr>
                     <th colspan="4">Frecuencia del Sistema (Hz)</th>
@@ -1083,17 +1144,17 @@ const BodyReport = () => {
                 </div>
             </div>
             <div className="wrapper">
-                <h3 className="paragraph">6.6 Potencias.</h3>
+                <h3 className="contentsubtitle">6.6 Potencias.</h3>
                 <ul className="paragraph">
                     <li>Potencia Activa, Reactiva y Aparente</li>
                 </ul>
                 <h3 className="contentsubtitle">Potencia Activa (kW)</h3>
                 <div className="Chart-Voltage">
-                    <LineChart2 x2={pa} y={h1} name="activa" title2="Potencia Activa [kW]" />
+                    <LineChart2 x1={pa} x2={L99_pa} x3={L95_pa} x4={L5_pa} y={h1} name="activa" title1="Potencia Activa [kW]" title2="PA_percentil 99" title3="PA_percentil 95" title4="PA_percentil 5"/>
                 </div>
                 <h3 className="contentsubtitle">Potencia Reactiva (kvar)</h3>
                 <div className="Chart-Voltage">
-                    <LineChart2 x2={pr} y={h1} name="reactiva" title2="Potencia Reactiva [Kvar]" />
+                    <LineChart2 x1={pr} x2={L99_pr} x3={L95_pr} x4={L5_pr} y={h1} name="reactiva" title1="Potencia Reactiva [Kvar]" title2="PR_percentil 99" title3="PR_percentil 95" title4="PR_percentil 5"/>
                 </div>
             </div>
             <div className="wrapper">
@@ -1161,12 +1222,12 @@ const BodyReport = () => {
                     <td>DP</td>
                     </tr>
                 </table>
+            </div>
+            <div className="wrapper">
                 <p className="paragraph"> Los límites establecidos en la Resolución CREG 108 de 1997;
                     la cual dicta que la reactiva no debe superar el 50% de la activa.
                 </p>
-            </div>
-            <div className="wrapper">
-                <h2 className="tittlepage">7. CARGABILIDAD.</h2>
+                <h3 className="tittlepage">7. CARGABILIDAD.</h3>
                 <img className="imgDVoltage" src={variacionTension} />
                 <p className="paragraph"> La cargabilidad promedio es igulal a: 3.64 %.
                 </p>
@@ -1198,7 +1259,7 @@ const BodyReport = () => {
                 </table>
             </div>
             <div className="wrapper">
-                <h2 className="tittlepage">8. CONCLUSIONES</h2>
+                <h3 className="tittlepage">8. CONCLUSIONES</h3>
                 <div className="CONCLUSIONES"></div>
             </div>
         </div>

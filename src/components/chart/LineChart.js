@@ -46,7 +46,7 @@ const LineChart = () => {
             {
                 label: 'u1',
                 // data: [5, 6, 3, 4, 2, 5, 1],
-                data: (u1) ,
+                data: (u1),
                 backgroundColor: 'aqua',
                 borderColor: 'black',
                 borderWidth: 1.0,
