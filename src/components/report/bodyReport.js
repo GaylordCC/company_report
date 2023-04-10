@@ -225,7 +225,13 @@ const BodyReport = () => {
     const [thd_u_3_percentil_99, setThd_u_3_percentil_99] = React.useState("");
     const [thd_u_3_percentil_95, setThd_u_3_percentil_95] = React.useState("");
     const [thd_u_3_percentil_5, setThd_u_3_percentil_5] = React.useState("");
+
     const [t_thd_u_99, setT_thd_u_99] = React.useState("");
+    const [t_thd_u_95, setT_thd_u_95] = React.useState("");
+    const [t_thd_u_5, setT_thd_u_5] = React.useState("");
+    const [t_thd_i_99, setT_thd_i_99] = React.useState("");
+    const [t_thd_i_95, setT_thd_i_95] = React.useState("");
+    const [t_thd_i_5, setT_thd_i_5] = React.useState("");
     
 
     const M_thd_u_max = new Array(thd_u_1_max, thd_u_2_max, thd_u_3_max);
@@ -289,8 +295,8 @@ const BodyReport = () => {
     const M_thd_iprom = M_i_av.toFixed(2);
 
     console.log(t_thd_u_99)
-    console.log(M_thd_imin)
-    console.log(M_thd_iprom)
+    console.log(t_thd_u_95)
+    console.log(t_thd_u_5)
     console.log("WWWMMMMMM")
 
 
@@ -414,7 +420,13 @@ const BodyReport = () => {
             setThd_u_3_percentil_99(data.indic.thd_u_3_percentil_99)
             setThd_u_3_percentil_95(data.indic.thd_u_3_percentil_95)
             setThd_u_3_percentil_5(data.indic.thd_u_3_percentil_5)
+
             setT_thd_u_99(data.indic.t_thd_u_99)
+            setT_thd_u_95(data.indic.t_thd_u_95)
+            setT_thd_u_5(data.indic.t_thd_u_5)
+            setT_thd_i_99(data.indic.t_thd_i_99)
+            setT_thd_i_95(data.indic.t_thd_i_95)
+            setT_thd_i_5(data.indic.t_thd_i_5)
             
             setThd_i_1_min(data.indic.thd_i_1_min)
             setThd_i_1_max(data.indic.thd_i_1_max)
@@ -907,7 +919,7 @@ const BodyReport = () => {
                     <td>Máximo</td>
                     <td>{thd_u_3_max}</td>
                     <td>Máximo</td>
-                    <td>40,52</td>
+                    <td>{M_thd_umax}</td>
                     </tr>
                     <tr>
                     <td>Mínimo</td>
@@ -917,7 +929,7 @@ const BodyReport = () => {
                     <td>Mínimo</td>
                     <td>{thd_u_3_min}</td>
                     <td>Mínimo</td>
-                    <td>40,52</td>
+                    <td>{M_thd_umin}</td>
                     </tr>
                     <tr>
                     <td>Promedio</td>
@@ -927,7 +939,7 @@ const BodyReport = () => {
                     <td>Promedio</td>
                     <td>{DT3_prom}</td>
                     <td>Promedio</td>
-                    <td>40,52</td>
+                    <td>{M_thd_uprom}</td>
                     </tr>  
                     <tr>
                     <td>Percentil 99</td>
@@ -937,7 +949,7 @@ const BodyReport = () => {
                     <td>Percentil 99</td>
                     <td>{thd_u_3_percentil_99}</td>
                     <td>Percentil 99</td>
-                    <td>40,52</td>
+                    <td>{t_thd_i_99}</td>
                     </tr>  
                     <tr>
                     <td>Percentil 95</td>
@@ -947,7 +959,7 @@ const BodyReport = () => {
                     <td>Percentil 95</td>
                     <td>{thd_u_3_percentil_95}</td>
                     <td>Percentil 95</td>
-                    <td>40,52</td>
+                    <td>{t_thd_i_95}</td>
                     </tr>  
                     <tr>
                     <td>Percentil 5</td>
@@ -957,7 +969,7 @@ const BodyReport = () => {
                     <td>Percentil 5</td>
                     <td>{thd_u_3_percentil_5}</td>
                     <td>Percentil 5</td>
-                    <td>40,52</td>
+                    <td>{t_thd_i_5}</td>
                     </tr>  
                 </table>
                 <span className="imgLabel">Tabla No. 6. Distorsión Armónica.</span>
@@ -1034,7 +1046,7 @@ const BodyReport = () => {
                     <td>Máximo</td>
                     <td>{thd_i_3_max}</td>
                     <td>Máximo</td>
-                    <td>40,52</td>
+                    <td>{M_thd_imax}</td>
                     </tr>
                     <tr>
                     <td>Mínimo</td>
@@ -1044,7 +1056,7 @@ const BodyReport = () => {
                     <td>Mínimo</td>
                     <td>{thd_i_3_min}</td>
                     <td>Mínimo</td>
-                    <td>40,52</td>
+                    <td>{M_thd_imin}</td>
                     </tr>
                     <tr>
                     <td>Promedio</td>
@@ -1054,7 +1066,7 @@ const BodyReport = () => {
                     <td>Promedio</td>
                     <td>{DI3_prom}</td>
                     <td>Promedio</td>
-                    <td>40,52</td>
+                    <td>{M_thd_iprom}</td>
                     </tr>  
                     <tr>
                     <td>Percentil 99</td>
@@ -1064,7 +1076,7 @@ const BodyReport = () => {
                     <td>Percentil 99</td>
                     <td>{thd_i_3_percentil_99}</td>
                     <td>Percentil 99</td>
-                    <td>40,52</td>
+                    <td>{t_thd_i_99}</td>
                     </tr>  
                     <tr>
                     <td>Percentil 95</td>
@@ -1074,7 +1086,7 @@ const BodyReport = () => {
                     <td>Percentil 95</td>
                     <td>{thd_i_3_percentil_95}</td>
                     <td>Percentil 95</td>
-                    <td>40,52</td>
+                    <td>{t_thd_i_95}</td>
                     </tr>  
                     <tr>
                     <td>Percentil 5</td>
@@ -1084,7 +1096,7 @@ const BodyReport = () => {
                     <td>Percentil 5</td>
                     <td>{thd_i_3_percentil_5}</td>
                     <td>Percentil 5</td>
-                    <td>40,52</td>
+                    <td>{t_thd_i_5}</td>
                     </tr>  
                 </table>
             </div>
