@@ -64,11 +64,6 @@ const BodyReport = () => {
     const average = sum / Mu.length;
     const u_promedio = average.toFixed(2);
 
-    // console.log(Max_u)
-    // console.log(Min_u)
-    // console.log(u_promedio)
-    // console.log("CHINAAAAAA")
-
     const [I_1_min, setI_1_min] = React.useState("");
     const [I_1_max, setI_1_max] = React.useState("");
     const [I_1_prom, setI_1_prom] = React.useState("");
@@ -229,8 +224,29 @@ const BodyReport = () => {
     let DT3_prom = n13pro.toFixed(2);
     const [thd_u_3_percentil_99, setThd_u_3_percentil_99] = React.useState("");
     const [thd_u_3_percentil_95, setThd_u_3_percentil_95] = React.useState("");
-    const [thd_u_3_percentil_5, sethd_u_3_percentil_5] = React.useState("");
+    const [thd_u_3_percentil_5, setThd_u_3_percentil_5] = React.useState("");
+    const [t_thd_u_99, setT_thd_u_99] = React.useState("");
     
+
+    const M_thd_u_max = new Array(thd_u_1_max, thd_u_2_max, thd_u_3_max);
+    const M_thd_umax = Math.max(...M_thd_u_max);
+    const M_thd_u_min = new Array(thd_u_1_min, thd_u_2_min, thd_u_3_min);
+    const M_thd_umin = Math.min(...M_thd_u_min);
+    const M_thd_u_prom = new Array(D_u1, D_u2, D_u3);
+    const M_thd_u_pr = M_thd_u_prom.map(str => {
+        return parseInt(str, 10);
+      });
+    var sum_1 = 0;
+    M_thd_u_pr.forEach(function(num_1) { sum_1 += num_1 });
+    const M_u_av = sum_1 / M_thd_u_pr.length;
+    const M_thd_uprom = M_u_av.toFixed(2);
+
+
+    console.log(M_thd_u_pr)
+    console.log(M_thd_umin)
+    console.log(M_thd_uprom)
+    console.log("FORMULA 1111111")
+
     const [thd_i_1_min, setThd_i_1_min] = React.useState("");
     const [thd_i_1_max, setThd_i_1_max] = React.useState("");
     const [thd_i_1_prom, setThd_i_1_prom] = React.useState("");
@@ -257,6 +273,26 @@ const BodyReport = () => {
     const [thd_i_3_percentil_99, setThd_i_3_percentil_99] = React.useState("");
     const [thd_i_3_percentil_95, setThd_i_3_percentil_95] = React.useState("");
     const [thd_i_3_percentil_5, setThd_i_3_percentil_5] = React.useState("");
+
+
+    const M_thd_i_max = new Array(thd_i_1_max, thd_i_2_max, thd_i_3_max);
+    const M_thd_imax = Math.max(...M_thd_i_max);
+    const M_thd_i_min = new Array(thd_i_1_min, thd_i_2_min, thd_i_3_min);
+    const M_thd_imin = Math.min(...M_thd_i_min);
+    const M_thd_i_prom = new Array(D_i1, D_i2, D_i3);
+    const M_thd_i_pr = M_thd_i_prom.map(str => {
+        return parseInt(str, 10);
+      });
+    var sum_2 = 0;
+    M_thd_i_pr.forEach(function(num_2) { sum_2 += num_2 });
+    const M_i_av = sum_2 / M_thd_i_pr.length;
+    const M_thd_iprom = M_i_av.toFixed(2);
+
+    console.log(t_thd_u_99)
+    console.log(M_thd_imin)
+    console.log(M_thd_iprom)
+    console.log("WWWMMMMMM")
+
 
     const fetchChart = async (id) =>{
     const { succes, data } = await getReport(id);
@@ -377,7 +413,8 @@ const BodyReport = () => {
             setThd_u_3_prom(data.indic.thd_u_3_prom)
             setThd_u_3_percentil_99(data.indic.thd_u_3_percentil_99)
             setThd_u_3_percentil_95(data.indic.thd_u_3_percentil_95)
-            sethd_u_3_percentil_5(data.indic.thd_u_3_percentil_5)
+            setThd_u_3_percentil_5(data.indic.thd_u_3_percentil_5)
+            setT_thd_u_99(data.indic.t_thd_u_99)
             
             setThd_i_1_min(data.indic.thd_i_1_min)
             setThd_i_1_max(data.indic.thd_i_1_max)
