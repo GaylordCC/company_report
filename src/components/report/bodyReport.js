@@ -31,6 +31,8 @@ const BodyReport = () => {
     const [pf_i, setPf_i] = React.useState("");
     const [pa, setPa] = React.useState("");
     const [pr, setPr] = React.useState("");
+    const [papa, setPapa] = React.useState("");
+
     const [eqm, setEqm] = React.useState("");
     const [ct, setCt] = React.useState("");
     const [ind, setInd] = React.useState("");
@@ -156,7 +158,17 @@ const BodyReport = () => {
     var L99_pr = new Array(counter).fill(q_tot_ind_percentil_99);
     var L95_pr = new Array(counter).fill(q_tot_ind_percentil_95);
     var L5_pr = new Array(counter).fill(q_tot_ind_percentil_5);
+
+    // const [se_fund_tot_percentil_99, setSe_fund_tot_percentil_99] = React.useState("");
+    // const [se_fund_tot_percentil_95, setSe_fund_tot_percentil_95] = React.useState("");
+    // const [se_fund_tot_percentil_5, setSe_fund_tot_percentil_5] = React.useState("");
+    // var counter = papa.length;
+    // var L99_papa = new Array(counter).fill(se_fund_tot_percentil_99);
+    // var L95_papa = new Array(counter).fill(se_fund_tot_percentil_95);
+    // var L5_papa = new Array(counter).fill(se_fund_tot_percentil_5);
+
     
+    const [pnom, setPnom] = React.useState("");
     const [unom, setUnom] = React.useState("");
 
     var V_max = Math.abs(((unom[0] - Max_u) / unom[0])*100);
@@ -325,6 +337,7 @@ const BodyReport = () => {
             setPf_i(data.pf_i)
             setPa(data.pa)
             setPr(data.pr)
+            setPapa(data.papa)
             setEqm(data.eqm)
             setCt(data.ct)
             setInd(data.ind)
@@ -384,7 +397,13 @@ const BodyReport = () => {
             setQ_tot_ind_percentil_99(data.indic.q_tot_ind_percentil_99)
             setQ_tot_ind_percentil_95(data.indic.q_tot_ind_percentil_95)
             setQ_tot_ind_percentil_5(data.indic.q_tot_ind_percentil_5)
+            
+            // setSe_fund_tot_percentil_99(data.indic.se_fund_tot_percentil_99)
+            // setSe_fund_tot_percentil_95(data.indic.se_fund_tot_percentil_95)
+            // setSe_fund_tot_percentil_5(data.indic.se_fund_tot_percentil_5)
+
             setUnom(data.unom)
+            setPnom(data.pnom)
 
             setU_percent_min(data.indic.u_percent_min)
             setU_percent_max(data.indic.u_percent_max)
@@ -1207,8 +1226,10 @@ const BodyReport = () => {
                 </div>
             </div>
             <div className="wrapper">
-                <h3 className="paragraph">Potencia Aparente Se (KVA)</h3>
-                <img className="imgDVoltage" src={variacionTension} />
+                <h3 className="contentsubtitle">Potencia Aparente Se (KVA)</h3>
+                {/* <div className="Chart-Voltage">
+                    <LineChart2 x1={papa} x2={L99_papa} x3={L95_papa} x4={L5_papa} y={h1} name="aparente" title1="Potencia Aparente [Kva]" title2="P_apa_percentil 99" title3="P_apa_percentil 95" title4="P_apa_percentil 5"/>
+                </div> */}
                 <table className="table3">
                     <tr className="table3b">
                     <th>Maxima Potencia [Kvar]</th>
