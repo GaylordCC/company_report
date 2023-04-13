@@ -81,6 +81,18 @@ const BodyReport = () => {
     const [I_3_prom, setI_3_prom] = React.useState("");
     var n6pro = Number(I_3_prom);
     let prom_I3 = n6pro.toFixed(2);
+
+    const [f_min, setF_min] = React.useState("");
+    const [f_max, setF_max] = React.useState("");
+    const [f_prom, setF_prom] = React.useState("");
+    var n17pro = Number(f_prom);
+    let prom_f = n17pro.toFixed(2);
+      console.log(f_min)
+      console.log(f_max)
+      console.log(prom_f)
+      console.log("FRECUENCIAAAAA")
+
+
     const [p_fetot_ind_min, setP_fetot_ind_min] = React.useState("");
     const [p_fetot_ind_max, setP_fetot_ind_max] = React.useState("");
     var n7pro = Number(p_fetot_ind_max);
@@ -361,6 +373,9 @@ const BodyReport = () => {
             setI_3_min(data.indic.I_3_min)
             setI_3_max(data.indic.I_3_max)
             setI_3_prom(data.indic.I_3_prom)
+            setF_min(data.indic.f_min)
+            setF_max(data.indic.f_max)
+            setF_prom(data.indic.f_prom)
             setP_fetot_ind_min(data.indic.p_fetot_ind_min)
             setP_fetot_ind_max(data.indic.p_fetot_ind_max)
             setP_fetot_ind_prom(data.indic.p_fetot_ind_prom)
@@ -1179,19 +1194,14 @@ const BodyReport = () => {
                     <th colspan="4">Frecuencia del Sistema (Hz)</th>
                     </tr>
                     <tr className="table3b">
-                    <th>Limites</th>
-                    <th>Total</th>
-                    <th>Medida</th>
+                    <th>Máximo</th>
+                    <th>Mínimo</th>
+                    <th>Promedio</th>
                     </tr>
                     <tr className="table3c">
-                    <td>Limite Superior</td>
-                    <td>3,66</td>
-                    <td>44,36</td>
-                    </tr>
-                    <tr className="table3c">
-                    <td>Limite Inferior</td>
-                    <td>3,66</td>
-                    <td>44,36</td>
+                    <td>{f_max}</td>
+                    <td>{f_min}</td>
+                    <td>{prom_f}</td>
                     </tr>
                 </table>
                 <p className="paragraph"> De acuerdo con la Resolución CREG No. 025 de 1995, “La 

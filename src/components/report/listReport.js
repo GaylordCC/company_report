@@ -39,7 +39,7 @@ const ListReport = () => {
     };
 
     const handleGenerate = (event, param) => {
-        window.location.href = 'body_report';
+        window.location.href = '/body_report/'+param.id;
     };
 
     const columns = [
