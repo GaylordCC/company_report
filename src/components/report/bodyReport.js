@@ -87,11 +87,6 @@ const BodyReport = () => {
     const [f_prom, setF_prom] = React.useState("");
     var n17pro = Number(f_prom);
     let prom_f = n17pro.toFixed(2);
-      console.log(f_min)
-      console.log(f_max)
-      console.log(prom_f)
-      console.log("FRECUENCIAAAAA")
-
 
     const [p_fetot_ind_min, setP_fetot_ind_min] = React.useState("");
     const [p_fetot_ind_max, setP_fetot_ind_max] = React.useState("");
@@ -182,6 +177,35 @@ const BodyReport = () => {
     
     const [pnom, setPnom] = React.useState("");
     const [unom, setUnom] = React.useState("");
+    const [cgb, setCgb] = React.useState([]);
+    const carg_min = Math.min(...cgb)
+    const Pnom_min = (carg_min*pnom) / 100
+
+    const carg_max = Math.max(...cgb)
+    const Pnom_max = carg_max*pnom / 100
+
+
+    const Pro_cgb = cgb.map(str => {
+        return parseInt(str, 10);
+    });
+
+    var sum_av = 0;
+    cgb.forEach(function(num_av) { sum_av += num_av });
+    const av_car = sum_av / cgb.length;
+    const promedio_C = av_car.toFixed(7);
+
+    // console.log(sum_av)
+    // console.log(av_car)
+    console.log(Pro_cgb)
+    // console.log(Pro_cgb)
+    // console.log(car_g)
+    console.log("SABADOSFELICESSSSSS")
+
+    var coun_p = cgb.length;
+    var L_Pnom = new Array(coun_p).fill(pnom[0]);
+    // console.log(carg_min)
+    // console.log(carg_max)
+    // console.log("EL DESAFIO LA BOXXXX")
 
     var V_max = Math.abs(((unom[0] - Max_u) / unom[0])*100);
     var Vmax = V_max.toFixed(2);
@@ -191,13 +215,6 @@ const BodyReport = () => {
     
     var V_prom = Math.abs(((unom[0] - u_promedio) / unom[0])*100);
     var Vprom = V_prom.toFixed(2);
-
-    console.log(Vmax)
-    console.log(Vmin)
-    console.log(Vprom)
-    console.log(Min_u)
-    console.log(u_promedio)
-    console.log("CHINAAAAAA")
 
     const [u_percent_min, setU_percent_min] = React.useState("");
     const [u_percent_max, setU_percent_max] = React.useState("");
@@ -257,7 +274,6 @@ const BodyReport = () => {
     const [t_thd_i_95, setT_thd_i_95] = React.useState("");
     const [t_thd_i_5, setT_thd_i_5] = React.useState("");
     
-
     const M_thd_u_max = new Array(thd_u_1_max, thd_u_2_max, thd_u_3_max);
     const M_thd_umax = Math.max(...M_thd_u_max);
     const M_thd_u_min = new Array(thd_u_1_min, thd_u_2_min, thd_u_3_min);
@@ -270,12 +286,6 @@ const BodyReport = () => {
     M_thd_u_pr.forEach(function(num_1) { sum_1 += num_1 });
     const M_u_av = sum_1 / M_thd_u_pr.length;
     const M_thd_uprom = M_u_av.toFixed(2);
-
-
-    console.log(M_thd_u_pr)
-    console.log(M_thd_umin)
-    console.log(M_thd_uprom)
-    console.log("FORMULA 1111111")
 
     const [thd_i_1_min, setThd_i_1_min] = React.useState("");
     const [thd_i_1_max, setThd_i_1_max] = React.useState("");
@@ -304,7 +314,6 @@ const BodyReport = () => {
     const [thd_i_3_percentil_95, setThd_i_3_percentil_95] = React.useState("");
     const [thd_i_3_percentil_5, setThd_i_3_percentil_5] = React.useState("");
 
-
     const M_thd_i_max = new Array(thd_i_1_max, thd_i_2_max, thd_i_3_max);
     const M_thd_imax = Math.max(...M_thd_i_max);
     const M_thd_i_min = new Array(thd_i_1_min, thd_i_2_min, thd_i_3_min);
@@ -317,11 +326,6 @@ const BodyReport = () => {
     M_thd_i_pr.forEach(function(num_2) { sum_2 += num_2 });
     const M_i_av = sum_2 / M_thd_i_pr.length;
     const M_thd_iprom = M_i_av.toFixed(2);
-
-    console.log(t_thd_u_99)
-    console.log(t_thd_u_95)
-    console.log(t_thd_u_5)
-    console.log("WWWMMMMMM")
 
 
     const fetchChart = async (id) =>{
@@ -419,6 +423,7 @@ const BodyReport = () => {
 
             setUnom(data.unom)
             setPnom(data.pnom)
+            setCgb(data.cgb)
 
             setU_percent_min(data.indic.u_percent_min)
             setU_percent_max(data.indic.u_percent_max)
@@ -1308,7 +1313,9 @@ const BodyReport = () => {
                     la cual dicta que la reactiva no debe superar el 50% de la activa.
                 </p>
                 <h3 className="tittlepage">7. CARGABILIDAD.</h3>
-                <img className="imgDVoltage" src={variacionTension} />
+                <div className="Chart-Voltage">
+                    <LineChart2 x1={cgb} x2={L_Pnom} y={h1} name="cargabilidad" title1="Cargabilidad" title2="Potencia Nominal [KVA]" />
+                </div>
                 <p className="paragraph"> La cargabilidad promedio es igulal a: 3.64 %.
                 </p>
                 <table className="table3">
@@ -1317,23 +1324,23 @@ const BodyReport = () => {
                     </tr>
                     <tr className="table3c">
                         <td>Máximo</td>
-                        <td>3,66</td>
+                        <td>{carg_max}</td>
                         <td>%</td>
-                        <td>44,36</td>
+                        <td>{Pnom_max}</td>
                         <td>kVa</td>
                     </tr>
                     <tr className="table3c">
                         <td>Mínimo</td>
-                        <td>3,66</td>
+                        <td>{carg_min}</td>
                         <td>%</td>
-                        <td>44,36</td>
+                        <td>{Pnom_min}</td>
                         <td>kVa</td>
                     </tr>
                     <tr className="table3c">
                     <td>Promedio</td>
-                    <td>3,66</td>
+                    <td>DP</td>
                     <td>%</td>
-                    <td>44,36</td>
+                    <td>DP</td>
                     <td>kVa</td>
                     </tr>            
                 </table>
