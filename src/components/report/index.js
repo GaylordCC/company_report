@@ -11,7 +11,7 @@ import { DesktopDateTimePicker } from '@mui/x-date-pickers/DesktopDateTimePicker
 import Stack from '@mui/system/Stack';
 import './__style__/index.css';
 import Autocomplete from '@mui/material/Autocomplete';
-import { createReport, updateReport, getReport, sendDetailReport } from '../../controllers/reports';
+import { createReport, updateReport, getReport, sendDetailReport, DeleteDetailReport } from '../../controllers/reports';
 
 import { visitList } from '../../controllers/visits';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -50,7 +50,8 @@ const Report = () => {
     const [connectionPointPhotoFile, setConnectionPointPhotoFile] = React.useState(null);
     const [csvFile, setCsvFile] = React.useState(null);
     const [disable, setDisable] = React.useState(false);
-
+    const [isDisable, setisDisable] = React.useState(false);
+    const [hasDetail, setHasDetail] = React.useState(true);
 
     const handleCreateReport = async() => {
 
@@ -159,12 +160,24 @@ const Report = () => {
                 alert(" No fue posible enviar el archivo" + errors)
             }
         }else {
-            setDisable(true);
+            setDisable(false);
         }
     }
-    console.log(csvFile)
-    console.log(id)
 
+    const handleDeleteDetailReport = async() => {
+        if (id) {
+            setisDisable(false);
+            const { succes, data, errors } = await DeleteDetailReport(id);
+            setisDisable(true);
+            if (succes) {
+                alert("El reporte se elimino correctamente de la base de datos");
+            }else {
+                alert(" No fue posible eliminar el reporte almacenado en la base de datos" + errors)
+            }
+        }else {
+            setisDisable(true);
+        }
+    }
 
     return (
         <div className='root-report' >
@@ -410,6 +423,15 @@ const Report = () => {
                                                     Subir Archivo
                                             </Button>
                                     </div>
+                                </div>
+                            )
+                        }
+                        {
+                            id && hasDetail && (
+                                <div className="El_Rbd_button">
+                                        <Button disabled={isDisable} variant="contained" color="error" onClick={handleDeleteDetailReport}>
+                                                Eliminar Archivo
+                                        </Button>
                                 </div>
                             )
                         }

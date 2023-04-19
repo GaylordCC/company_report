@@ -53,3 +53,7 @@
     align-items: end;
     flex-direction: column;
 }
+
+.El_Rbd_button {
+    margin-left: 30px;
+}

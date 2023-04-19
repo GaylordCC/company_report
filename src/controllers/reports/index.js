@@ -204,3 +204,22 @@ export const sendDetailReport = async(id, params) => {
         }
     }
 }
+
+export const DeleteDetailReport = async(id) => {
+    try {
+
+        const response = await httpRequest ({
+            method: "DELETE",
+            url: `/detail_reports/${id}`,
+        })
+
+        return {
+            succes: true,
+        }
+    }catch (error) {
+        return {
+            succes: false,
+            errors: error
+        }
+    }
+}
