@@ -134,6 +134,7 @@ export const updateReport = async(id, params) => {
         formData.append('report[company_photo_file]', params.companyPhotoFile);
         formData.append('report[connection_point_photo_file]', params.connectionPointPhotoFile);
 
+
         const response = await httpRequest ({
             method: "PUT",
             url: `/reports/${id}`,

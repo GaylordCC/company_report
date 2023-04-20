@@ -4,7 +4,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 500px;
+    margin-top: 600px;
 }
 
 .form-wrapper {
@@ -55,5 +55,8 @@
 }
 
 .El_Rbd_button {
-    margin-left: 30px;
+    /* margin-left: 30px; */
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }

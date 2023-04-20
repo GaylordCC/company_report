@@ -51,17 +51,18 @@ const Report = () => {
     const [csvFile, setCsvFile] = React.useState(null);
     const [disable, setDisable] = React.useState(false);
     const [isDisable, setisDisable] = React.useState(false);
-    const [hasDetail, setHasDetail] = React.useState(true);
+    const [hasDetail, setHasDetail] = React.useState("");
+    console.log(hasDetail)
+    console.log("CHINAAAAAA")
 
     const handleCreateReport = async() => {
-
         if (id) {
             const { succes, data, errors } = await updateReport(id, {visitId: visitId, report_title: report_title, report_subtitle: report_subtitle, 
                 connection_point: connection_point, initial_day: initial_day, final_day: final_day, total_days: total_days, 
                 author: author, reviewer: reviewer, client_responsible: client_responsible, equipment: equipment, 
                 equipment_model: equipment_model, working_voltage: working_voltage, connection_type: connection_type, 
                 phase_number: phase_number, total_power: total_power, city: city, department: department, year: year,
-                companyPhotoFile: companyPhotoFile, connectionPointPhotoFile: connectionPointPhotoFile 
+                companyPhotoFile: companyPhotoFile, connectionPointPhotoFile: connectionPointPhotoFile
             });
 
             if (succes) {
@@ -70,7 +71,6 @@ const Report = () => {
             }else {
                 alert(" :(" + errors)
             }
-
         }else {
             const { succes, data, errors } = await createReport({
                 visitId: visitId, report_title: report_title, report_subtitle: report_subtitle, 
@@ -88,10 +88,10 @@ const Report = () => {
             }            
         }
     }
+console.log("JAPONNNNNNNNNNN")
 
     const fetchVisitList = async() => {
         const response = await visitList();
-        console.log(visitList)
         var array = [];
         if (response.succes) {
             response.data.forEach(element => {
@@ -111,27 +111,27 @@ const Report = () => {
     const fetchReport = async (id) => {
         const {succes, data} = await getReport(id);
         if (succes) {
-            console.log(data)
-            console.log("***********************")
-            setVisitId(data.visit_id)
-            setReport_title(data.report_title)
-            setReport_subtitle(data.report_subtitle)
-            setConnection_point(data.connection_point)
-            setInitial_day(data.initial_day)
-            setFinal_day(data.final_day)
-            setTotal_days(data.total_days_service)
-            setAuthor(data.author)
-            setReviewer(data.reviewer)
-            setClient_responsible(data.client_responsible)
-            setEquipment(data.equipment)
-            setEquipment_model(data.equipment_model)
-            setWorking_voltage(data.working_voltage)
-            setConnection_type(data.connection_type)
-            setPhase_number(data.phase_number)
-            setTotal_power(data.total_power)
-            setCity(data.city)
-            setDepartment(data.department)
-            setYear(data.year)
+            // setReport(data.report)
+            setVisitId(data.report.visit_id)
+            setReport_title(data.report.report_title)
+            setReport_subtitle(data.report.report_subtitle)
+            setConnection_point(data.report.connection_point)
+            setInitial_day(data.report.initial_day)
+            setFinal_day(data.report.final_day)
+            setTotal_days(data.report.total_days_service)
+            setAuthor(data.report.author)
+            setReviewer(data.report.reviewer)
+            setClient_responsible(data.report.client_responsible)
+            setEquipment(data.report.equipment)
+            setEquipment_model(data.report.equipment_model)
+            setWorking_voltage(data.report.working_voltage)
+            setConnection_type(data.report.connection_type)
+            setPhase_number(data.report.phase_number)
+            setTotal_power(data.report.total_power)
+            setCity(data.report.city)
+            setDepartment(data.report.department)
+            setYear(data.report.year)
+            setHasDetail(data.has_detail)
         }
     }
 
@@ -429,7 +429,7 @@ const Report = () => {
                         {
                             id && hasDetail && (
                                 <div className="El_Rbd_button">
-                                        <Button disabled={isDisable} variant="contained" color="error" onClick={handleDeleteDetailReport}>
+                                        <Button variant="contained" color="error" onClick={handleDeleteDetailReport}>
                                                 Eliminar Archivo
                                         </Button>
                                 </div>
