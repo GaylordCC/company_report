@@ -12,48 +12,9 @@
     flex-direction: column;
 }
 
-.header {
-    width: 90%;
-    height: 15%;
-    display: flex;
-    text-align: right;
-    justify-content: right;
-    flex-direction: column;
-    line-height: 0px;
-    margin-bottom: 15px;
-}
-
-.headerimag {
-    width: 150px;
-    height: 150px;
-    display: flex;
-    display: block;
-    margin-left: auto;
-    float: right;
-
-}
-
-.structureReport {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content:center;
-    flex-direction: column;
-    line-height: 0px;
-}
-
-.footer {
-    font-size: 15px;
-    width: 90%;
-    height: 11%;
-    top: 0; bottom: 0; left: 0; right: 0;
-    margin: auto;
-    display: flex;
-    text-align: right;
-    flex-direction: column;
-    line-height: 0px;
+.im-cover {
+    width: 8.5in;
+    height: 11in;
 }
 
 .wrapper-CT {
@@ -69,6 +30,22 @@
     flex-direction: column;
 }
 
+.client-content {
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.objective-scope {
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: justify;
+}
 
 .wrapper {
     border: 2px solid #dd830c;
@@ -84,12 +61,32 @@
     flex-direction: column;
 }
 
-.content-table{
+.container-photo1 {
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+.text-photo1 {
+    display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+}
+
+.photo1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.date-table{
+    width: 60%;
 }
 
 .contentsubtitle-TC {

@@ -1,11 +1,11 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import './__style__/bodyReport.css';
-import hmm from "./imagen/hmm.jpg";
 import analizador from "./imagen/analizador.jpg";
-import puntoConexion from "./imagen/puntoConexion.jpg";
-import variacionTension from "./imagen/variacionTension.jpg";
+import HMM1 from "./imagen/HMM1.png";
 import LineChart2 from "../chart/LineChart2";
-import { getReport } from '../../controllers/lineCharts';
+import { getReportGenerate } from '../../controllers/lineCharts';
+import { getReport } from '../../controllers/reports';
+import DynamicTextInput from '../textInput/textInput';
 
 const BodyReport = () => {  
 
@@ -178,6 +178,10 @@ const BodyReport = () => {
     const [pnom, setPnom] = React.useState("");
     const [unom, setUnom] = React.useState("");
     const [cgb, setCgb] = React.useState([]);
+    const [photo1, setPhoto1] = React.useState("");
+    const [photo2, setPhoto2] = React.useState("");
+    
+
     const carg_min = Math.min(...cgb)
     const Pnom_min = (carg_min*pnom) / 100
 
@@ -194,18 +198,9 @@ const BodyReport = () => {
     const av_car = sum_av / cgb.length;
     const promedio_C = av_car.toFixed(7);
 
-    // console.log(sum_av)
-    // console.log(av_car)
-    console.log(Pro_cgb)
-    // console.log(Pro_cgb)
-    // console.log(car_g)
-    console.log("SABADOSFELICESSSSSS")
-
     var coun_p = cgb.length;
     var L_Pnom = new Array(coun_p).fill(pnom[0]);
-    // console.log(carg_min)
-    // console.log(carg_max)
-    // console.log("EL DESAFIO LA BOXXXX")
+
 
     var V_max = Math.abs(((unom[0] - Max_u) / unom[0])*100);
     var Vmax = V_max.toFixed(2);
@@ -329,7 +324,7 @@ const BodyReport = () => {
 
 
     const fetchChart = async (id) =>{
-    const { succes, data } = await getReport(id);
+    const { succes, data } = await getReportGenerate(id);
 
         if (succes) {
             setU_1(data.u1)
@@ -491,222 +486,135 @@ const BodyReport = () => {
          }
     }
 
+    const fetchReport = async (id) =>{
+        const { succes, data } = await getReport(id);
+        if (succes) {
+            console.log(data.imagen_company_photo_file)
+            console.log(data.imagen_connection_point_photo_file)
+            setPhoto2(data.imagen_connection_point_photo_file)
+        }
+    }
+
     useEffect(()=> {
         const params = new URLSearchParams(window.location.search)
         var paramsId = window.location.pathname.toString().split("/").pop()
         if(paramsId) {
             setId(paramsId);
             fetchChart(paramsId);
+            fetchReport(paramsId)
         }
     }, [])
+
 
     return (
         <div>
             <div className="first-wrapper">
-                <div className="header">
-                    <img className="headerimag" src={hmm} />
-                    <h3>NIT: 901407950-9</h3>
-                </div>
-                <div className="structureReport">
-                    <h1 className="title">Titulo 01 del Informe </h1>
-                    <h2 className="subtitle">Titulo 02 del Informe </h2>
-                    <h3 className="connection-point">Punto de Conexión: </h3>
-                    <h3>Equipo:</h3>
-                    <h3>Fecha de Elaboración:</h3>
-                    <h3>Elaboro por:</h3>
-                    <h3>Revisado por:</h3>
-                    <h3>Cliente Responsable:</h3>
-                    <h3>Ciudad</h3>
-                    <h3>Departamento</h3>
-                    <h3>Año</h3>
-                </div>
-                <div className="footer">
-                    <h3>HMM Ingeniería SAS </h3>
-                    <h3>Calle 57 # 41B-54 Barranquilla Colombia </h3>
-                    <h3>WWW.HMMINGENIERIA.COM</h3>
-                </div>
+                <img className="im-cover" src={HMM1} />
             </div>
             <div className="wrapper-CT">
-                <h1 className="content-table"> Tabla de Contenido</h1>
-                <h2 className="contentsubtitle-TC"> 1. MEDICIONES.</h2>
-                <h2 className="contentsubtitle-TC"> 2. CONCEPTOS.</h2>
-                <h2 className="contentsubtitle-TC"> 3. EQUIPO DE MEDIDA UTILIZADO.</h2>
-                <h2 className="contentsubtitle-TC"> 4. CRITERIOS DE SEGURIDAD UTILIZADOS.</h2>
-                <h2 className="contentsubtitle-TC"> 5. PUNTO DE MEDICIÓN.</h2>
-                <h2 className="contentsubtitle-TC"> 4. CRITERIOS DE SEGURIDAD UTILIZADOS.</h2>
-                <h2 className="contentsubtitle-TC"> 6. RESULTADO DE LAS MEDIDAS.</h2>
-                <h3 className="contentsubtitle-TC"> 6.1 Regulación de tensión.</h3>
-                <h3 className="contentsubtitle-TC"> 6.2 Desbalance de tensión.</h3>
-                <h3 className="contentsubtitle-TC"> 6.3 Desequilibrio de corriente.</h3>
-                <h3 className="contentsubtitle-TC"> 6.3.1 Gráfico de corrientes.</h3>
-                <h3 className="contentsubtitle-TC"> 6.3.2 Distorsiones Armónicas (THD).</h3>
-                <h3 className="contentsubtitle-TC"> 6.3.3 Distorsiones en Voltaje (TDDV).</h3>
-                <h3 className="contentsubtitle-TC"> 6.3.4 Distorsiones en Corrientes (TDDI).</h3>
-                <h3 className="contentsubtitle-TC"> 6.4 Factor de Potencia.</h3>
-                <h3 className="contentsubtitle-TC"> 6.5 Frecuencia.</h3>
-                <h3 className="contentsubtitle-TC"> 6.6 Potencias.</h3>
-                <h3 className="contentsubtitle-TC"> 6.7 Cargabilidad.</h3>
-                <h3 className="contentsubtitle-TC"> 6.8 Anomalías.</h3>
-                <h2 className="contentsubtitle-TC"> 7. CARGABILIDAD.</h2>
-                <h2 className="contentsubtitle-TC"> 8. CONCLUSIONES.</h2>
+                <div className="client-content">
+                    <p className="client-text"> Dirigido a: Nelson Galván Ascanio</p>
+                    <p className="client-text"> Cargo: Gerente General <br/>Barranquilla 19 mayo 2023</p>
+                    <p className="client-text"> ASUNTO: INFORME CALIDAD DE LA POTENCIA ELECTRICA. <br/>ESPECIALIDAD: ARMONICOS</p>
+                    <p className="client-text"> A continuación, se presenta el resultado del estudio de Calidad de Energía 
+                    correspondiente al cliente.</p>
+                    <p className="client-text"> COMPAÑÍA: PRODUCTOS JHUNIO” S ROL” D S.A.S  </p>
+                </div>
+                <div className="objective-scope">
+                    <h2 className="paragraph"> 1. OBJETIVOS </h2>
+                    <p className="paragraph"> 
+                        Realizar un diagnóstico de la calidad de energía teniendo en cuenta las variables eléctricas como Potencia 
+                        aparente (kVA), Potencia activa (kW), Potencia reactiva (kVAR), FP etc.
+                        Evaluar el comportamiento de variables analizadas y compararlos con los valores normativos de Referencias.
+                    </p>
+                    <h2 className="paragraph"> 2. ALCANCE  </h2>
+                    <p className="paragraph"> 
+                        Estudio de Calidad de Energía Estandar Incluye: Análisis estadístico de las mediciones registradas durante 
+                        siete (7) días, utilizando analizadores de redes Clase A, ubicado: en el tablero eléctrico general, 
+                        permitiendo el registro de los siguientes parámetros:
+                    </p>
+                    <ul className="paragraph">
+                        <li> Tensiones de fase/línea </li>
+                        <li> Corrientes de línea </li>
+                        <li> Potencia activa/reactiva/aparente </li>
+                        <li> Factor de potencia </li>
+                        <li> Frecuencia </li>
+                        <li> Distorsión armónica de tensión/corriente Total e Individual</li>
+                        <li> Desbalances de tensión </li>
+                    </ul>
+                    <p className="paragraph">
+                        La evaluación se realiza a partir de un análisis estadístico de las mediciones 
+                        registradas durante el periodo utilizando un analizador de redes METREL Modelo 
+                        MIC 2892 CLASE A.
+                    </p>
+                </div>
             </div>
             <div className="wrapper">
-                <h3 className="tittlepage"> 1. MEDICIONES.</h3>
-                <p className="paragraph"> Contar con una energía de calidad permitirá minimizar las fallas de 
-                    alimentación eléctrica aumentando la confiabilidad y optimizando la productividad de las empresas. <br/>
-                    Cuando se posee una infraestructura eléctrica que garantice una adecuada calidad de la potencia se 
-                    obtienen beneficios complementarios y que se cuenta con instalaciones seguras que minimizan riesgos 
-                    eléctricos para personas y equipos.
-                </p>
-                <h4 className="contentsubtitle"> 1.1 Registro de Parámetros Eléctricos.</h4>
+                <h3 className="tittlepage"> 3. NORMATIVA Y CRITERIOS DE SEGURIDAD APLICADOS</h3>
+                <h4 className="tittlepage"> 3.1. Normatividad</h4>
                 <ul className="paragraph">
-                    <li> Frecuencia.  </li>
-                    <li> Tensión (Voltaje).  </li>
-                    <li> Corriente.  </li>
-                    <li> Potencia (Estudio de Carga).  </li>
-                    <li> Factor de Potencia.  </li>
-                    <li> Desbalance de corriente y tensión.  </li>
-                    <li> Distorsión armónica.  </li>
-                    <li> Registros de ondas de tensión, corriente y potencia.  </li>
+                    <li className="paragraph"> CREG  016–2007       NTC 5000      NTC 5001    CREG O30–2018      NTC 819. </li>
+                    <li className="paragraph"> CREG 024–2005        CREG 065–2012      IEC _ 61000–4 – 30–2003. </li>
                 </ul>
-                <h4 className="contentsubtitle"> 1.2 Normatividad.</h4>
-                <ul className="paragraph">
-                    <li> Norma IEEE 1159-1995, Recommended Practice for Monitoring Electric Power Quality.  </li>
-                    <li> NormaIEEE519-1992,Recommended Practices and Requirements for Harmonic Control in Electrical Power Systems.  </li>
-                    <li> 61000-2-5 Clasificación de los entornos electromagnéticos.  </li>
-                    <li> 61000-2-1Descripcióndelosentornoselectromagnéticosensistemasdeenergíadebajatensión públicos.  </li>
-                    <li> 61000-2-2 Niveles de compatibilidad en sistemas de energía de baja tensión públicos.  </li>
-                    <li> 61000-2-4 Niveles de compatibilidad en instalaciones industriales.  </li>
-                    <li> 61000-2-6 Evaluación de los niveles de emisión en instalaciones industriales.  </li>
-                    <li> 61000-2-8 Huecos de tensión, interrupciones cortas.  </li>
-                </ul>            
+                <h4 className="tittlepage"> 3.2. Criterios Utilizados</h4>
+                <p className="paragraph"> Se tuvo en cuenta las respectivas medidas preventivas para realizar la instalación del 
+                    analizador de red, se contó con la presencia de personal técnico especializado entrenado para este tipo labor. 
+                    Asimismo, se consideraron las normas y procedimientos de seguridad industrial, con la finalidad de tener confiabilidad 
+                    en el proceso de adquisición de datos y en la integridad física del personal operativo.
+                </p>
+                <h4 className="tittlepage"> 4. REGISTRO FOTOGRAFICO</h4>
+                <div className="container-photo1">
+                    <div className="text-photo1">
+                        <h3>DATOS:</h3>
+                        <span className="">Nivel de tensión Primario 13,200V</span>
+                        <span className="">Nivel de tensión Segundario 220 – 127V</span>
+                    </div>
+                    <div className="photo1">
+                        <img className="imgCP" src={photo2} />
+                        <span className="imgLabel">Punto de Conexión</span>
+                    </div>
+                </div>
             </div>
             <div className="wrapper">
-                <ul className="paragraph">
-                    <li> 6072.Impedancia de referencia para líneas de energía de baja tensión 61010.  </li>
-                    <li> Cualquier equipo de medida eléctrico, los analizadores de redes trifásicos deben cumplir
-                        con los requisitos de esta importante Norma Europea de seguridad.
-                    </li>
-                </ul>  
-                <h3 className="tittlepage"> 2. CONCEPTOS.</h3>
-                <h4 className="tittlepage"> CALIDAD DE ENERGÍA:</h4>
-                <p className="paragraph"> La calidad de la energía eléctrica (CEL), se define como la continuidad y confiabilidad del voltaje suministrada 
-                    a un cliente en particular por el operador de red o su sistema de generación en sitio (o ambos cuando hay sincronismo), así como 
-                    la calidad de la corriente de carga que el cliente demanda de este, de tal forma que se garantice la confiabilidad y eficiencia 
-                    operativa de un sistema de potencia eléctrico en particular. <br/>
-                    La evaluación de indicadores de calidad de la energía permite conocer que tan inmune es una instalación a fenómenos perturbadores 
-                    de una óptima calidad de la energía, fenómenos en estado estable como armónicos de voltaje y corriente, variaciones de voltaje de corta 
-                    y larga duración según IEEE1159-1995 o en estado transitorio como variaciones rápidas de voltaje, transitorios de alto contenido energético, 
-                    etc. Mediante esta evaluación de indicadores actuales de la CEL, se logran estructurar las mejores soluciones técnicas que evitaran que la 
-                    instalación eléctrica se vea afectada por estos fenómenos, garantizando así la continuidad y confiabilidad de la operación de todos los equipos 
-                    eléctricos de la instalación.
-                </p>
-                <h4 className="contentsubtitle"> Armónicos:</h4>
-                <p className="paragraph"> Son componentes sinusoidales de una onda periódica o cantidad que posee una frecuencia múltiplo de la frecuencia fundamental. <br/>
-                </p>
-                <h4 className="contentsubtitle"> Distorsión armónica total(THD):</h4>
-                <p className="paragraph"> Es la relación entre el contenido armónico de la señal y la primera armónica o fundamental. Es el parámetro de medición de distorsión 
-                    más conocido por lo que es Recomendable para medir la distorsión en parámetros individuales (I y V). <br/>
-                </p> 
-            </div>
-            <div className="wrapper">
-                <h4 className="contentsubtitle"> Distorsión de demanda total(TDD):</h4>
-                <p className="paragraph"> Es la relación entre la corriente armónica y la demanda máxima de la corriente de carga <br/>
-                </p>
-                <h4 className="contentsubtitle"> Factor de potencia:</h4>
-                <p className="paragraph"> Relación entre potencia activa y potencia aparente, del mismo sistema eléctrico o parte de él. <br/>
-                </p> 
-                <h4 className="paragraph"> Frecuencia:</h4>
-                <p className="paragraph"> Número de períodos por segundo de uma onda. Se mide em Hertz o ciclos por segundo. <br/>
-                </p>
-                <h4 className="contentsubtitle"> Potencia activa:</h4>
-                <p className="paragraph"> Potencia consumida por las bombillas, aparatos, artefactos y motores que se encuentran en el predio del usuario. Se mide en kilovatios [kW]. <br/>
-                </p>
-                <h4 className="contentsubtitle"> Potencia aparente:</h4>
-                <p class="paragraph"> Potencia resultante de la suma geométrica de la potencia activa y la potencia reactiva, medida en kVA. <br/>
-                </p>
-                <h4 class="contentsubtitle"> Potencia reactiva:</h4>
-                <p className="paragraph"> Potencia absorbida por cargas reactivas que se encuentran en las industrias, transformadores, redes o por motores, medida en kVAR. <br/>
-                </p>
-                <h4 className="contentsubtitle"> Potencia reactiva:</h4>
-                <p className="paragraph"> Potencia absorbida por cargas reactivas que se encuentran en las industrias, transformadores, redes o por motores, medida en kVAR. <br/>
-                </p>
-                <h4 className="contentsubtitle"> Regulación de tensión:</h4>
-                <p className="paragraph"> La regulación de tensión es la caída de tensión en una red debido a la impedancia serie de los conductores la cual se opone al paso de la corriente eléctrica. <br/>
-                </p>
-            </div>
-            <div className="wrapper">
-                <h3 className="tittlepage"> 3.0 EQUIPO DE MEDIDA UTILIZADO.</h3>
-                <img className="imgAnalizer" src={analizador} />
-                <span className="imgLabel">Imagen 1. Analizador de redes METREL 2892 Utilizado en el diagnóstico.</span>
-        
-                <p className="paragraph"> Para la ejecución del diagnóstico de calidad de la energía eléctrica en el punto solicitado, se implementó un analizador de redes eléctricas: <br/>
-                </p>
-                <ul className="tittlepage">
-                    <li> MI 2892. </li>
-                    <li> Con capacidad de detectar y registrar durante 15 días continuos en intervalos de 5 minutos y 
-                        100 muestras por ciclo, todas las perturbaciones que pueden afectar 
-                        la operación confiable de las instalaciones eléctricas. 
-                    </li>
-                    <li> Para la medición, se utilizó un Analizador de Redes Trifásico que fue instalado durante un 
-                        periodo de 6 días continuos. 
-                    </li>
-                    <li> Se obtuvieron los datos de todos los parámetros eléctricos incluyendo la potencia Activa,
-                        Reactiva y Aparente;<br/> y la energía total demandada por el sistema.
-                    </li>
-                </ul>
-                <h3 className="tittlepage"> 4.0 CRITERIOS DE SEGURIDAD UTILIZADOS.</h3>
-                <p className="paragraph"> Se tuvo en cuenta las respectivas medidas preventivas para realizar la instalación 
-                    del analizador <br/> de red, se contó con la presencia de personal técnico especializado entrenado para 
-                    este tipo labor. Asimismo, se consideraron las normas y procedimientos de seguridad industrial, con 
-                    la finalidad de tener confiabilidad en el proceso de adquisición de datos y en la integridad física 
-                    del personal operativo.
-                </p>
-            </div>
-            <div className="wrapper">
-                <h3 className="tittlepage"> 5.0 PUNTO DE MEDICIÓN.</h3>
-                <img className="imgCP" src={puntoConexion} />
-                <span className="imgLabel">Imagen 2. Punto de Conexión.</span>
-                <h3 className="tittlepage"> 6.0 RESULTADO DE LAS MEDIDAS.</h3>
-                <p className="paragraph"> El presente informe contiene los resultados del diagnóstico de Calidad de Potencia 
-                    realizado en la subestación eléctrica principal de: <br/>
-                </p>
-                <ul className="tittlepage">
-                    <li> TRF 500KVA. </li>
-                    <li> PALOMINO - GUAJIRA </li>
-                </ul>
-                <p className="paragraph"> En la Tabla No.1 se presentan las fechas, horas e intervalos entre registros.
-                    El equipo se programó para capturar los siguientes datos:
-                </p>
-                <table>
+                <h3 className="tittlepage"> 5.0 FECHA Y DURACIÓN DE LA MEDICIÓN</h3>
+                <table className="date-table">
                     <tr>
-                    <th>Modelo</th>
-                    <th>Conexión</th>
-                    <th>Día de Inicio</th>
-                    <th>Día de Final</th>
-                    <th>Fase</th>
+                        <th>Estado</th>
+                        <th>Día y Hora</th>
                     </tr>
                     <tr>
-                    <td> {eqm} </td>
-                    <td> {ct} </td>
-                    <td> {ind} </td>
-                    <td> {fd} </td>
-                    <td> {fa} </td>
+                        <td> Inicio </td>
+                        <td> {ind} </td>
+                    </tr>
+                    <tr>
+                        <td> Fin </td>
+                        <td> {fd} </td>
                     </tr>
                 </table>
-                <span className="imgLabel">Tabla No.1.</span>
-            </div>
-            <div className="wrapper">
-                <p className="paragraph"> Los resultados de las mediciones se presentan a continuación en forma de tablas y 
-                    resumen. Posteriormente, se realiza una descripción del comportamiento de los parámetros registrados.
-                </p>
-                <p className="paragraph"> También se presenta las diferentes curvas del comportamiento de los parámetros eléctricos en el 
-                    periodo de medición. 
-                </p>
-                <p className="paragraph">  En la Tabla No.2, se puede observar los valores máximos, mínimos y promedio de los parámetros medidos.
-                    Cabe resaltar que, los datos presentados en cada fila no son necesariamente coincidentes en el tiempo. 
-                </p>
-                <table>
+                <span className="imgLabel">Tabla 1 Periodo de Registro</span>
+                <h3 className="contentsubtitle"> 6.0 ANALISIS PERFIL DE TENSIONES</h3>
+                <div className="Chart-Voltage">
+                    <LineChart2 x1={u1} x2={u2} x3={u3} y={h1} name="CV" title1="u1" title2="u2" title3="u3"/>
+                </div>
+                <span className="imgLabel">Comportamiento de la variación de la tensión del sistema</span>
+                <table className="table3">
+                    <tr>
+                    <th>Acometida Principal</th>
+                    <th>Tensión Nominal</th>
+                    <th>Máximo V [%]</th>
+                    <th>Promedio V [%]</th>
+                    <th>Minimo V [%]</th>
+                    </tr>
+                    <tr>
+                    <td>Trafo</td>
+                    <td>{unom}</td>
+                    <td>{Vmax}</td>
+                    <td>{Vprom}</td>
+                    <td>{Vmin}</td>
+                    </tr>
+                </table>
+                <span className="imgLabel">Variaciones de tensión con respecto al valor nominal</span>
+                {/* <table>
                     <tr>
                     <th colspan="3">Punto Medido</th>
                     <th colspan="3">Tensión [V]</th>
@@ -806,44 +714,12 @@ const BodyReport = () => {
                         <td> {q_tot_ind_percentil_5} </td>
                         <td> DP </td>
                     </tr>
-                </table>
-                <span className="imgLabel">Tabla No.2. Valores Máximos, Promedios y Mínimos de Parámetros Medidos.</span>
-                <p className="paragraph"> Los valores máximos y mínimos registrados corresponden a valores medidos durante 
-                    el intervalo de las muestras. 
-                </p>
+                </table> */}
             </div>
             <div className="wrapper">
-                
-                <h3 className="contentsubtitle"> 6.1 Regulación de Tensión.</h3>
-                <p className="paragraph"> En la Tabla No.3 se aprecia las variaciones de tensión con respecto al valor nominal.</p>
-                <table className="table3">
-                    <tr>
-                    <th>Acometida Principal</th>
-                    <th>Tensión Nominal</th>
-                    <th>Máximo V [%]</th>
-                    <th>Promedio V [%]</th>
-                    <th>Minimo V [%]</th>
-                    </tr>
-                    <tr>
-                    <td>Trafo</td>
-                    <td>{unom}</td>
-                    <td>{Vmax}</td>
-                    <td>{Vprom}</td>
-                    <td>{Vmin}</td>
-                    </tr>
-                </table>
-                <span className="imgLabel">Tabla No.3. Variaciones de tensión con respecto al valor nominal.</span>
-                <p className="paragraph"> La Norma Técnica Colombiana NTC 1340 establece los límites máximos de variación de
-                    tensión, siendo estos de: +10% y -10%.
-                </p>
-                <p className="paragraph"> Nota: Los valores se encuentran dentro de los límites establecidos.
-                </p>
-                <div className="Chart-Voltage">
-                    <LineChart2 x1={u1} x2={u2} x3={u3} y={h1} name="CV" title1="u1" title2="u2" title3="u3"/>
+                <div className="paragraph">
+                    <DynamicTextInput />
                 </div>
-                <span className="imgLabel">Comportamiento de la variación de la tensión del sistema.</span>
-            </div>
-            <div className="wrapper">
                 <h3 className="contentsubtitle"> 6.2 Desbalance de Tensión.</h3>
                 <table className="table3">
                     <tr>
@@ -872,18 +748,8 @@ const BodyReport = () => {
                     <LineChart2 x1={uper} x2={L99_u_per} x3={L95_u_per} x4={L5_u_per} y={h1} name="CU" title1="u_per" title2="u_percentil 99" title3="u_percentil 95" title4="u_percentil 5"/>
                 </div>
                 <span className="imgLabel">Tendencia Desbalance de Tensión.</span>
-                <p className="paragraph"> Otro parámetro de la Calidad de Tensión es el desbalance. Estos se calculan como: 
-                    La máxima diferencia entre las magnitudes de cada fase y el promedio de las fases, dividida sobre el 
-                    promedio y expresada en tanto por cien. La tabla No. 4 presenta el resumen de estos desbalances 
-                    registradas durante la medición. <br/>
-                    El límite máximo admisible para desbalances en tensión es del 2%. Por lo tanto, 
-                    los desbalances registrados durante la medición:
-                </p>
             </div>
             <div className="wrapper">
-                <ul className="paragraph">
-                    <li> Si se encuentra dentro de los parametros recomendado por la Norma</li>
-                </ul>
                 <h3 className="contentsubtitle"> 6.3 Desbalance de Corriente.</h3>
                 <table className="table3">
                     <tr>

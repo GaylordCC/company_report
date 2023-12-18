@@ -1,6 +1,6 @@
 import httpRequest from '../../services/http_request';
 
-export const getReport = async (id, params) => {
+export const getReportGenerate = async (id, params) => {
     try {
         const response = await httpRequest({
             method: "POST",

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./__styles__/index.css";
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
-import { getReport } from '../../controllers/lineCharts';
+import { getReportGenerate } from '../../controllers/lineCharts';
 
 const LineChart = () => {
 
@@ -15,7 +15,7 @@ const LineChart = () => {
 
     
     const fetchChart = async (id) =>{
-        const { succes, data } = await getReport(id);
+        const { succes, data } = await getReportGenerate(id);
         console.log(data.u1)
         console.log(id)
         console.log(u1)
